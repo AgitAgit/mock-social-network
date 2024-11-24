@@ -9,7 +9,8 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   authorId: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId, 
+    ref:"User",
     required: true,
     unique: true,
   },
