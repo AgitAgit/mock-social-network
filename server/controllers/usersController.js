@@ -1,23 +1,42 @@
 import User from "../models/userModel.js";
-import bcrypt from "bcrypt";
-import jwt from 'jsonwebtoken';
+// import bcrypt from "bcrypt";
+// import jwt from 'jsonwebtoken';
 
-const secretKey = 'secretKey';
+// const secretKey = 'secretKey';
+
+
+export const getAllUsers = async function (req, res, next) {
+    try {
+    const users = await User.find();
+    res.json({ users });
+    next();
+    } catch (error) {
+        next(error);
+    } 
+};
+
+export async function addUser(req, res, next) {
+  try {
+    // console.log(req.body);
+    const data = req.body.user;
+    // console.log(data);
+    
+    const user = new User({
+        displayName: data.displayName,
+        email: data.email
+    });
+    const newUser = await user.save();
+    res.status(201).json({ mongoMessage: newUser });
+    next();
+    } catch (error) {
+        next(error);
+    }
+}
 
 // export const getUserById = async function (req, res, next) {
 //   try {
 //     const user = await User.findById(req.params.id);
 //     res.json(user);
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
-// export const getAllUsers = async function (req, res, next) {
-//   try {
-//     const users = await User.find();
-//     res.json({ users });
 //     next();
 //   } catch (error) {
 //     next(error);
