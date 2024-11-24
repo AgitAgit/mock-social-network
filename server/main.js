@@ -1,29 +1,50 @@
-import mongoose from "mongoose";
-import express from "express";
+import express, {json} from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cors from 'cors';
+
+import jokesRouter from './routes/jokesRoute.js';
+import usersRouter from './routes/usersRoute.js';
+
+// import logger from './middleware/logger.js';
+
+dotenv.config();
+
+const uri = process.env.URI;
 
 const app = express();
-app.use(express.json());
 
-// Database
-const database = () => {
-  const connectionParams = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  };
-  try {
-    mongoose.connect(
-      "mongodb+srv://ariel:HMSow2P4cLTb7bmw@mocksocialmedia.bgffa.mongodb.net/",
-      connectionParams
-    );
-    console.log("Database connected succesfully");
-  } catch (error) {
-    console.log(error);
-    console.log("Database connection failed");
-  }
-};
+const PORT = 3000;
 
-database();
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+    console.log("mongo instance connected...");
+});
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.use(cors());
+app.use(json());
+
+//app.use('/', logger);
+
+app.use('/api/users', usersRouter);
+
+app.get("/", (req, res) => {
+    // res.send("Hello World");
+    res.render('index.html');
+})
+
+app.get("/api/status", (req, res) => {
+    res.send({
+        message: "Server is UP"
+    })
+})
+  
+app.use((err, req, res, next) => {
+    if (err.name === 'ValidationError') {
+        return res.status(400).json({ message: err.message });
+    }
+    res.status(500).json({ message: err.message });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
