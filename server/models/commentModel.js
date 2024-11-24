@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const commentSchema = new mongoose.Schema({
-  postId: {
-    type: String,
+  parentPostId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Post",
     required: true,
-    unique: true,
   },
   text: {
     type: String,
