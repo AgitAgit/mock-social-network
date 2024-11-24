@@ -4,7 +4,6 @@ import Comment from "../models/commentModel.js";
 export async function addComment(req, res, next) {
   try {
     const { parentPostId, content, authorId } = req.body;
-    console.log(req.body);
 
     const comment = new Comment({
       parentPostId,
