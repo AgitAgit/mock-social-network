@@ -11,14 +11,12 @@ const postSchema = new mongoose.Schema({
   authorId: {
     type: mongoose.Schema.Types.ObjectId, 
     ref:"User",
-    required: true,
-    unique: true,
+    required: true
   },
   commentIds: [ {
     type: mongoose.Schema.Types.ObjectId,
     ref:"Comment",
-    required: false,
-    unique: true
+    required: false
   } ]
 });
 

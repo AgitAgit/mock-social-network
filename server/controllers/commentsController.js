@@ -1,4 +1,6 @@
 import Comment from "../models/commentModel.js";
+import Post from "../models/postModel.js";
+import mongoose from "mongoose";
 
 // need to add post existence validation
 export async function addComment(req, res, next) {
@@ -12,7 +14,10 @@ export async function addComment(req, res, next) {
     });
 
     const response = await comment.save();
-    res.json({ message: response });
+    
+    const updateResult = await Post.findOneAndUpdate({ _id: parentPostId }, { $push: { commentIds:response._id} })
+    
+    res.json({ message: response, message2: updateResult });
     next();
   } catch (error) {
     next(error);
