@@ -1,0 +1,2 @@
+How should the posts and comments look?
+Each post can have many comments, each comment can have one parent post.
