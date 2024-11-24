@@ -14,6 +14,12 @@ const postSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  commentIds: [ {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Comment",
+    required: false,
+    unique: true
+  } ]
 });
 
 export default mongoose.model("Post", postSchema);
