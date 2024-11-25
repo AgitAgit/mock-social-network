@@ -4,33 +4,84 @@ import User from "../models/userModel.js";
 
 // const secretKey = 'secretKey';
 
+//path params:none
+//query params:none
+//example request body:none
+/*example response:{
+    "users": [*users data*]
+}*/
 
 export const getAllUsers = async function (req, res, next) {
-    try {
+  try {
     const users = await User.find();
     res.json({ users });
     next();
-    } catch (error) {
-        next(error);
-    } 
+  } catch (error) {
+    next(error);
+  }
 };
 
+//path params:none
+//query params:none
+/*example request body:{
+displayName:testy,
+email:testy@gmail.com
+}*/
+/*example response:{
+    "mongoMessage": {
+        "displayName": "testy",
+        "email": "testy@gmail.com",
+        "_id": "67446d8e8c9edc19b0f4b1df",
+        "__v": 0
+    }
+}*/
 export async function addUser(req, res, next) {
   try {
-    // console.log(req.body);
-    const data = req.body.user;
-    // console.log(data);
-    
+    const data = req.body;
     const user = new User({
-        displayName: data.displayName,
-        email: data.email
+      displayName: data.displayName,
+      email: data.email,
     });
     const newUser = await user.save();
     res.status(201).json({ mongoMessage: newUser });
     next();
-    } catch (error) {
-        next(error);
+  } catch (error) {
+    next(error);
+  }
+}
+
+//path params:none
+//query params:none
+/* example request body:{
+email:testy@gmail.com
+} */
+/* example response:{
+    "message": "Logged in successfully!",
+    "userDetails": [
+        {
+            "_id": "67446d8e8c9edc19b0f4b1df",
+            "displayName": "testy",
+            "email": "testy@gmail.com",
+            "__v": 0
+        }
+    ]
+} */
+export async function loginUser(req, res, next) {
+  try {
+    const userEmail = req.body.email;
+    const user = await User.find({ email: userEmail });
+
+    if (user) {
+      res
+        .status(201)
+        .json({ message: "Logged in successfully!", userDetails: user });
+    } else {
+      res.status(404).json({ message: "user not found" });
     }
+    next();
+  } catch (error) {
+    next(error);
+  }
 }
 
 // export const getUserById = async function (req, res, next) {
