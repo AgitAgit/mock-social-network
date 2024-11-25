@@ -1,15 +1,19 @@
-import express from 'express';
+import express from "express";
 // import jwt from 'jsonwebtoken';
 // import { getAllUsers, addUser, patchUser, addUsers, getUserById, validateLogin, verifyToken } from '../controllers/usersController.js';
-import { getAllUsers, addUser } from '../controllers/usersController.js';
+import {
+  getAllUsers,
+  addUser,
+  loginUser,
+} from "../controllers/usersController.js";
 
 const router = express.Router();
 
-router.get('/', getAllUsers);
+router.get("/", getAllUsers);
 
-router.post('/signup', addUser);
+router.post("/signup", addUser);
 
-router.post('/login');
+router.post("/login", loginUser);
 
 // router.get('/:id', getUserById);
 
