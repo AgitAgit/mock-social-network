@@ -4,15 +4,14 @@ import User from "../models/userModel.js";
 
 // const secretKey = 'secretKey';
 
-
 export const getAllUsers = async function (req, res, next) {
-    try {
+  try {
     const users = await User.find();
     res.json({ users });
     next();
-    } catch (error) {
-        next(error);
-    } 
+  } catch (error) {
+    next(error);
+  }
 };
 
 export async function addUser(req, res, next) {
@@ -20,17 +19,17 @@ export async function addUser(req, res, next) {
     // console.log(req.body);
     const data = req.body.user;
     // console.log(data);
-    
+
     const user = new User({
-        displayName: data.displayName,
-        email: data.email
+      displayName: data.displayName,
+      email: data.email,
     });
     const newUser = await user.save();
     res.status(201).json({ mongoMessage: newUser });
     next();
-    } catch (error) {
-        next(error);
-    }
+  } catch (error) {
+    next(error);
+  }
 }
 
 // export const getUserById = async function (req, res, next) {
