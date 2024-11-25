@@ -1,0 +1,12 @@
+Controllers
+    users
+        create login function
+    posts
+        get all posts
+        get post by post id and its associated comments( mongoose populate )
+    comments
+        get all comments by post id
+
+Ariel
+
+Amit
