@@ -4,6 +4,13 @@ import User from "../models/userModel.js";
 
 // const secretKey = 'secretKey';
 
+//path params:none
+//query params:none
+//example request body:none
+/*example response:{
+    "users": [*users data*]
+}*/
+
 export const getAllUsers = async function (req, res, next) {
   try {
     const users = await User.find();
@@ -14,9 +21,23 @@ export const getAllUsers = async function (req, res, next) {
   }
 };
 
+//path params:none
+//query params:none
+/*example request body:{
+displayName:testy,
+email:testy@gmail.com
+}*/
+/*example response:{
+    "mongoMessage": {
+        "displayName": "testy",
+        "email": "testy@gmail.com",
+        "_id": "67446d8e8c9edc19b0f4b1df",
+        "__v": 0
+    }
+}*/
 export async function addUser(req, res, next) {
   try {
-    const data = req.body.user;
+    const data = req.body;
     const user = new User({
       displayName: data.displayName,
       email: data.email,
@@ -29,6 +50,22 @@ export async function addUser(req, res, next) {
   }
 }
 
+//path params:none
+//query params:none
+/* example request body:{
+email:testy@gmail.com
+} */
+/* example response:{
+    "message": "Logged in successfully!",
+    "userDetails": [
+        {
+            "_id": "67446d8e8c9edc19b0f4b1df",
+            "displayName": "testy",
+            "email": "testy@gmail.com",
+            "__v": 0
+        }
+    ]
+} */
 export async function loginUser(req, res, next) {
   try {
     const userEmail = req.body.email;

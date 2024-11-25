@@ -1,7 +1,13 @@
 import Comment from "../models/commentModel.js";
 import Post from "../models/postModel.js";
 
-// need to add post existence validation
+//path params:postId
+//query params:none
+//example request body:none
+/*example response: { {
+    "postId": *entered post id*,
+    "comments": [*selected post comments*]
+}}*/
 export async function getPostComments(req, res, next) {
   try {
     const postId = req.params.postId;
@@ -14,6 +20,23 @@ export async function getPostComments(req, res, next) {
   }
 }
 
+//path params:none
+//query params:none
+/*example request body:{ 
+      "parentPostId":"674444e4810707ebc8505bb2",
+      "content": "test3",
+      "authorId":"67432e35d9cabb6b21047e40"
+}*/
+/*example response:{
+    "yourComment": {
+        "parentPostId": "674444e4810707ebc8505bb2",
+        "content": "test3",
+        "authorId": "67432e35d9cabb6b21047e40",
+        "_id": "674466c3ab88a86725c6c0a8",
+        "__v": 0
+    },
+    "parentPost":*post data*
+}*/
 export async function addComment(req, res, next) {
   try {
     const { parentPostId, content, authorId } = req.body;
@@ -31,7 +54,7 @@ export async function addComment(req, res, next) {
       { $push: { commentIds: response._id } }
     );
 
-    res.json({ message: response, message2: updateResult });
+    res.json({ yourComment: response, parentPost: updateResult });
     next();
   } catch (error) {
     next(error);
