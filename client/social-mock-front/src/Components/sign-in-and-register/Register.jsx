@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 
 // Import Components
-import Input from "../SignIn/Input.jsx";
-import SubmitBtn from "../SignIn/SubmitBtn.jsx";
+import Input from "./Input.jsx";
+import SubmitBtn from "./SubmitBtn.jsx";
 
 const Register = () => {
   return (

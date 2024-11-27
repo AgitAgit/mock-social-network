@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
+
 const divIconStyle =
   "border-solid border-2 w-1/4 h-14 mx-2 flex content-center items-center hover:bg-slate-400";
 
