@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import HomeImage from "../../public/images/Homepage-image.svg";
+import styles from "./Homepage.module.css";
 
 const Homepage = () => {
   return (
-    <div className="mt-[1em] max-w-sm rounded-[2.2em]">
+    <div className="z-1 mt-[1em] max-w-sm rounded-[2.2em] p-[1em]">
       <img
         src={HomeImage}
         alt="Baba-gram logo image"
@@ -21,12 +22,12 @@ const Homepage = () => {
       </div>
       <div className="mb-[2em] flex w-full items-center justify-center gap-2">
         <Link to="/register" className="w-full">
-          <button className="w-full translate-x-[15px] rounded-[0.7em] border border-white p-3">
+          <button className="w-full rounded-[0.7em] border border-black bg-white p-3 text-black hover:bg-black hover:text-white">
             Register
           </button>
         </Link>
         <Link to="/login" className="w-full">
-          <button className="w-full translate-x-[-15px] rounded-[0.5em] border border-white p-3">
+          <button className="w-full rounded-[0.5em] border border-black bg-white p-3 text-black hover:bg-black hover:text-white">
             Sign in
           </button>
         </Link>

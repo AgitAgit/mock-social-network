@@ -21,15 +21,16 @@ html {
 }
 
 body {
+  background-color: rgba(255, 0, 0, 0.068);
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;
   width: 100%;
-  background: #edebf9;
   font-family: "Causten", "sans-serif";
-  background-image: url("../../public/images/background-image.svg");
+  /* background-image: url("../../public/images/background-image.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+ */
 }
