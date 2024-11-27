@@ -1,13 +1,15 @@
-// Import css
-import styles from "./SignIn.module.css";
-
 //Import
 import { Link } from "react-router-dom";
 
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
+import { FaApple } from "react-icons/fa";
+const divIconStyle =
+  "border-solid border-2 w-1/4 h-14 mx-2 flex content-center items-center hover:bg-slate-400";
+
 // Import Components
-import Input from "../Input/Input";
-import SubmitBtn from "../SubmitBtn/SubmitBtn";
-import IconButton from "../iconButton";
+import Input from "./Input.jsx";
+import SubmitBtn from "./SubmitBtn.jsx";
 
 const SignIn = () => {
   return (
@@ -26,15 +28,21 @@ const SignIn = () => {
 
           <SubmitBtn btnPlaceholder={"Sign-In"} />
         </div>
-        <div className="flex flex-row justify-center my-10">
-          <IconButton />
-          <IconButton />
-          <IconButton />
+        <div className="flex flex-row justify-center my-7">
+          <div className={divIconStyle}>
+            <FcGoogle className="text-3xl w-full " />
+          </div>
+          <div className={divIconStyle}>
+            <FaFacebook className="text-3xl w-full text-blue-500" />
+          </div>
+          <div className={divIconStyle}>
+            <FaApple className="text-3xl w-full " />
+          </div>
         </div>
         <p className="cursor-pointer text-xs ">
           Not a member ?
           <Link to={"/register"}>
-            <span className="underline decoration-blue-500">Register now</span>
+            <span className="text-blue-500"> Register now</span>
           </Link>
         </p>
       </div>

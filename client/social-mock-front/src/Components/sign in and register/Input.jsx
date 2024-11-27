@@ -2,7 +2,7 @@ const input = ({ type, placeholder }) => {
   return (
     <div>
       <input
-        className="p-2 w-10/12 rounded-lg"
+        className="p-3 w-10/12 rounded-lg text-xs"
         type={type}
         placeholder={placeholder}
       />
