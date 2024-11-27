@@ -26,7 +26,7 @@ const Homepage = () => {
             Register
           </button>
         </Link>
-        <Link to="/login" className="w-full">
+        <Link to="/sign-in" className="w-full">
           <button className="w-full rounded-[0.5em] border border-black bg-white p-3 text-black hover:bg-black hover:text-white">
             Sign in
           </button>
