@@ -27,5 +27,9 @@ body {
   align-items: center;
   width: 100%;
   background: #edebf9;
-  font-family: "Causten";
+  font-family: "Causten", "sans-serif";
+  background-image: url("../../public/images/background-image.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
