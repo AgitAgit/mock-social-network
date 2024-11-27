@@ -1,21 +1,43 @@
 // Import css
 import styles from "./SignIn.module.css";
 
+//Import
+import { Link } from "react-router-dom";
+
 // Import Components
-import TextField from "../TextField/TextField";
+import Input from "../Input/Input";
+import SubmitBtn from "../SubmitBtn/SubmitBtn";
+import IconButton from "../iconButton";
 
 const SignIn = () => {
   return (
-    <div>
-      <div className={styles.header}>
-        <h2>Hello Again!</h2>
-        <h3>Welcome back</h3>
+    <div className=" h-screen flex-col content-center">
+      <div>
+        <div className="my-10 flex flex-col items-center w-full">
+          <h1 className="text-2xl">Hello Again!</h1>
+          <h3 className="w-1/2">Welcome back you've been missed!</h3>
+        </div>
+        <div className="flex flex-col gap-4">
+          <Input type={"text"} placeholder={"User Name"} />
+          <Input type={"password"} placeholder={"PassWord"} />
+          <Link to={"/"}>
+            <p className="cursor-pointer text-xs ">Recovery Password</p>
+          </Link>
+
+          <SubmitBtn btnPlaceholder={"Sign-In"} />
+        </div>
+        <div className="flex flex-row justify-center my-10">
+          <IconButton />
+          <IconButton />
+          <IconButton />
+        </div>
+        <p className="cursor-pointer text-xs ">
+          Not a member ?
+          <Link to={"/register"}>
+            <span className="underline decoration-blue-500">Register now</span>
+          </Link>
+        </p>
       </div>
-      <div className={styles.main}>
-        <TextField className={"p-1"} type={"text"} placeholder={"User Name"} />
-        <TextField type={"password"} placeholder={"PassWord"} />
-      </div>
-      <div className={styles.footer}></div>
     </div>
   );
 };
