@@ -1,15 +1,13 @@
 const express = require('express');
-// import jwt from 'jsonwebtoken';
-// import { getAllUsers, addUser, patchUser, addUsers, getUserById, validateLogin, verifyToken } from '../controllers/usersController.js';
-const {
-  getAllUsers,
-  addUser,
-  login
-} = require("../controllers/usersController.js");
+
+const { getAllUsers, addUser, login } = require("../controllers/usersController.js");
+const { authUser } = require('../middleware/authUser.js');
 
 const router = express.Router();
 
-router.get("/", getAllUsers);
+router.use("/protected", authUser);
+
+router.get("/protected", getAllUsers);
 
 router.post("/signup", addUser);
 
