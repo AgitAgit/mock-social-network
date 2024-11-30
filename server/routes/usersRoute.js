@@ -1,11 +1,11 @@
-import express from "express";
+const express = require('express');
 // import jwt from 'jsonwebtoken';
 // import { getAllUsers, addUser, patchUser, addUsers, getUserById, validateLogin, verifyToken } from '../controllers/usersController.js';
-import {
+const {
   getAllUsers,
   addUser,
   loginUser,
-} from "../controllers/usersController.js";
+} = require("../controllers/usersController.js");
 
 const router = express.Router();
 
@@ -37,4 +37,4 @@ router.post("/login", loginUser);
 //     res.status(500).send("something went wrong in the server...");
 // });
 
-export default router;
+module.exports = router;
