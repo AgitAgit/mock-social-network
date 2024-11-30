@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 
 const User = require("../models/userModel.js");
 
+
+const secretKey = "secretKey";
 //path params:none
 //query params:none
 //example request body:none
@@ -23,10 +25,11 @@ const getAllUsers = async function (req, res, next) {
 async function addUser(req, res, next) {
   try {
     const { displayName, username, password, email } = req.body;
+    const hashedPass = await bcrypt.hash(password, 10);
     const user = new User({
       displayName,
       username,
-      password,
+      password:hashedPass,
       email
     });
     const newUser = await user.save();
@@ -37,11 +40,12 @@ async function addUser(req, res, next) {
   }
 }
 
-async function signIn(req, res, next){
+async function login(req, res, next){
   try{
       const { username, password } = req.body; //extract uname and pword from the req
       if(!username || !password) return res.status(400).json({ message: "username and password are required..."});
       const storedUser = await User.findOne({ username: username });//check if the user exists and extract it from the db
+      console.log("stored user:", storedUser);
       if(!storedUser) return res.status(400).json({message:`could not find user ${username}`});
       const isValid = bcrypt.compareSync(password, storedUser.password);//use bcrypt to test if the login password matches the stored one
       if(!isValid) return res.status(400).json({message:"Invalid password..."});
@@ -65,16 +69,12 @@ async function signIn(req, res, next){
   }
 }
 
-async function authenticateUser(req, res, next){
-
-}
-
 async function catchAll(err, req, res, next){
   console.log("error:userRouterCatchAll says:", err);
   res.status(500).send("something went wrong in the server...");
 }
 
-module.exports = { addUser, getAllUsers, signIn, catchAll, authenticateUser};
+module.exports = { addUser, getAllUsers, login, catchAll };
 
 //path params:none
 //path params:none
