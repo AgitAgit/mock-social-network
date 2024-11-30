@@ -4,7 +4,7 @@ const express = require('express');
 const {
   getAllUsers,
   addUser,
-  loginUser,
+  signIn
 } = require("../controllers/usersController.js");
 
 const router = express.Router();
@@ -13,7 +13,7 @@ router.get("/", getAllUsers);
 
 router.post("/signup", addUser);
 
-router.post("/login", loginUser);
+router.post("/login", signIn);
 
 // router.get('/:id', getUserById);
 

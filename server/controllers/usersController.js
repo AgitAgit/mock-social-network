@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
 const User = require("../models/userModel.js");
 
 //path params:none
@@ -7,7 +10,7 @@ const User = require("../models/userModel.js");
     "users": [*users data*]
 }*/
 
-export const getAllUsers = async function (req, res, next) {
+const getAllUsers = async function (req, res, next) {
   try {
     const users = await User.find();
     res.json({ users });
@@ -17,12 +20,14 @@ export const getAllUsers = async function (req, res, next) {
   }
 };
 
-export async function addUser(req, res, next) {
+async function addUser(req, res, next) {
   try {
-    const data = req.body;
+    const { displayName, username, password, email } = req.body;
     const user = new User({
-      displayName: data.displayName,
-      email: data.email,
+      displayName,
+      username,
+      password,
+      email
     });
     const newUser = await user.save();
     res.status(201).json({ mongoMessage: newUser });
@@ -32,25 +37,7 @@ export async function addUser(req, res, next) {
   }
 }
 
-export async function loginUser(req, res, next) {
-  try {
-    const userEmail = req.body.email;
-    const user = await User.find({ email: userEmail });
-
-    if (user) {
-      res
-        .status(201)
-        .json({ message: "Logged in successfully!", userDetails: user });
-    } else {
-      res.status(404).json({ message: "user not found" });
-    }
-    next();
-  } catch (error) {
-    next(error);
-  }
-}
-
-export async function signIn(req, res, next){
+async function signIn(req, res, next){
   try{
       const { username, password } = req.body; //extract uname and pword from the req
       if(!username || !password) return res.status(400).json({ message: "username and password are required..."});
@@ -64,24 +51,30 @@ export async function signIn(req, res, next){
           { expiresIn: '1h' }
       );
       
-      res.cookie("jwt", token, {//attach the jwt token to the response's cookie.
+      res
+        .cookie("jwt", token, {//attach the jwt token to the response's cookie.
           httpOnly: false,
           secure: true, // Ensure the cookie is sent over HTTPS.(Do I need it to be true? I think we're sending http requests...)
           sameSite: "strict", // Prevent cross-site requests.(Probably depends on the CORS middleware to define the allowed origin)
           maxAge: 3600000, // Cookie lifespan of 1 hour (in milliseconds).
-      })
-      next();
+        })
+        .status(200)
+        .json({message:`User ${username} logged in successfully.`});
   } catch(error){
       next(error);
   }
 }
 
-export async function userRouterCatchAll(err, req, res, next){
+async function authenticateUser(req, res, next){
+
+}
+
+async function catchAll(err, req, res, next){
   console.log("error:userRouterCatchAll says:", err);
   res.status(500).send("something went wrong in the server...");
 }
 
-module.exports = { addUser, getAllUsers, loginUser };
+module.exports = { addUser, getAllUsers, signIn, catchAll, authenticateUser};
 
 //path params:none
 //path params:none
