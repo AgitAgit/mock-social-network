@@ -20,7 +20,7 @@ const styleIcon = {
 const Profile = () => {
   return (
     <div className="p-[0.5em]">
-      <div className="rounded-[2.5em] bg-profileSectionTheme font-CaustenFont">
+      <div className="rounded-[2em] bg-profileSectionTheme font-CaustenFont">
         <div className="ProfileNavigation flex flex-row justify-between p-[1em] pt-[2em]">
           <Link to="/all-posts">
             <button>
