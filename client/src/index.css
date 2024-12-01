@@ -2,14 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  img {
+    @apply rounded-[1.5em];
+  }
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --bgTheme: #050f20;
+  --CaustenFont: "Causten";
 }
 
 @font-face {
-  font-family: "causten";
+  font-family: "Causten";
   src: url("/fonts/Causten-Regular.otf");
   font-weight: normal;
   font-style: normal;
@@ -27,17 +32,11 @@ html {
 }
 
 body {
-  background-color: rgba(255, 0, 0, 0.068);
+  background: var(--bgTheme);
   display: flex;
   flex-direction: column;
   justify-self: center;
   align-items: center;
   width: 100%;
-  font-family: "Causten", "sans-serif";
-  /* background-image: url("../../public/images/background-image.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
- */
+  font-family: var(--CaustenFont);
 }
-
