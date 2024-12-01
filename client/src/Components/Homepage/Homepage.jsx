@@ -4,7 +4,7 @@ import styles from "./Homepage.module.css";
 
 const Homepage = () => {
   return (
-    <div className="z-1 mt-[1em] max-w-sm rounded-[2.2em] p-[1em]">
+    <div className="z-1 mt-[1em] max-w-sm rounded-[2.2em] p-[0.1em]">
       <img
         src={HomeImage}
         alt="Baba-gram logo image"

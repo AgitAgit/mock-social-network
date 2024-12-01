@@ -7,7 +7,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 
 const divIconStyle =
-  "border-solid border-2 w-1/4 h-14 mx-2 flex content-center items-center hover:bg-slate-400";
+  "rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
 
 // Import Components
 import SubmitBtn from "./SubmitBtn.jsx";
@@ -42,50 +42,57 @@ const SignIn = () => {
   };
 
   return (
-    <div className="h-screen flex-col content-center">
+    <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] bg-profileSectionTheme p-[2em]">
       <div>
-        <div className="my-10 flex w-full flex-col items-center">
+        <div className="my-10 flex w-full flex-col items-center text-center">
           <h1 className="text-2xl">Hello Again!</h1>
           <h3 className="w-1/2">Welcome back you've been missed!</h3>
         </div>
-        <div className="flex flex-col gap-4">
-          <form onSubmit={handleLoginSubmit}>
+        <div>
+          <form
+            onSubmit={handleLoginSubmit}
+            className="flex flex-col justify-center gap-[0.5em] text-center"
+          >
             <input
               type={"text"}
               placeholder={"Username"}
               id="username"
               name="username"
+              className={divIconStyle}
             />
             <input
               type={"password"}
               placeholder={"Password"}
               id="password"
               name="password"
+              className={divIconStyle}
             />
-            <Link to={"/"}>
+            <Link to="/">
               <p className="cursor-pointer text-xs">Recovery Password</p>
             </Link>
-            <SubmitBtn btnPlaceholder={"Sign-In"} />
+            <SubmitBtn btnPlaceholder="Sign-In" />
           </form>
         </div>
 
-        <div className="my-7 flex flex-row justify-center">
+        <div className="mb-[1em] mt-[1em] flex flex-row items-center justify-center gap-[1em]">
           <div className={divIconStyle}>
-            <FcGoogle className="w-full text-3xl" />
+            <FcGoogle className="w-full cursor-pointer text-3xl" />
           </div>
           <div className={divIconStyle}>
-            <FaFacebook className="w-full text-3xl text-blue-500" />
+            <FaFacebook className="w-full cursor-pointer text-3xl text-blue-500" />
           </div>
           <div className={divIconStyle}>
-            <FaApple className="w-full text-3xl" />
+            <FaApple className="w-full cursor-pointer text-3xl" />
           </div>
         </div>
-        <p className="cursor-pointer text-xs">
-          Not a member ?
-          <Link to={"/register"}>
-            <span className="text-blue-500"> Register now</span>
+        <div className="flex w-full flex-row items-center justify-evenly">
+          <p className="text-center text-xs">Not a member?</p>
+          <Link to="/register">
+            <span className="cursor-pointer text-xs text-blue-500 hover:text-white">
+              Register now
+            </span>
           </Link>
-        </p>
+        </div>
       </div>
     </div>
   );
