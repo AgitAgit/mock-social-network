@@ -14,25 +14,25 @@ function parseCookie(cookie) {
   return result;
 }
 
-async function authUser(req, res, next){
-    const cookieObject = parseCookie(req.headers.cookie);
-    const token = cookieObject.jwt;
-    try{
-        const decoded = await jwt.verify(token, "secretKey");
-        if(decoded){
-            req.user = decoded.user;
-            next();
-        } 
-        else {//this is never reached. jsonwebtoken.verify throws an error if it fails. the catchall
-                //error handler could have a check for jsonwebtoken error type and proper handling.
-                //or I could add it before the next(error) in the catch section so if the error
-                //is of a known type it will be handled right here.
-            console.log("authUser stopped the request...");
-            return res.status(400).json({message:"invalid token..."});
-        }
-    } catch(error){
-        next(error);
+async function authUser(req, res, next) {
+  const cookieObject = parseCookie(req.headers.cookie);
+  const token = cookieObject.jwt;
+  try {
+    const decoded = await jwt.verify(token, "secretKey");
+    if (decoded) {
+      req.user = decoded.user;
+      next();
+    } else {
+      //this is never reached. jsonwebtoken.verify throws an error if it fails. the catchall
+      //error handler could have a check for jsonwebtoken error type and proper handling.
+      //or I could add it before the next(error) in the catch section so if the error
+      //is of a known type it will be handled right here.
+      console.log("authUser stopped the request...");
+      return res.status(400).json({ message: "invalid token..." });
     }
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = { authUser };

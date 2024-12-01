@@ -28,6 +28,7 @@ const handleSubmit = (e) => {
     username: formValues.username,
     password: formValues.password,
   };
+  
   registerUser(userInfo); 
   navigate("/sign-in")
 };
