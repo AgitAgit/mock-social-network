@@ -27,7 +27,7 @@ const postSchema = new mongoose.Schema({
 postSchema.virtual("authorDisplayName", {
   ref: "User", // The model to use
   localField: "authorId", // Field in Post
-  foreignField: "displayName", // Field in User
+  foreignField: "_id", // Field in User
   justOne: true, // Return a single user
 });
 
