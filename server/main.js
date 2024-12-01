@@ -22,7 +22,7 @@ mongoose
     console.log("mongo instance connected...");
   });
 
-app.use(cors());
+app.use(cors({credentials:true}));
 app.use(json());
 
 //app.use('/', logger);
