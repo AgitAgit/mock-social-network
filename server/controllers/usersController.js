@@ -54,7 +54,6 @@ async function login(req, res, next){
           secretKey,
           { expiresIn: '1h' }
       );
-      res.cookie("test1","test1 value");
       res
         .cookie("jwt", token, {//attach the jwt token to the response's cookie.
           httpOnly: false,
