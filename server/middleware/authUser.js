@@ -18,7 +18,7 @@ async function authUser(req, res, next){
     const cookieObject = parseCookie(req.headers.cookie);
     const token = cookieObject.jwt;
     try{
-        const decoded = await jwt.verify("tatata", "secretKey");
+        const decoded = await jwt.verify(token, "secretKey");
         if(decoded){
             req.user = decoded.user;
             next();
