@@ -1,25 +1,41 @@
 import styles from "./Profile.module.css";
 import FakeProfileImage from "../../../public/images/static-profile-image.svg";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+
+const styleIcon = { background: "gray", color: "white", borderRadius: "1em" };
 
 const Profile = () => {
   return (
     <div className="w-full">
+      <div className="ProfileNavigation flex w-full flex-row justify-between">
+        <button>
+          <KeyboardBackspaceIcon sx={styleIcon} />
+        </button>
+        <button>
+          <MoreVertIcon sx={styleIcon} />
+        </button>
+      </div>
       <div className="ProfileTopNavbar flex w-full flex-row items-center justify-center">
         <div className="AccountName flex w-full flex-col items-center justify-center">
-          <div className="ImageContainer">
-            <img
-              src={FakeProfileImage}
-              alt="Profile image"
-              className="w-[25vw] rounded-full border border-black"
-            />
+          <div className="flex w-full flex-row items-center justify-center">
+            <div className="ImageContainer">
+              <img
+                src={FakeProfileImage}
+                alt="Profile image"
+                className="w-[25vw] rounded-full border border-black"
+              />
+            </div>
+            <div className="flex flex-col">
+              <h2>Alex Smith</h2>
+              <h4>@Alex Smith</h4>
+            </div>
           </div>
-          <h2>Alex Smith</h2>
-          <h4>@Alex Smith</h4>
-          <div className="AccountButtons flex w-full flex-row items-center justify-evenly">
+          <div className="ButtonsContainer flex w-full flex-row items-center justify-evenly">
             <button>Following</button>
             <button>Message</button>
           </div>
-          <div className="UserStats justify-round mt-[1em] flex w-full flex-row items-center gap-[1.5em]">
+          <div className="UserStats justify-round mt-[1em] flex flex-row items-center gap-[1.5em]">
             <div className="PostsStat">
               <h6>284</h6>
               <h4>Posts</h4>
