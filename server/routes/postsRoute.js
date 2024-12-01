@@ -1,6 +1,10 @@
 const express = require("express");
 
-const { addPost, getAllPosts, getPostById } = require("../controllers/postsController.js");
+const {
+  addPost,
+  getAllPosts,
+  getPostById,
+} = require("../controllers/postsController.js");
 const { authUser } = require("../middleware/authUser.js");
 
 const router = express.Router();
