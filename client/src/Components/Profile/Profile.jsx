@@ -18,7 +18,7 @@ const Profile = () => {
       </div>
       <div className="ProfileTopNavbar flex w-full flex-row items-center justify-center">
         <div className="AccountName flex w-full flex-col items-center justify-center">
-          <div className="flex w-full flex-row items-center justify-center">
+          <div className="UserImgAndPersonalNameContainer flex w-full flex-row items-center justify-evenly">
             <div className="ImageContainer">
               <img
                 src={FakeProfileImage}
@@ -31,11 +31,11 @@ const Profile = () => {
               <h4>@Alex Smith</h4>
             </div>
           </div>
-          <div className="ButtonsContainer flex w-full flex-row items-center justify-evenly">
+          <div className="ButtonsContainer mt-[1em] flex w-full flex-row items-center justify-evenly">
             <button>Following</button>
             <button>Message</button>
           </div>
-          <div className="UserStats justify-round mt-[1em] flex flex-row items-center gap-[1.5em]">
+          <div className="UserStats justify-round mb-[1em] mt-[1em] flex flex-row items-center gap-[1.5em]">
             <div className="PostsStat">
               <h6>284</h6>
               <h4>Posts</h4>
@@ -51,7 +51,9 @@ const Profile = () => {
           </div>
           <div className="UserGallery flex w-full flex-row gap-[0.5em]">
             <div className="">
-              <strong>Photos</strong>
+              <h2 className="mb-[1em]">
+                <strong>Photos</strong>
+              </h2>
               <div className="PhotosImgsContainer flex w-full flex-col gap-[0.5em]">
                 <img
                   src="../../../public/images/static-profile-image-one.svg"
@@ -64,7 +66,9 @@ const Profile = () => {
               </div>
             </div>
             <div className="">
-              <strong>Video</strong>
+              <h2 className="mb-[1em]">
+                <strong>Video</strong>
+              </h2>
               <div className="VideosImgContainer flex w-full flex-col gap-[0.5em]">
                 <img
                   src="../../../public/images/static-profile-image-three.svg"
@@ -77,7 +81,9 @@ const Profile = () => {
               </div>
             </div>
             <div className="">
-              <strong>Tagged</strong>
+              <h2 className="mb-[1em]">
+                <strong>Tagged</strong>
+              </h2>
               <div className="TaggedImgContainer flex w-full flex-col gap-[0.5em]">
                 <img
                   src="../../../public/images/static-profile-image-five.svg"
