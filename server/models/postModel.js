@@ -43,13 +43,10 @@ postSchema.virtual("commentDetails", {
   foreignField: "_id",
   justOne: false,
   options: {
+    select: "content",
     populate: {
       path: "authorId",
       select: "displayName",
-    },
-    populate: {
-      path: "commentIds",
-      select: "content",
     },
   },
 });
