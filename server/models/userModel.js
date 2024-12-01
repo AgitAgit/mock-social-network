@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 //need to add post count or post ids to the user, followers and following.
 const userSchema = new mongoose.Schema(
   {
