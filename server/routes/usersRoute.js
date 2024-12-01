@@ -1,17 +1,17 @@
 const express = require('express');
 
-const { getAllUsers, addUser, login } = require("../controllers/usersController.js");
+const { getAllUsers, addUser, login, catchAll } = require("../controllers/usersController.js");
 const { authUser } = require('../middleware/authUser.js');
 
 const router = express.Router();
 
-router.use("/protected", authUser);
-
-router.get("/protected", getAllUsers);
+router.get("/", authUser, getAllUsers);
 
 router.post("/signup", addUser);
 
 router.post("/login", login);
+
+router.use(catchAll);
 
 // router.get('/:id', getUserById);
 

@@ -45,15 +45,16 @@ async function login(req, res, next){
       const { username, password } = req.body; //extract uname and pword from the req
       if(!username || !password) return res.status(400).json({ message: "username and password are required..."});
       const storedUser = await User.findOne({ username: username });//check if the user exists and extract it from the db
-      console.log("stored user:", storedUser);
+      // console.log("stored user:", storedUser);
       if(!storedUser) return res.status(400).json({message:`could not find user ${username}`});
       const isValid = bcrypt.compareSync(password, storedUser.password);//use bcrypt to test if the login password matches the stored one
       if(!isValid) return res.status(400).json({message:"Invalid password..."});
       const token = jwt.sign(//generate a jwt token with payload containing the username, userId, and user role.
-          { username, userId: storedUser._id, role:storedUser.role },//this is the payload
+          { user: { username, userId: storedUser._id, role:storedUser.role || "user" } },//this is the payload
           secretKey,
           { expiresIn: '1h' }
       );
+      console.log("a user has logged in...")
       res
         .cookie("jwt", token, {//attach the jwt token to the response's cookie.
           httpOnly: false,
