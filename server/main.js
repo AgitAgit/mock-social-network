@@ -8,8 +8,6 @@ const usersRouter = require("./routes/usersRoute.js");
 const postsRouter = require("./routes/postsRoute.js");
 const commentsRouter = require("./routes/commentsRoute.js");
 
-// import logger from './middleware/logger.js';
-
 dotenv.config();
 
 const uri = process.env.URI;
