@@ -43,7 +43,7 @@ async function addComment(req, res, next) {
 
     const comment = new Comment({
       parentPostId,
-      content,
+      commentContent:content,
       authorId: req.user.userId,
     });
 
