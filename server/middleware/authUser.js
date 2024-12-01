@@ -2,16 +2,22 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 function parseCookie(cookie) {
-  let result = {};
-  // console.log("cookie: ", cookie);
-  const cookies = cookie.split("; ");
-  // console.log("cookies",cookies);
-  cookies.forEach((cookie) => {
-    const pair = cookie.split("=");
-    result[`${pair[0]}`] = pair[1];
-  });
-  // console.log("cookie parser result:",result);
-  return result;
+  try{
+
+      let result = {};
+      // console.log("cookie: ", cookie);
+      const cookies = cookie.split("; ");
+      // console.log("cookies",cookies);
+      cookies.forEach((cookie) => {
+          const pair = cookie.split("=");
+          result[`${pair[0]}`] = pair[1];
+        });
+        // console.log("cookie parser result:",result);
+        return result;
+    } catch (error){
+      console.log(error);
+      return null;
+    }
 }
 
 async function authUser(req, res, next){
