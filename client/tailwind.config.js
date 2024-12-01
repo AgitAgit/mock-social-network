@@ -7,6 +7,7 @@ export default {
         profileSectionTheme: "#1D2A46",
         profileCircleColor: "#FCB301",
         buttonBg: "#2A3751",
+        borderBtnColor: "#37425B",
       },
       fontFamily: {
         CaustenFont: ["Causten", "sans-serif"],
