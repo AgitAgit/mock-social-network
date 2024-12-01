@@ -27,8 +27,14 @@ async function addPost(req, res, next) {
 //example request body:none
 //example response: [{...post},{...post},{...post},...]
 async function getAllPosts(req, res, next) {
+  //wanted post format:
+  /** {post name(title?), post creation time, post creator(username, displayname), postContent, post comments}
+   */
   try {
-    const posts = await Post.find();
+    const posts = await Post.find()
+    .populate({path:"commentIds", populate: {path:"authorId", select:"displayName username"}})
+    .populate("authorId", "displayName username");
+    
       // .populate("authorDisplayName", "displayName")
       // .populate("commentDetails", "displayName");
 
