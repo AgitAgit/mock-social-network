@@ -1,27 +1,32 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  content: {
-    type: String,
-    required: true,
-  },
-  authorId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  commentIds: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment",
-      required: false,
+const postSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
     },
-  ],
-});
+    content: {
+      type: String,
+      required: true,
+    },
+    authorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    commentIds: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment",
+        required: false,
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
 
 // Virtual for author display name
 postSchema.virtual("authorDisplayName", {
@@ -32,11 +37,21 @@ postSchema.virtual("authorDisplayName", {
 });
 
 // Virtual for comment authors' display names
-postSchema.virtual("commentAuthors", {
+postSchema.virtual("commentDetails", {
   ref: "Comment",
   localField: "commentIds",
   foreignField: "_id",
   justOne: false,
+  options: {
+    populate: {
+      path: "authorId",
+      select: "displayName",
+    },
+    populate: {
+      path: "commentIds",
+      select: "content",
+    },
+  },
 });
 
 // Ensure virtuals are included in JSON and object outputs

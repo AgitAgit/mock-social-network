@@ -30,7 +30,7 @@ async function getAllPosts(req, res, next) {
   try {
     const posts = await Post.find()
       .populate("authorDisplayName", "displayName")
-      .populate("commentAuthors", "displayName");
+      .populate("commentDetails", "displayName");
 
     res.json(posts);
 
