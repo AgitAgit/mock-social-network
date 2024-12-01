@@ -21,12 +21,13 @@ function parseCookie(cookie) {
 }
 
 async function authUser(req, res, next) {
-  const cookieObject = parseCookie(req.headers.cookie);
-  const token = cookieObject.jwt;
-  try {
-    const decoded = await jwt.verify(token, "secretKey");
+    try {
+        const cookieObject = parseCookie(req.headers.cookie);
+        const token = cookieObject.jwt;
+        const decoded = await jwt.verify(token, "secretKey");
     if (decoded) {
       req.user = decoded.user;
+      console.log("authUser says: request by user:", decoded.user);
       next();
     } else {
       //this is never reached. jsonwebtoken.verify throws an error if it fails. the catchall

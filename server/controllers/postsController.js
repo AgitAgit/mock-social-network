@@ -28,9 +28,9 @@ async function addPost(req, res, next) {
 //example response: [{...post},{...post},{...post},...]
 async function getAllPosts(req, res, next) {
   try {
-    const posts = await Post.find()
-      .populate("authorDisplayName", "displayName")
-      .populate("commentDetails", "displayName");
+    const posts = await Post.find();
+      // .populate("authorDisplayName", "displayName")
+      // .populate("commentDetails", "displayName");
 
     res.json(posts);
 
