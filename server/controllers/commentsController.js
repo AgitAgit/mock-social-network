@@ -39,12 +39,12 @@ async function getPostComments(req, res, next) {
 }*/
 async function addComment(req, res, next) {
   try {
-    const { parentPostId, content, authorId } = req.body;
+    const { parentPostId, content } = req.body;
 
     const comment = new Comment({
       parentPostId,
       content,
-      authorId,
+      authorId: req.user.userId,
     });
 
     const response = await comment.save();
@@ -61,4 +61,4 @@ async function addComment(req, res, next) {
   }
 }
 
-module.exports = { getPostComments, addComment};
+module.exports = { getPostComments, addComment };

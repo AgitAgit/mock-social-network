@@ -7,10 +7,10 @@ const { authUser } = require("../middleware/authUser.js");
 
 const router = express.Router();
 
-router.use('/', authUser);
+router.use("/", authUser);
 
 router.get("/posts/:postId", getPostComments);
 
-router.post("/", addComment);
+router.post("/", authUser, addComment);
 
 module.exports = router;
