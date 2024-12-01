@@ -3,7 +3,10 @@ const bcrypt = require('bcrypt');
 
 async function authUser(req, res, next){
     // console.log("req.headers.cookie:",req.headers.cookie);
-    console.log(req);
+    console.log("headers: ",req.headers);
+    console.log("cookie: ",req.headers.cookie);
+    console.log("cookie.jwt:", req.headers.cookie.jwt);
+    console.log("req.headers.jwtauth: ",req.headers.jwtauth.split(' ')[1]);
     const token = "tatata";
     try{
         const decoded = await jwt.verify(token, "secretKey");
