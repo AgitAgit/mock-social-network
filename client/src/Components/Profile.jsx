@@ -2,7 +2,7 @@ const Profile = () => {
   return (
     <div>
       <div className="bg-blue-500 text-white p-4">
-        This is a Tailwind CSS styled component.
+        <h1>Profile</h1>
       </div>
     </div>
   );
