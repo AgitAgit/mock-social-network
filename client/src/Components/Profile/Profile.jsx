@@ -32,9 +32,13 @@ const Profile = () => {
                 <h4>@Alex Smith</h4>
               </div>
             </div>
-            <div className="ButtonsContainer mt-[1em] flex w-full flex-row items-center justify-evenly">
-              <button>Following</button>
-              <button>Message</button>
+            <div className="ButtonsContainer mt-[1em] flex w-full flex-row items-center justify-center gap-[1em]">
+              <button class="bg-buttonBg rounded-[100em] pb-[0.3em] pl-[0.5em] pr-[0.5em] pt-[0.2em]">
+                Following
+              </button>
+              <button class="bg-buttonBg rounded-[100em] pb-[0.3em] pl-[0.5em] pr-[0.5em] pt-[0.2em]">
+                Message
+              </button>
             </div>
             <div className="UserStats justify-round mb-[1em] mt-[1em] flex flex-row items-center gap-[1.5em]">
               <div className="PostsStat">
