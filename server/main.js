@@ -22,7 +22,12 @@ mongoose
     console.log("mongo instance connected...");
   });
 
-app.use(cors({credentials:true}));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 app.use(json());
 
 //app.use('/', logger);

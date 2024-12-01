@@ -1,6 +1,6 @@
 //Import
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
@@ -13,61 +13,74 @@ const divIconStyle =
 import SubmitBtn from "./SubmitBtn.jsx";
 
 const SignIn = () => {
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
+  const loginUser = async (userInfo) => {
+    const resLoginData = await axios.post(
+      `http://localhost:3000/api/users/login`,
+      userInfo,
+      { withCredentials: true },
+    );
 
-const loginUser = async (userInfo) => {
-  const resLoginData = await axios.post(`http://localhost:3000/api/users/login`,userInfo)
+    if (resLoginData) {
+      console.log(resLoginData);
+    }
+  };
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
 
-  if (resLoginData) {
-    console.log(resLoginData)
-  }
-}
-const handleLoginSubmit = (e) => {
-  e.preventDefault(); 
+    const formData = new FormData(e.target);
+    const formValues = Object.fromEntries(formData.entries());
 
-  const formData = new FormData(e.target);
-  const formValues = Object.fromEntries(formData.entries()); 
+    const userInfo = {
+      username: formValues.username,
+      password: formValues.password,
+    };
 
-  const userInfo = {
-    username: formValues.username,
-    password: formValues.password,
+    loginUser(userInfo);
+    navigate("/all-posts");
   };
 
-  loginUser(userInfo); 
-  navigate("/all-posts")
-};
-
   return (
-    <div className=" h-screen flex-col content-center">
+    <div className="h-screen flex-col content-center">
       <div>
-        <div className="my-10 flex flex-col items-center w-full">
+        <div className="my-10 flex w-full flex-col items-center">
           <h1 className="text-2xl">Hello Again!</h1>
           <h3 className="w-1/2">Welcome back you've been missed!</h3>
         </div>
         <div className="flex flex-col gap-4">
           <form onSubmit={handleLoginSubmit}>
-            <input type={"text"} placeholder={"Username"} id="username" name="username"/>
-            <input type={"password"} placeholder={"Password"} id="password" name="password"/>
+            <input
+              type={"text"}
+              placeholder={"Username"}
+              id="username"
+              name="username"
+            />
+            <input
+              type={"password"}
+              placeholder={"Password"}
+              id="password"
+              name="password"
+            />
             <Link to={"/"}>
-              <p className="cursor-pointer text-xs ">Recovery Password</p>
+              <p className="cursor-pointer text-xs">Recovery Password</p>
             </Link>
             <SubmitBtn btnPlaceholder={"Sign-In"} />
           </form>
         </div>
 
-        <div className="flex flex-row justify-center my-7">
+        <div className="my-7 flex flex-row justify-center">
           <div className={divIconStyle}>
-            <FcGoogle className="text-3xl w-full " />
+            <FcGoogle className="w-full text-3xl" />
           </div>
           <div className={divIconStyle}>
-            <FaFacebook className="text-3xl w-full text-blue-500" />
+            <FaFacebook className="w-full text-3xl text-blue-500" />
           </div>
           <div className={divIconStyle}>
-            <FaApple className="text-3xl w-full " />
+            <FaApple className="w-full text-3xl" />
           </div>
         </div>
-        <p className="cursor-pointer text-xs ">
+        <p className="cursor-pointer text-xs">
           Not a member ?
           <Link to={"/register"}>
             <span className="text-blue-500"> Register now</span>
