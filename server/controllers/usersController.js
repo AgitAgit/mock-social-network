@@ -22,13 +22,15 @@ const getAllUsers = async function (req, res, next) {
 
 async function addUser(req, res, next) {
   try {
-    const { displayName, username, password, email } = req.body;
+    const { displayName, username, password, email, role, imageUrl } = req.body;
     const hashedPass = await bcrypt.hash(password, 10);
     const user = new User({
       displayName,
       username,
       password: hashedPass,
       email,
+      role,
+      imageUrl
     });
     const newUser = await user.save();
     res.status(201).json({ mongoMessage: newUser });
