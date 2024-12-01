@@ -1,30 +1,36 @@
 //Import
-import { Link } from "react-router-dom";
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 // Import Components
 import SubmitBtn from "./SubmitBtn.jsx";
 
-const Register = (userInfo) => {
+const Register = () => {
 
-const registerUser = async () => {
+const navigate = useNavigate();
+
+const registerUser = async (userInfo) => {
   const resRegisterUser = await axios.post(`http://localhost:3000/api/users/signup`,userInfo)
 
-  if (registerUser) {
-    console.log(registerUser)
+  if (resRegisterUser) {
+    console.log(resRegisterUser)
   }
 }
-
 const handleSubmit = (e) => {
-  e.preventDefault()
-  
+  e.preventDefault(); 
+
   const formData = new FormData(e.target);
-  const formValues = Object.fromEntries(formData);
-  console.log(formValues);
-  
-}
+  const formValues = Object.fromEntries(formData.entries()); 
 
-
+  const userInfo = {
+    email: formValues.email,
+    displayName: formValues.fname,
+    username: formValues.username,
+    password: formValues.password,
+  };
+  registerUser(userInfo); 
+  navigate("/sign-in")
+};
 
   return (
     <div className=" h-screen flex-col content-center">
