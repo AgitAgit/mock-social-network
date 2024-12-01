@@ -1,13 +1,16 @@
-import express from "express";
+const express = require("express");
 
-import { addPost, getAllPosts, getPostById } from "../controllers/postsController.js";
+const { addPost, getAllPosts, getPostById } = require("../controllers/postsController.js");
+const { authUser } = require("../middleware/authUser.js");
 
 const router = express.Router();
 
+router.use("/", authUser);
+
 router.get("/", getAllPosts);
 
-router.post("/", addPost);
+router.post("/", authUser, addPost);
 
 router.get("/:postId", getPostById);
 
-export default router;
+module.exports = router;

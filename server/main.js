@@ -1,13 +1,12 @@
-import express, { json } from "express";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import cors from "cors";
+const express = require("express");
+const { json } = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
 
-import usersRouter from "./routes/usersRoute.js";
-import postsRouter from "./routes/postsRoute.js";
-import commentsRouter from "./routes/commentsRoute.js";
-
-// import logger from './middleware/logger.js';
+const usersRouter = require("./routes/usersRoute.js");
+const postsRouter = require("./routes/postsRoute.js");
+const commentsRouter = require("./routes/commentsRoute.js");
 
 dotenv.config();
 
@@ -33,8 +32,8 @@ app.use("/api/posts", postsRouter);
 app.use("/api/comments", commentsRouter);
 
 app.get("/", (req, res) => {
-  // res.send("Hello World");
-  res.render("index.html");
+  res.send("Hello World");
+  // res.render("index.html");
 });
 
 app.get("/api/status", (req, res) => {

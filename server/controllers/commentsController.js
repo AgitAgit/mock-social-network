@@ -1,5 +1,5 @@
-import Comment from "../models/commentModel.js";
-import Post from "../models/postModel.js";
+const Comment = require("../models/commentModel.js");
+const Post = require("../models/postModel.js");
 
 //path params:postId
 //query params:none
@@ -8,7 +8,7 @@ import Post from "../models/postModel.js";
     "postId": *entered post id*,
     "comments": [*selected post comments*]
 }}*/
-export async function getPostComments(req, res, next) {
+async function getPostComments(req, res, next) {
   try {
     const postId = req.params.postId;
     const comments = await Comment.find({ parentPostId: postId });
@@ -37,7 +37,7 @@ export async function getPostComments(req, res, next) {
     },
     "parentPost":*post data*
 }*/
-export async function addComment(req, res, next) {
+async function addComment(req, res, next) {
   try {
     const { parentPostId, content, authorId } = req.body;
 
@@ -60,3 +60,5 @@ export async function addComment(req, res, next) {
     next(error);
   }
 }
+
+module.exports = { getPostComments, addComment};

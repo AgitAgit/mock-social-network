@@ -1,13 +1,16 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   addComment,
   getPostComments,
-} from "../controllers/commentsController.js";
+} = require("../controllers/commentsController.js");
+const { authUser } = require("../middleware/authUser.js");
 
 const router = express.Router();
+
+router.use('/', authUser);
 
 router.get("/posts/:postId", getPostComments);
 
 router.post("/", addComment);
 
-export default router;
+module.exports = router;
