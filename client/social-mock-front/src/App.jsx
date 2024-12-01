@@ -1,6 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./Homepage/Homepage";
+
+//Import Components
+import HomePage from "./Components/HomePage";
+import Register from "./Components/Register.jsx";
+import SignIn from "./Components/SignIn.jsx";
+import Profile from "./Components/Profile.jsx";
 
 function App() {
   return (
