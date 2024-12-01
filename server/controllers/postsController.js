@@ -1,10 +1,10 @@
-import Post from '../models/postModel.js';
+const Post = require ('../models/postModel.js');
 
 //path params:none
 //query params:none
 //example request body: { title:"post title", content:"post content", authorId:"<mongo document id>"}
 //example response: { message:<the new document generated>}
-export async function addPost(req, res, next){
+async function addPost(req, res, next){
     try{
         const { title, content, authorId } = req.body;
         console.log(req.body);
@@ -27,7 +27,7 @@ export async function addPost(req, res, next){
 //query params:none
 //example request body:none
 //example response: [{...post},{...post},{...post},...]
-export async function getAllPosts(req, res, next){
+async function getAllPosts(req, res, next){
     try{
         const posts = await Post.find();
 
@@ -44,7 +44,7 @@ export async function getAllPosts(req, res, next){
 //query params:none
 //example request body:none
 //example response: { post:post }
-export async function getPostById(req, res, next){
+async function getPostById(req, res, next){
     try{
         const { postId } = req.params;
         const post = await Post.findById(postId);
@@ -58,3 +58,5 @@ export async function getPostById(req, res, next){
         next(error);
     }
 }
+
+module.exports = { addPost, getAllPosts, getPostById}

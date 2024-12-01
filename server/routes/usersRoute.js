@@ -1,19 +1,17 @@
-import express from "express";
-// import jwt from 'jsonwebtoken';
-// import { getAllUsers, addUser, patchUser, addUsers, getUserById, validateLogin, verifyToken } from '../controllers/usersController.js';
-import {
-  getAllUsers,
-  addUser,
-  loginUser,
-} from "../controllers/usersController.js";
+const express = require('express');
+
+const { getAllUsers, addUser, login } = require("../controllers/usersController.js");
+const { authUser } = require('../middleware/authUser.js');
 
 const router = express.Router();
 
-router.get("/", getAllUsers);
+router.use("/protected", authUser);
+
+router.get("/protected", getAllUsers);
 
 router.post("/signup", addUser);
 
-router.post("/login", loginUser);
+router.post("/login", login);
 
 // router.get('/:id', getUserById);
 
@@ -37,4 +35,4 @@ router.post("/login", loginUser);
 //     res.status(500).send("something went wrong in the server...");
 // });
 
-export default router;
+module.exports = router;
