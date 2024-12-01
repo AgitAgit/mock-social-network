@@ -62,7 +62,7 @@ async function login(req, res, next){
           maxAge: 3600000, // Cookie lifespan of 1 hour (in milliseconds).
         })
         .status(200)
-        .json({message:`User ${username} logged in successfully.`});
+        .json({message:`User ${username} logged in successfully.`, token});
   } catch(error){
       next(error);
   }
