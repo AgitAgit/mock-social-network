@@ -41,9 +41,9 @@ const handleSubmit = (e) => {
         </div>
         <div className="flex flex-col gap-4">
         <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Full Name" id="fname" name="fname" />
+        <input type="text" placeholder="Full name" id="fname" name="fname" />
         <input type="email" placeholder="Email" id="email" name="email" />
-        <input type="text" placeholder="User Name" id="username" name="username" />
+        <input type="text" placeholder="Username" id="username" name="username" />
         <input type="password" placeholder="Password" id="password" name="password" />
         <input type="password" placeholder="Re-enter password" id="confirm-password" name="confirm-password" />
         <SubmitBtn btnPlaceholder="Register" />
