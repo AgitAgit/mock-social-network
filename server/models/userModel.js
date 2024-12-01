@@ -20,6 +20,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
         unique: true
+    },
+    role: {
+        type: String,
+        required: false
+    },
+    imageUrl: {
+        type: String,
+        required: false
     }
 })
 
