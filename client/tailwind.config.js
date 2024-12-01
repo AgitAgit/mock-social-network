@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         profileSectionTheme: "#1D2A46",
+        profileCircleColor: "#FCB301",
       },
       fontFamily: {
         CaustenFont: ["Causten", "sans-serif"],

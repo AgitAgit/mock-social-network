@@ -24,10 +24,10 @@ const Profile = () => {
                 <img
                   src={FakeProfileImage}
                   alt="Profile image"
-                  className="w-[25vw] rounded-full border border-black"
+                  className="border-profileCircleColor w-[25vw] rounded-full border-[0.2em]"
                 />
               </div>
-              <div className="flex flex-col">
+              <div className="UsernameNTagContainer flex flex-col text-start">
                 <h2>Alex Smith</h2>
                 <h4>@Alex Smith</h4>
               </div>
