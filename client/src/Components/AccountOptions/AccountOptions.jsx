@@ -49,6 +49,8 @@ import { AiOutlineInbox } from "react-icons/ai";
 import { MdOutlineVerified } from "react-icons/md";
 import { VscGraph } from "react-icons/vsc";
 
+const lineStyle = "border-[0.001em] border-gray-400";
+
 const AccountOptions = () => {
   const navigate = useNavigate();
   return (
@@ -65,8 +67,11 @@ const AccountOptions = () => {
         />
       </button>
       <div className="ml-[1em] flex flex-col items-start justify-start">
-        <h1 className="w-full text-center text-white">Setting and activity</h1>
+        <h1 className="mb-[0.5em] w-full text-center text-white">
+          Setting and activity
+        </h1>
       </div>
+      <hr className={lineStyle} />
       <div className="SearchbarContainer mb-[0.5em] flex w-full flex-row items-start justify-around">
         <AccountSettingsSearchBar />
       </div>
@@ -112,7 +117,7 @@ const AccountOptions = () => {
           </Link>
         </p>
       </div>
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">How you use babagram</h2>
       <OptionTab
         icon={<MdOutlineBookmarkBorder />}
@@ -144,7 +149,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="Time Management"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">Who can see your content</h2>
       <OptionTab
         icon={<IoLockClosedOutline />}
@@ -176,7 +181,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="Hide Story and Live"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">
         How others can interact with you
       </h2>
@@ -228,7 +233,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="Follow and Invite Friends"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">What you see</h2>
       <OptionTab
         icon={<FaRegStar />}
@@ -254,7 +259,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="Like and Share Counts"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">Your app and media</h2>
       <OptionTab
         icon={<CiMobile3 />}
@@ -292,7 +297,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="App website permissions"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">For families</h2>
       <OptionTab
         icon={<TbHomeShield />}
@@ -300,7 +305,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="App website permissions"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">For professionals</h2>
       <OptionTab
         icon={<VscGraph />}
@@ -314,7 +319,7 @@ const AccountOptions = () => {
         arrowIcon={<ArrowForwardIcon />}
         title="Babagram Verified"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">Your orders and fundraisers</h2>
       <OptionTab
         icon={<TbHomeShield />}
@@ -328,7 +333,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="Orders and payments"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">More info and support</h2>
       <OptionTab
         icon={<MdSupport />}
@@ -354,7 +359,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="About"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">Also from Babagram</h2>
       <OptionTab
         icon={<FaWhatsapp />}
@@ -374,7 +379,7 @@ const AccountOptions = () => {
         navigateRoute={"/"}
         title="Facebook"
       />
-      <hr />
+      <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">Login</h2>
       <OptionTab
         arrowIcon={<ArrowForwardIcon />}
