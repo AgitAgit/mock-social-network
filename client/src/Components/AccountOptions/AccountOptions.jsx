@@ -86,7 +86,7 @@ const AccountOptions = () => {
         />
       </button>
       <div className="flex flex-col justify-start items-start ml-[1em]">
-        <h1 className="w-full text-center text-white w-full">Setting and activity</h1>
+        <h1 className="w-full text-center text-white ">Setting and activity</h1>
       </div>
 
           <div className="SearchbarContainer flex flex-row justify-around items-start w-full mb-[0.5em]">
@@ -130,7 +130,7 @@ const AccountOptions = () => {
             </p>
           </div>
           <hr />
-          <h2 className="text-gray-500 p-[0.5em] p-[0.5em]">How you use babagram</h2>
+          <h2 className="text-gray-500 p-[0.5em]">How you use babagram</h2>
  <OptionTab icon={<MdOutlineBookmarkBorder />} arrowIcon={<ArrowForwardIcon />} title="Saved" />
 <OptionTab icon={<MdOutlineArchive />} arrowIcon={<ArrowForwardIcon />} title="Archive" />
 <OptionTab icon={<LuActivitySquare />} arrowIcon={<ArrowForwardIcon />} title="Your Activity" />
