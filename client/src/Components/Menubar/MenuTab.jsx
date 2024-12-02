@@ -22,10 +22,8 @@ const MenuTabs = () => {
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
     if (value === newValue) {
-      console.log(newValue);
       setValue(0);
     } else {
-      console.log(newValue);
       setValue(newValue);
     }
   };
@@ -41,14 +39,14 @@ const MenuTabs = () => {
       onChange={handleChange}
     >
       <BottomNavigationAction
-        label="Home"
-        value="Home"
+        label="Notifications"
+        value="Notifications"
         sx={iconConfiguration}
         icon={<FaRegBell />}
       />
       <BottomNavigationAction
-        label="Search"
-        value="Search"
+        label="Messages"
+        value="Messages"
         sx={iconConfiguration}
         icon={<IoMailUnreadOutline sx={{}} />}
       />

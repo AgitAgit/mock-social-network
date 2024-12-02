@@ -10,8 +10,8 @@ const MenuContainer = () => {
   return (
     <div className="justify- flex w-[92vw] items-center justify-between text-white">
       <div className="flex flex-row items-center">
+        <RiAppsLine />
         <Link>
-          <RiAppsLine />
           <button className="ml-2">Menu</button>
         </Link>
       </div>

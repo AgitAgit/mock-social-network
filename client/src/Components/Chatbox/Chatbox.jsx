@@ -1,4 +1,3 @@
-import styles from "./Chatbox.module.css";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import CallIcon from "@mui/icons-material/Call";
 import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";

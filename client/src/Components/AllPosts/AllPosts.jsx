@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PlaceholderProfile from "../../../public/images/profile-image-holder.svg";
 import postPlaceHolder from "../../../public/images/post-placeholder.svg";
 import timeSince from "../../utils/timeSince.js";
@@ -8,7 +8,6 @@ import ShareIcon from "@mui/icons-material/Share";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
 import FooterBar from "../Footbar/Footbar.jsx";
-import Loader from "../Loader/Loader.jsx";
 import MenuContainer from "../Menubar/Menubar.jsx";
 
 const hoverColorIcon = {
@@ -27,10 +26,6 @@ const AllPosts = () => {
     );
     setPostsData(allPostsResponse.data);
   };
-
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, []);
 
   console.log(postsData);
 

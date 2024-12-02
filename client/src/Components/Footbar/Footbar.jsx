@@ -6,6 +6,7 @@ import { IoSearchSharp } from "react-icons/io5";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { GrFavorite } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const iconConfiguration = {
   color: "white",
@@ -37,12 +38,15 @@ const FooterBar = () => {
       value={value}
       onChange={handleChange}
     >
-      <BottomNavigationAction
-        label="Home"
-        value="Home"
-        sx={iconConfiguration}
-        icon={<IoHomeOutline />}
-      />
+      <Link to="/all-posts">
+        <BottomNavigationAction
+          label="Home"
+          value="Home"
+          sx={iconConfiguration}
+          icon={<IoHomeOutline />}
+        />
+      </Link>
+
       <BottomNavigationAction
         label="Search"
         value="Search"
@@ -62,12 +66,14 @@ const FooterBar = () => {
         sx={iconConfiguration}
         icon={<GrFavorite sx={{}} />}
       />
-      <BottomNavigationAction
-        label="Profile"
-        value="Profile"
-        sx={iconConfiguration}
-        icon={<FaRegUser sx={{}} />}
-      />
+      <Link to="/profile">
+        <BottomNavigationAction
+          label="Profile"
+          value="Profile"
+          sx={iconConfiguration}
+          icon={<FaRegUser sx={{}} />}
+        />
+      </Link>
     </BottomNavigation>
   );
 };
