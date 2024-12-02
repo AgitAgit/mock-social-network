@@ -94,24 +94,29 @@ const AccountOptions = () => {
           </div>
           <div className="YourAccountContainer flex justify-between items-center">
             <div>
-              <h3 className="text-gray-500">Your account</h3>
+              <h3 className="text-gray-500 p-[0.5em]">Your account</h3>
             </div>
             <div className="flex items-center gap-[0.5em]">
             <GiFlipFlops/>
-              <p className="text-gray-500">Babagram</p>
+              <p className="text-gray-500 p-[0.5em]">Babagram</p>
             </div>
           </div>
 
           <div className="AccountCenterContainer flex-col justify-start items-start mt-[0.5em] gap-[0.5em] hover:bg-slate-700 rounded-[0.2em] p-[0.5em]">
           <div className="flex flex-col items-center gap-[0.5em]">
-            <div className="flex flex-row w-full justify-start items-center gap-[0.5em]">
-              <div><CgProfile/></div>
+            <div className="flex flex-row w-full justify-between items-center gap-[0.5em]">
+              <div className="flex flex-row items-center gap-[0.5em]">
+                <div><CgProfile/></div>
+                <div>
+                  <h3>Accounts Center</h3>
+                </div>
+              </div>
               <div>
-                <h3>Accounts Center</h3>
+                <ArrowForwardIcon/>
               </div>
             </div>
             <div>
-          <p className="text-gray-500">Password, security, personal details, ad preferences</p>
+          <p className="text-gray-500 p-[0.5em]">Password, security, personal details, ad preferences</p>
             </div>
           </div>
           </div>
@@ -119,27 +124,27 @@ const AccountOptions = () => {
           <div className="mb-[0.5em]">
             <p>
               Manage your connected experiences and account settings across Meta technologies.
-              <Link className="text-gray-500 hover:text-white">
+              <Link className="text-gray-500 p-[0.5em] hover:text-white">
               <button>
                 Learn more</button></Link>
             </p>
           </div>
           <hr />
-          <h2 className="text-gray-500">How you use babagram</h2>
+          <h2 className="text-gray-500 p-[0.5em] p-[0.5em]">How you use babagram</h2>
  <OptionTab icon={<MdOutlineBookmarkBorder />} arrowIcon={<ArrowForwardIcon />} title="Saved" />
 <OptionTab icon={<MdOutlineArchive />} arrowIcon={<ArrowForwardIcon />} title="Archive" />
 <OptionTab icon={<LuActivitySquare />} arrowIcon={<ArrowForwardIcon />} title="Your Activity" />
 <OptionTab icon={<BiBell />} arrowIcon={<ArrowForwardIcon />} title="Notifications" />
 <OptionTab icon={<IoTimeOutline />} arrowIcon={<ArrowForwardIcon />} title="Time Management" />
 <hr />
-<h2 className="text-gray-500">Who can see your content</h2>
+<h2 className="text-gray-500 p-[0.5em]">Who can see your content</h2>
 <OptionTab icon={<IoLockClosedOutline />} arrowIcon={<ArrowForwardIcon />} title="Account Privacy" />
 <OptionTab icon={<MdPeopleAlt />} arrowIcon={<ArrowForwardIcon />} title="Close Friends" />
 <OptionTab icon={<MdCompareArrows />} arrowIcon={<ArrowForwardIcon />} title="Crossposting" />
 <OptionTab icon={<MdBlock />} arrowIcon={<ArrowForwardIcon />} title="Blocked" />
 <OptionTab icon={<MdOutlineVisibilityOff />} arrowIcon={<ArrowForwardIcon />} title="Hide Story and Live" />
 <hr />
-<h2 className="text-gray-500">How others can interact with you</h2>
+<h2 className="text-gray-500 p-[0.5em]">How others can interact with you</h2>
 <OptionTab icon={<BiSolidMessageRoundedDots />} arrowIcon={<ArrowForwardIcon />} title="Message and story replies" />
 <OptionTab icon={<CiAt />} arrowIcon={<ArrowForwardIcon />} title="Tags and Mentions" />
 <OptionTab icon={<FaRegComment />} arrowIcon={<ArrowForwardIcon />} title="Comments" />
@@ -149,13 +154,13 @@ const AccountOptions = () => {
 <OptionTab icon={<AiOutlineFontSize />} arrowIcon={<ArrowForwardIcon />} title="Hidden Words" />
 <OptionTab icon={<MdPersonAdd />} arrowIcon={<ArrowForwardIcon />} title="Follow and Invite Friends" />
 <hr />
-<h2 className="text-gray-500">What you see</h2>
+<h2 className="text-gray-500 p-[0.5em]">What you see</h2>
 <OptionTab icon={<FaRegStar />} arrowIcon={<ArrowForwardIcon />} title="Favorites" />
 <OptionTab icon={<BsBellSlash />} arrowIcon={<ArrowForwardIcon />} title="Muted Accounts" />
 <OptionTab icon={<TbPhotoVideo />} arrowIcon={<ArrowForwardIcon />} title="Suggested Content" />
 <OptionTab icon={<IoHeartDislikeOutline />} arrowIcon={<ArrowForwardIcon />} title="Like and Share Counts" />
 <hr />
-<h2 className="text-gray-500">Your app and media</h2>
+<h2 className="text-gray-500 p-[0.5em]">Your app and media</h2>
 <OptionTab icon={<CiMobile3 />} arrowIcon={<ArrowForwardIcon />} title="Device permissions" />
 <OptionTab icon={<HiDownload />} arrowIcon={<ArrowForwardIcon />} title="Archiving and downloading" />
 <OptionTab icon={<LiaUniversalAccessSolid />} arrowIcon={<ArrowForwardIcon />} title="Accessibility and translations" />
@@ -163,23 +168,23 @@ const AccountOptions = () => {
 <OptionTab icon={<BsFillFileEarmarkBarGraphFill />} arrowIcon={<ArrowForwardIcon />} title="Media quality" />
 <OptionTab icon={<MdOutlineDevices />} arrowIcon={<ArrowForwardIcon />} title="App website permissions" />
 <hr />
-<h2 className="text-gray-500">For families</h2>
+<h2 className="text-gray-500 p-[0.5em]">For families</h2>
 <OptionTab icon={<TbHomeShield />} arrowIcon={<ArrowForwardIcon />} title="App website permissions" />
 
 <hr />
-<h2 className="text-gray-500">For professionals</h2>
+<h2 className="text-gray-500 p-[0.5em]">For professionals</h2>
 <OptionTab icon={<VscGraph />} arrowIcon={<ArrowForwardIcon />} title="Account type and tools" />
 <OptionTab icon={<MdOutlineVerified />} arrowIcon={<ArrowForwardIcon />} title="Babagram Verified" />
 
 
 <hr />
-<h2 className="text-gray-500">Your orders and fundraisers</h2>
+<h2 className="text-gray-500 p-[0.5em]">Your orders and fundraisers</h2>
 <OptionTab icon={<TbHomeShield />} arrowIcon={<ArrowForwardIcon />} title="Fundraisers" />
 <OptionTab icon={<AiOutlineInbox />} arrowIcon={<ArrowForwardIcon />} title="Orders and payments" />
 
 
 <hr />
-<h2 className="text-gray-500">More info and support</h2>
+<h2 className="text-gray-500 p-[0.5em]">More info and support</h2>
 <OptionTab icon={<MdSupport />} arrowIcon={<ArrowForwardIcon />} title="Help" />
 <OptionTab icon={<MdOutlinePrivacyTip />} arrowIcon={<ArrowForwardIcon />} title="Privacy Center" />
 <OptionTab icon={<IoPersonOutline />} arrowIcon={<ArrowForwardIcon />} title="Account Status" />
@@ -187,14 +192,14 @@ const AccountOptions = () => {
 
 
 <hr />
-<h2 className="text-gray-500">Also from Babagram</h2>
+<h2 className="text-gray-500 p-[0.5em]">Also from Babagram</h2>
 <OptionTab icon={<FaWhatsapp />} arrowIcon={<ArrowForwardIcon />} title="WhatsApp" />
 <OptionTab icon={<FaThreads />} arrowIcon={<ArrowForwardIcon />} title="Threads" />
 <OptionTab icon={<RiFacebookCircleLine />} arrowIcon={<ArrowForwardIcon />} title="Facebook" />
 
 
 <hr />
-<h2 className="text-gray-500">Login</h2>
+<h2 className="text-gray-500 p-[0.5em]">Login</h2>
 <OptionTab  arrowIcon={<ArrowForwardIcon />} title="Add account" />
 <OptionTab arrowIcon={<ArrowForwardIcon />} title="Log out"/>
 
