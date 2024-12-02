@@ -1,4 +1,5 @@
 //Import
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -86,6 +87,11 @@ const Register = () => {
               className={inputStyle}
             />
             <SubmitBtn btnPlaceholder="Register" />
+            <Link to="/" className="">
+              <button className="w-full cursor-pointer rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-[#eb903b]">
+                Back
+              </button>
+            </Link>
           </form>
         </div>
       </div>

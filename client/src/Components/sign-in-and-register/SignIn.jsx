@@ -7,6 +7,9 @@ import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 
 const divIconStyle =
+  "rounded-[100em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
+
+const divInputStyle =
   "rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
 
 // Import Components
@@ -58,14 +61,14 @@ const SignIn = () => {
               placeholder={"Username"}
               id="username"
               name="username"
-              className={divIconStyle}
+              className={divInputStyle}
             />
             <input
               type={"password"}
               placeholder={"Password"}
               id="password"
               name="password"
-              className={divIconStyle}
+              className={divInputStyle}
             />
             <Link to="/">
               <p className="cursor-pointer text-start text-xs text-blue-500 hover:text-white">
@@ -78,13 +81,13 @@ const SignIn = () => {
 
         <div className="mb-[1em] mt-[1em] flex flex-row items-center justify-center gap-[1em]">
           <div className={divIconStyle}>
-            <FcGoogle className="w-full cursor-pointer text-3xl" />
+            <FcGoogle className="w-full text-3xl" />
           </div>
           <div className={divIconStyle}>
-            <FaFacebook className="w-full cursor-pointer text-3xl text-blue-500" />
+            <FaFacebook className="w-full text-3xl text-blue-500" />
           </div>
           <div className={divIconStyle}>
-            <FaApple className="w-full cursor-pointer text-3xl" />
+            <FaApple className="w-full text-3xl" />
           </div>
         </div>
         <div className="flex w-full flex-row items-center justify-evenly">

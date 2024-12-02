@@ -7,6 +7,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
+import FooterBar from "../Footbar/Footbar.jsx";
 
 const hoverColorIcon = {
   "&:hover": {
@@ -25,9 +26,9 @@ const AllPosts = () => {
     setPostsData(allPostsResponse.data);
   };
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  // useEffect(() => {
+  //   fetchPosts();
+  // }, []);
 
   console.log(postsData);
 
@@ -91,6 +92,7 @@ const AllPosts = () => {
             </div>
           </div>
         ))}
+      <FooterBar />
     </div>
   );
 };
