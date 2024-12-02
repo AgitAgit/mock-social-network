@@ -13,7 +13,7 @@ router.use("/", authUser);
 
 router.get("/", getAllPosts);
 
-router.post("/", authUser, addPost);
+router.post("/", addPost);
 
 router.get("/:postId", getPostById);
 
