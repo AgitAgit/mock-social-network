@@ -55,21 +55,23 @@ const AccountOptions = () => {
   const navigate = useNavigate();
   return (
     <div className="mt-1 flex w-[100vw] flex-col p-[1.5em] text-white">
-      <button onClick={() => navigate(-1)}>
-        <IoArrowBackOutline
-          style={{
-            position: "absolute",
-            top: "5px",
-            left: "5px",
-            color: "white",
-            fontSize: "24px",
-          }}
-        />
-      </button>
       <div className="ml-[1em] flex flex-col items-start justify-start">
-        <h1 className="mb-[0.5em] w-full text-center text-white">
-          Setting and activity
-        </h1>
+        <div className="flex w-full flex-row items-center justify-between">
+          <button onClick={() => navigate(-1)}>
+            <IoArrowBackOutline
+              style={{
+                position: "absolute",
+                top: "30px",
+                left: "24px",
+                color: "white",
+                fontSize: "24px",
+              }}
+            />
+          </button>
+          <h1 className="mb-[0.5em] w-full text-center text-white">
+            Setting and activity
+          </h1>
+        </div>
       </div>
       <hr className={lineStyle} />
       <div className="SearchbarContainer mb-[0.5em] flex w-full flex-row items-start justify-around">
