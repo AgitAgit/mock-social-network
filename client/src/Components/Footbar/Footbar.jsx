@@ -9,14 +9,13 @@ import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const iconConfiguration = {
+  width: "100%",
   color: "white",
+  fontSize: "1.4em",
   "&.Mui-selected": {
     color: "white",
     background: "#FFA503",
     borderRadius: "100em",
-  },
-  "& .MuiBottomNavigationAction-label": {
-    fontSize: "0.8em",
   },
 };
 
@@ -30,50 +29,42 @@ const FooterBar = () => {
     <BottomNavigation
       sx={{
         width: "100%",
-        background: "#ffffff0d",
+        background: "#ffffff05",
         position: "absolute",
         bottom: "0",
         borderRadius: "100em",
+        padding: "0.3em",
       }}
+      showLabel={true}
       value={value}
       onChange={handleChange}
     >
-      <Link to="/all-posts">
-        <BottomNavigationAction
-          label="Home"
-          value="Home"
-          sx={iconConfiguration}
-          icon={<IoHomeOutline />}
-        />
-      </Link>
-
       <BottomNavigationAction
-        label="Search"
+        value="Home"
+        showLabel={true}
+        sx={iconConfiguration}
+        icon={<IoHomeOutline />}
+      />
+      <BottomNavigationAction
         value="Search"
         sx={iconConfiguration}
         icon={<IoSearchSharp sx={{}} />}
       />
-
       <BottomNavigationAction
-        label="Add Post"
         value="Add Post"
         sx={iconConfiguration}
         icon={<IoMdAddCircleOutline sx={{}} />}
       />
       <BottomNavigationAction
-        label="Favorites"
         value="Favorites"
         sx={iconConfiguration}
         icon={<GrFavorite sx={{}} />}
       />
-      <Link to="/profile">
-        <BottomNavigationAction
-          label="Profile"
-          value="Profile"
-          sx={iconConfiguration}
-          icon={<FaRegUser sx={{}} />}
-        />
-      </Link>
+      <BottomNavigationAction
+        value="Profile"
+        sx={iconConfiguration}
+        icon={<FaRegUser sx={{}} />}
+      />
     </BottomNavigation>
   );
 };

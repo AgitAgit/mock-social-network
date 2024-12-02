@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import HomeImage from "/public/images/background-image.svg";
 
-
 const Homepage = () => {
   return (
-    <div className="z-1 mt-[1em] max-w-sm rounded-[2.2em] p-[0.1em]">
+    <div className="z-1 mt-[1em] max-w-sm rounded-[2.2em] p-[0.1em] text-white">
       <img
         src={HomeImage}
         alt="Baba-gram logo image"
