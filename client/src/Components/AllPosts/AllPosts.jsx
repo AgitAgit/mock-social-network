@@ -8,6 +8,8 @@ import ShareIcon from "@mui/icons-material/Share";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
 import FooterBar from "../Footbar/Footbar.jsx";
+import Loader from "../Loader/Loader.jsx";
+import MenuContainer from "../Menubar/Menubar.jsx";
 
 const hoverColorIcon = {
   "&:hover": {
@@ -34,6 +36,7 @@ const AllPosts = () => {
 
   return (
     <div className="mt-[0.5em] flex flex-col items-center justify-center">
+      <MenuContainer/>
       {postsData &&
         postsData.map((post) => (
           <div key={post.id}>
