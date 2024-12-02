@@ -10,6 +10,7 @@ import Homepage from "./components/Homepage/Homepage.jsx";
 import AllPosts from "./Components/AllPosts/AllPosts.jsx";
 import AccountOptions from "./Components/AccountOptions/AccountOptions.jsx";
 import Chatbox from "./Components/Chatbox/Chatbox.jsx";
+import AccountCenter from "./Components/AccountCenter/AccountCenter.jsx";
 
 // redux import
 import { store } from "./store/index.js";
@@ -26,6 +27,8 @@ function App() {
           <Route path="/all-posts" element={<AllPosts />} />
           <Route path="/account-options" element={<AccountOptions />} />
           <Route path="/chatbox" element={<Chatbox />} />
+
+          <Route path="/account-center" element={<AccountCenter />} />
         </Routes>
       </BrowserRouter>
     </Provider>

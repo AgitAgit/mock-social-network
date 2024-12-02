@@ -67,7 +67,6 @@ const AccountOptions = () => {
       <div className="ml-[1em] flex flex-col items-start justify-start">
         <h1 className="w-full text-center text-white">Setting and activity</h1>
       </div>
-
       <div className="SearchbarContainer mb-[0.5em] flex w-full flex-row items-start justify-around">
         <AccountSettingsSearchBar />
       </div>
@@ -80,30 +79,30 @@ const AccountOptions = () => {
           <p className="p-[0.5em] text-gray-500">Babagram</p>
         </div>
       </div>
-
-      <div className="AccountCenterContainer mt-[0.5em] flex-col items-start justify-start gap-[0.5em] rounded-[0.2em] p-[0.5em] hover:bg-slate-700">
-        <div className="flex flex-col items-center gap-[0.5em]">
-          <div className="flex w-full flex-row items-center justify-between gap-[0.5em]">
-            <div className="flex flex-row items-center gap-[0.5em]">
-              <div>
-                <CgProfile />
+      <Link to="/account-center">
+        <div className="AccountCenterContainer mt-[0.5em] flex-col items-start justify-start gap-[0.5em] rounded-[0.2em] p-[0.5em] hover:bg-slate-700">
+          <div className="flex flex-col items-center gap-[0.5em]">
+            <div className="flex w-full flex-row items-center justify-between gap-[0.5em]">
+              <div className="flex flex-row items-center gap-[0.5em]">
+                <div>
+                  <CgProfile />
+                </div>
+                <div>
+                  <h3>Accounts Center</h3>
+                </div>
               </div>
               <div>
-                <h3>Accounts Center</h3>
+                <ArrowForwardIcon />
               </div>
             </div>
             <div>
-              <ArrowForwardIcon />
+              <p className="p-[0.5em] text-gray-500">
+                Password, security, personal details, ad preferences
+              </p>
             </div>
           </div>
-          <div>
-            <p className="p-[0.5em] text-gray-500">
-              Password, security, personal details, ad preferences
-            </p>
-          </div>
         </div>
-      </div>
-
+      </Link>
       <div className="mb-[0.5em]">
         <p>
           Manage your connected experiences and account settings across Meta
@@ -118,26 +117,31 @@ const AccountOptions = () => {
       <OptionTab
         icon={<MdOutlineBookmarkBorder />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Saved"
       />
       <OptionTab
         icon={<MdOutlineArchive />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Archive"
       />
       <OptionTab
         icon={<LuActivitySquare />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Your Activity"
       />
       <OptionTab
         icon={<BiBell />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Notifications"
       />
       <OptionTab
         icon={<IoTimeOutline />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Time Management"
       />
       <hr />
@@ -145,26 +149,31 @@ const AccountOptions = () => {
       <OptionTab
         icon={<IoLockClosedOutline />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Account Privacy"
       />
       <OptionTab
         icon={<MdPeopleAlt />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Close Friends"
       />
       <OptionTab
         icon={<MdCompareArrows />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Crossposting"
       />
       <OptionTab
         icon={<MdBlock />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Blocked"
       />
       <OptionTab
         icon={<MdOutlineVisibilityOff />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Hide Story and Live"
       />
       <hr />
@@ -174,41 +183,49 @@ const AccountOptions = () => {
       <OptionTab
         icon={<BiSolidMessageRoundedDots />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Message and story replies"
       />
       <OptionTab
         icon={<CiAt />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Tags and Mentions"
       />
       <OptionTab
         icon={<FaRegComment />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Comments"
       />
       <OptionTab
         icon={<TiArrowSync />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Sharing"
       />
       <OptionTab
         icon={<MdOutlineLock />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Restricted"
       />
       <OptionTab
         icon={<MdOutlineAccessTime />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Limit Interactions"
       />
       <OptionTab
         icon={<AiOutlineFontSize />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Hidden Words"
       />
       <OptionTab
         icon={<MdPersonAdd />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Follow and Invite Friends"
       />
       <hr />
@@ -216,21 +233,25 @@ const AccountOptions = () => {
       <OptionTab
         icon={<FaRegStar />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Favorites"
       />
       <OptionTab
         icon={<BsBellSlash />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Muted Accounts"
       />
       <OptionTab
         icon={<TbPhotoVideo />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Suggested Content"
       />
       <OptionTab
         icon={<IoHeartDislikeOutline />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Like and Share Counts"
       />
       <hr />
@@ -238,31 +259,37 @@ const AccountOptions = () => {
       <OptionTab
         icon={<CiMobile3 />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Device permissions"
       />
       <OptionTab
         icon={<HiDownload />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Archiving and downloading"
       />
       <OptionTab
         icon={<LiaUniversalAccessSolid />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Accessibility and translations"
       />
       <OptionTab
         icon={<LiaLanguageSolid />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Language"
       />
       <OptionTab
         icon={<BsFillFileEarmarkBarGraphFill />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Media quality"
       />
       <OptionTab
         icon={<MdOutlineDevices />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="App website permissions"
       />
       <hr />
@@ -270,80 +297,95 @@ const AccountOptions = () => {
       <OptionTab
         icon={<TbHomeShield />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="App website permissions"
       />
-
       <hr />
       <h2 className="p-[0.5em] text-gray-500">For professionals</h2>
       <OptionTab
         icon={<VscGraph />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Account type and tools"
       />
       <OptionTab
         icon={<MdOutlineVerified />}
+        navigateRoute={"/"}
         arrowIcon={<ArrowForwardIcon />}
         title="Babagram Verified"
       />
-
       <hr />
       <h2 className="p-[0.5em] text-gray-500">Your orders and fundraisers</h2>
       <OptionTab
         icon={<TbHomeShield />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Fundraisers"
       />
       <OptionTab
         icon={<AiOutlineInbox />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Orders and payments"
       />
-
       <hr />
       <h2 className="p-[0.5em] text-gray-500">More info and support</h2>
       <OptionTab
         icon={<MdSupport />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Help"
       />
       <OptionTab
         icon={<MdOutlinePrivacyTip />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Privacy Center"
       />
       <OptionTab
         icon={<IoPersonOutline />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Account Status"
       />
       <OptionTab
         icon={<MdInfoOutline />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="About"
       />
-
       <hr />
       <h2 className="p-[0.5em] text-gray-500">Also from Babagram</h2>
       <OptionTab
         icon={<FaWhatsapp />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="WhatsApp"
       />
       <OptionTab
         icon={<FaThreads />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Threads"
       />
       <OptionTab
         icon={<RiFacebookCircleLine />}
         arrowIcon={<ArrowForwardIcon />}
+        navigateRoute={"/"}
         title="Facebook"
       />
-
       <hr />
       <h2 className="p-[0.5em] text-gray-500">Login</h2>
-      <OptionTab arrowIcon={<ArrowForwardIcon />} title="Add account" />
-      <OptionTab arrowIcon={<ArrowForwardIcon />} title="Log out" />
+      <OptionTab
+        arrowIcon={<ArrowForwardIcon />}
+        title="Add account"
+        navigateRoute={"/"}
+      />
+      <OptionTab
+        arrowIcon={<ArrowForwardIcon />}
+        title="Log out"
+        navigateRoute={"/sign-in"}
+      />
     </div>
   );
 };
