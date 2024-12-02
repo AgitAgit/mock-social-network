@@ -9,6 +9,7 @@ import Profile from "./components/Profile/Profile.jsx";
 import Homepage from "./components/Homepage/Homepage.jsx";
 import AllPosts from "./Components/AllPosts/AllPosts.jsx";
 import AccountOptions from "./Components/AccountOptions/AccountOptions.jsx";
+import Chatbox from "./Components/Chatbox/Chatbox.jsx";
 
 // redux import
 import { store } from "./store/index.js";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/all-posts" element={<AllPosts />} />
           <Route path="/account-options" element={<AccountOptions />} />
+          <Route path="/chatbox" element={<Chatbox />} />
         </Routes>
       </BrowserRouter>
     </Provider>
