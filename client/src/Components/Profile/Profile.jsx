@@ -1,9 +1,8 @@
-import styles from "./Profile.module.css";
 import FakeProfileImage from "../../../public/images/static-profile-image.svg";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
-import Loader from "../loader/Loader";
+// import Loader from "../loader/Loader";
 
 const styleIcon = {
   background: "#2A3751",

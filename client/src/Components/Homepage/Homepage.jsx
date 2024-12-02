@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import HomeImage from "/public/images/background-image.svg";
-import styles from "./Homepage.module.css";
+
 
 const Homepage = () => {
   return (
