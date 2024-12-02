@@ -35,8 +35,8 @@ const AllPosts = () => {
   console.log(postsData);
 
   return (
-    <div className="mt-[0.5em] flex flex-col items-center justify-center">
-      <MenuContainer/>
+    <div className="m-8 mt-[0.5em] flex flex-col items-center justify-center">
+      <MenuContainer />
       {postsData &&
         postsData.map((post) => (
           <div key={post.id}>
