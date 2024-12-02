@@ -15,7 +15,7 @@ const Chatbox = () => {
           <VideoCameraFrontIcon />
         </div>
         <div className="flex w-full flex-row items-center justify-between">
-          <p>Sent 1h ago</p>
+          <p>Sent 1h aago</p>
           <CameraAltIcon />
         </div>
       </div>

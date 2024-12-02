@@ -68,7 +68,9 @@ const SignIn = () => {
               className={divIconStyle}
             />
             <Link to="/">
-              <p className="cursor-pointer text-xs">Recovery Password</p>
+              <p className="cursor-pointer text-start text-xs text-blue-500 hover:text-white">
+                Recovery Password
+              </p>
             </Link>
             <SubmitBtn btnPlaceholder="Sign-In" />
           </form>
