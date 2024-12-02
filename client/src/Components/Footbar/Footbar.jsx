@@ -7,73 +7,72 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { GrFavorite } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Dialog from "../Dialog/Dialog";
 
 const iconConfiguration = {
+  width: "100%",
   color: "white",
+  fontSize: "1.4em",
   "&.Mui-selected": {
     color: "white",
     background: "#FFA503",
     borderRadius: "100em",
   },
-  "& .MuiBottomNavigationAction-label": {
-    fontSize: "0.8em",
-  },
 };
 
 const FooterBar = () => {
-  const [value, setValue] = React.useState("Home");
+  const [value, setValue] = useState("Add Post");
+  const [open, setOpen] = useState(false);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (e, newValue) => {
     setValue(newValue);
+    if (newValue === "Add Post") {
+      setOpen(true);
+    }
   };
+
   return (
     <BottomNavigation
       sx={{
         width: "100%",
-        background: "#ffffff0d",
+        background: "#ffffff05",
         position: "absolute",
         bottom: "0",
         borderRadius: "100em",
+        padding: "0.3em",
       }}
+      showLabel={true}
       value={value}
       onChange={handleChange}
     >
-      <Link to="/all-posts">
-        <BottomNavigationAction
-          label="Home"
-          value="Home"
-          sx={iconConfiguration}
-          icon={<IoHomeOutline />}
-        />
-      </Link>
-
+      <Dialog open={open} setOpen={setOpen} />
       <BottomNavigationAction
-        label="Search"
+        value="Home"
+        showLabel={true}
+        sx={iconConfiguration}
+        icon={<IoHomeOutline />}
+      />
+      <BottomNavigationAction
         value="Search"
         sx={iconConfiguration}
-        icon={<IoSearchSharp sx={{}} />}
+        icon={<IoSearchSharp />}
       />
-
       <BottomNavigationAction
-        label="Add Post"
         value="Add Post"
         sx={iconConfiguration}
-        icon={<IoMdAddCircleOutline sx={{}} />}
+        icon={<IoMdAddCircleOutline />}
       />
       <BottomNavigationAction
-        label="Favorites"
         value="Favorites"
         sx={iconConfiguration}
-        icon={<GrFavorite sx={{}} />}
+        icon={<GrFavorite />}
       />
-      <Link to="/profile">
-        <BottomNavigationAction
-          label="Profile"
-          value="Profile"
-          sx={iconConfiguration}
-          icon={<FaRegUser sx={{}} />}
-        />
-      </Link>
+      <BottomNavigationAction
+        value="Profile"
+        sx={iconConfiguration}
+        icon={<FaRegUser />}
+      />
     </BottomNavigation>
   );
 };
