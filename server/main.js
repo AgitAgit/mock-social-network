@@ -3,6 +3,8 @@ const { json } = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const injectData = require("./injectData.js");
+const User = require("./models/userModel.js");
 
 const usersRouter = require("./routes/usersRoute.js");
 const postsRouter = require("./routes/postsRoute.js");
@@ -32,6 +34,21 @@ app.use(json());
 
 //app.use('/', logger);
 
+async function checkCollectionEmpty() {
+  try {
+    const isCollectionEmpty = (await User.countDocuments()) === 0;
+
+    if (isCollectionEmpty) {
+      console.log("The User collection is empty.Injecting data...");
+      injectData();
+    } else {
+      console.log("The User collection has documents.No need to inject data.");
+    }
+  } catch (error) {
+    console.error("Error checking User collection:", error);
+  }
+}
+checkCollectionEmpty();
 app.use("/api/users", usersRouter);
 app.use("/api/posts", postsRouter);
 app.use("/api/comments", commentsRouter);
