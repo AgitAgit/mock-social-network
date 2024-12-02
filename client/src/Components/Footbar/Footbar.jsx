@@ -7,6 +7,8 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { GrFavorite } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Dialog from "../Dialog/Dialog";
 
 const iconConfiguration = {
   width: "100%",
@@ -20,11 +22,16 @@ const iconConfiguration = {
 };
 
 const FooterBar = () => {
-  const [value, setValue] = React.useState("Home");
+  const [value, setValue] = useState("Add Post");
+  const [open, setOpen] = useState(false);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (e, newValue) => {
     setValue(newValue);
+    if (newValue === "Add Post") {
+      setOpen(true);
+    }
   };
+
   return (
     <BottomNavigation
       sx={{
@@ -39,6 +46,7 @@ const FooterBar = () => {
       value={value}
       onChange={handleChange}
     >
+      <Dialog open={open} setOpen={setOpen} />
       <BottomNavigationAction
         value="Home"
         showLabel={true}
@@ -48,22 +56,22 @@ const FooterBar = () => {
       <BottomNavigationAction
         value="Search"
         sx={iconConfiguration}
-        icon={<IoSearchSharp sx={{}} />}
+        icon={<IoSearchSharp />}
       />
       <BottomNavigationAction
         value="Add Post"
         sx={iconConfiguration}
-        icon={<IoMdAddCircleOutline sx={{}} />}
+        icon={<IoMdAddCircleOutline />}
       />
       <BottomNavigationAction
         value="Favorites"
         sx={iconConfiguration}
-        icon={<GrFavorite sx={{}} />}
+        icon={<GrFavorite />}
       />
       <BottomNavigationAction
         value="Profile"
         sx={iconConfiguration}
-        icon={<FaRegUser sx={{}} />}
+        icon={<FaRegUser />}
       />
     </BottomNavigation>
   );
