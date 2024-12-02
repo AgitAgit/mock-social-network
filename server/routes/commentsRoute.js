@@ -9,8 +9,8 @@ const router = express.Router();
 
 router.use("/", authUser);
 
-router.get("/posts/:postId", getPostComments);
+router.get("/:postId", getPostComments);
 
-router.post("/", authUser, addComment);
+router.post("/", addComment);
 
 module.exports = router;
