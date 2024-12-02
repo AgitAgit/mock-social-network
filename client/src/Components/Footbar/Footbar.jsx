@@ -7,13 +7,12 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import { GrFavorite } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
 
-
 const iconConfiguration = {
-  color:"white",
+  color: "white",
   "&.Mui-selected": {
     color: "white",
-    background:"#FFA503",
-    borderRadius:"100em"
+    background: "#FFA503",
+    borderRadius: "100em",
   },
   "& .MuiBottomNavigationAction-label": {
     fontSize: "0.8em",
@@ -21,7 +20,7 @@ const iconConfiguration = {
 };
 
 const FooterBar = () => {
-  const [value, setValue] = React.useState("recents");
+  const [value, setValue] = React.useState("Home");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -33,7 +32,7 @@ const FooterBar = () => {
         background: "#ffffff0d",
         position: "absolute",
         bottom: "0",
-        borderRadius:"100em"
+        borderRadius: "100em",
       }}
       value={value}
       onChange={handleChange}
@@ -48,26 +47,26 @@ const FooterBar = () => {
         label="Search"
         value="Search"
         sx={iconConfiguration}
-        icon={<IoSearchSharp sx={{}}/>}
+        icon={<IoSearchSharp sx={{}} />}
       />
 
       <BottomNavigationAction
         label="Add Post"
         value="Add Post"
         sx={iconConfiguration}
-        icon={<IoMdAddCircleOutline sx={{}}/>}
+        icon={<IoMdAddCircleOutline sx={{}} />}
       />
       <BottomNavigationAction
         label="Favorites"
         value="Favorites"
         sx={iconConfiguration}
-        icon={<GrFavorite sx={{}}/>}
+        icon={<GrFavorite sx={{}} />}
       />
       <BottomNavigationAction
         label="Profile"
         value="Profile"
         sx={iconConfiguration}
-        icon={<FaRegUser  sx={{}}/>}
+        icon={<FaRegUser sx={{}} />}
       />
     </BottomNavigation>
   );
