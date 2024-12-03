@@ -9,7 +9,7 @@ const iconConfiguration = {
 
   "&.Mui-selected": {
     color: "white",
-    background: "#FFA503",
+    background: "#1D2A46",
     borderRadius: "100em",
   },
   "& .MuiBottomNavigationAction-label": {

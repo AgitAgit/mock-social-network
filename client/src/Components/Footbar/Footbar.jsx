@@ -14,7 +14,7 @@ const iconConfiguration = {
   fontSize: "1.4em",
   "&.Mui-selected": {
     color: "white",
-    background: "#FFA503",
+    background: "#1D2A46",
     borderRadius: "100em",
   },
 };
