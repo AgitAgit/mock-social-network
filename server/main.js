@@ -56,11 +56,6 @@ app.use("/api/users", usersRouter);
 app.use("/api/posts", postsRouter);
 app.use("/api/comments", commentsRouter);
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-  // res.render("index.html");
-});
-
 app.get("/api/status", (req, res) => {
   res.send({
     message: "Server is UP",
