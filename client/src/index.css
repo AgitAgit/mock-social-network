@@ -4,7 +4,7 @@
 
 @layer utilities {
   img {
-    @apply rounded-[1.5em];
+    @apply rounded-[0.5em];
   }
 }
 

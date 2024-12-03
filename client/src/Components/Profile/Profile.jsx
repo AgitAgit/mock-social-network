@@ -1,3 +1,4 @@
+import EditProfile from "../EditProfile/EditProfile";
 import ProfileActionsBtns from "../ProfileActionsBtns/ProfileActionsBtns";
 import ProfileGallerySection from "../ProfileGallerySection/ProfileGallerySection";
 import ProfileHeaderNavigation from "../ProfileHeaderNavigation/ProfileHeaderNavigation";
@@ -7,7 +8,7 @@ import ProfileUserDetails from "../ProfileUserDetails/ProfileUserDetails";
 
 const Profile = () => {
   return (
-    <div className="p-[0.5em]">
+    <div className="p-[0.5em] text-white">
       <div className="rounded-[2em] bg-profileSectionTheme font-CaustenFont">
         <ProfileHeaderNavigation />
         <div className="flex w-full flex-row items-center justify-center">
@@ -28,6 +29,7 @@ const Profile = () => {
             <ProfileStatsSection />
           </div>
         </div>
+        <EditProfile />
       </div>
       <ProfileGallerySection />
     </div>

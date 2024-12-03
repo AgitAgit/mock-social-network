@@ -1,10 +1,16 @@
+import { BsPersonVideo2 } from "react-icons/bs";
+import { CgMenuGridR } from "react-icons/cg";
+import { BsPersonBoundingBox } from "react-icons/bs";
+
+const iconContainerStyle = "mb-[1em] flex flex-col items-center text-[1.5em]";
+
 const ProfileGallerySection = () => {
   return (
-    <div className="UserGallery mb-[2em] mt-[2em] flex w-full flex-row gap-[1em] p-[0.5em] text-center">
+    <div className="UserGallery mb-[2em] mt-[2em] flex w-full flex-row gap-[0.5em] p-[0.5em] text-center">
       <div>
-        <h2 className="mb-[1em]">
-          <strong>Photos</strong>
-        </h2>
+        <div className={iconContainerStyle}>
+          <CgMenuGridR />
+        </div>
         <div className="PhotosImgsContainer flex w-full flex-col gap-[0.5em]">
           <img
             src="../../../public/images/static-profile-image-one.svg"
@@ -17,9 +23,9 @@ const ProfileGallerySection = () => {
         </div>
       </div>
       <div>
-        <h2 className="mb-[1em]">
-          <strong>Video</strong>
-        </h2>
+        <div className={iconContainerStyle}>
+          <BsPersonVideo2 />
+        </div>
         <div className="VideosImgContainer flex w-full flex-col gap-[0.5em]">
           <img
             src="../../../public/images/static-profile-image-three.svg"
@@ -32,9 +38,9 @@ const ProfileGallerySection = () => {
         </div>
       </div>
       <div>
-        <h2 className="mb-[1em]">
-          <strong>Tagged</strong>
-        </h2>
+        <div className={iconContainerStyle}>
+          <BsPersonBoundingBox />
+        </div>
         <div className="TaggedImgContainer flex w-full flex-col gap-[0.5em]">
           <img
             src="../../../public/images/static-profile-image-five.svg"
