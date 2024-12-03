@@ -63,8 +63,10 @@ const AccountOptions = () => {
                 top: "30px",
                 left: "24px",
                 fontSize: "24px",
+                color: "white",
+                borderRadius: "100em",
               }}
-              className="hover:rounded-[0.1em] hover:bg-white hover:tracking-[0.05em] hover:text-[var(--bgTheme)]"
+              className="hover:rounded-[0.1em] hover:bg-profileSectionTheme hover:tracking-[0.05em] hover:text-[var(--bgTheme)]"
             />
           </button>
           <h1 className="mb-[0.5em] w-full text-center text-white">
