@@ -18,17 +18,13 @@ const injectData = async () => {
   );
 
   const posts = await Post.insertMany(
-    Array.from({ length: 20 }).map(() => {
-      const shouldAddImage = Math.random() > 0.3;
-      console.log(shouldAddImage);
-      return {
-        title: faker.lorem.sentence(),
-        postImageUrl: shouldAddImage && faker.image.url(),
-        content: faker.lorem.sentences(3),
-        authorId: faker.helpers.arrayElement(users)._id,
-        commentIds: [],
-      };
-    })
+    Array.from({ length: 20 }).map(() => ({
+      title: faker.lorem.sentence(),
+      postImageUrl: faker.image.url(),
+      content: faker.lorem.sentences(3),
+      authorId: faker.helpers.arrayElement(users)._id,
+      commentIds: [],
+    }))
   );
 
   const comments = await Comment.insertMany(
