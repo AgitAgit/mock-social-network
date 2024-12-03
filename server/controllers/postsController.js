@@ -44,15 +44,37 @@ async function likePost(req, res, next) {
   }
 }
 
+async function savePost(req, res, next) {
+  try {
+    const { postId } = req.params;
+    const post = await Post.findById(postId);
+    const user = await User.findById(req.user.userId);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    if (user.savedPosts.includes(postId)) {
+      return res.status(400).json({ message: "You already saved this post" });
+    }
+
+    user.savedPosts.push(postId);
+    const updatedUser = await user.save();
+
+    res.json({ message: "Post saved successfully", post: updatedUser });
+  } catch (error) {
+    next(error);
+  }
+}
+
 //path params:none
 //query params:none
 //example request body:none
 //example response: [{...post},{...post},{...post},...]
+
 async function getAllPosts(req, res, next) {
-  //wanted post format:
-  /** {post name(title?), post creation time, post creator(username, displayname), postContent, post comments}
-   */
   try {
+    // Fetch posts with required fields
     const posts = await Post.find()
       .populate({
         path: "commentIds",
@@ -60,7 +82,18 @@ async function getAllPosts(req, res, next) {
       })
       .populate("authorId", "username profilePic");
 
-    res.json(posts);
+    // Fetch likes count for each post
+    const postsWithLikes = await Promise.all(
+      posts.map(async (post) => {
+        const likesCount = await Like.countDocuments({ postId: post._id });
+        return {
+          ...post.toObject(),
+          likesCount,
+        };
+      })
+    );
+
+    res.json(postsWithLikes);
   } catch (error) {
     next(error);
   }
@@ -83,4 +116,4 @@ async function getPostById(req, res, next) {
   }
 }
 
-module.exports = { addPost, getAllPosts, getPostById, likePost };
+module.exports = { addPost, getAllPosts, getPostById, likePost, savePost };

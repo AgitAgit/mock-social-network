@@ -81,7 +81,6 @@ const getUserById = async function (req, res, next) {
   try {
     const user = await User.findById(req.params.id);
     res.json(user);
-    next();
   } catch (error) {
     next(error);
   }
@@ -91,7 +90,7 @@ async function catchAll(err, req, res, next) {
   res.status(500).send("something went wrong in the server...");
 }
 
-module.exports = { addUser, getAllUsers, login, catchAll };
+module.exports = { addUser, getAllUsers, getUserById, login, catchAll };
 
 //path params:none
 //path params:none
