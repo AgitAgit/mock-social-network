@@ -1,5 +1,8 @@
+import styles from './Search.module.css';
 import SearchIcon from "@mui/icons-material/Search";
 import axios from 'axios';
+import { useState, useEffect } from 'react';
+import FooterBar from "../../Components/FooterMenu/FooterMenu.jsx";
 
 const Search = () => {
   const [posts, setPosts] = useState(null);
@@ -8,6 +11,10 @@ const Search = () => {
     const data = await axios.get('http://localhost:3000/api/posts', { withCredentials:true });
     console.log(data);
   }
+
+  useEffect(() => {
+    fetchData();
+  },[])
 
   return (
     <>
@@ -22,6 +29,7 @@ const Search = () => {
       <div>
 
       </div>
+      <FooterBar />
     </>
   );
 };
