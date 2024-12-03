@@ -11,6 +11,7 @@ export default {
       },
       fontFamily: {
         CaustenFont: ["Causten", "sans-serif"],
+        CaustenFontBold: "Causten bold",
       },
     },
   },

@@ -17,9 +17,9 @@ const timeSince = (dateString) => {
   } else if (diffInHours > 0) {
     return `${diffInHours}h`;
   } else if (diffInMinutes > 0) {
-    return `${diffInMinutes}min`;
+    return `${diffInMinutes}m`;
   } else {
-    return `${diffInSeconds}sec`;
+    return `${diffInSeconds}s`;
   }
 };
 
