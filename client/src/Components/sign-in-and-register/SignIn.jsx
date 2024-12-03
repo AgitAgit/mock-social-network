@@ -19,16 +19,22 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const loginUser = async (userInfo) => {
-    const resLoginData = await axios.post(
-      `http://localhost:3000/api/users/login`,
-      userInfo,
-      { withCredentials: true },
-    );
+    try {
+      const resLoginData = await axios.post(
+        `http://localhost:3000/api/users/login`,
+        userInfo,
+        { withCredentials: true },
+      );
 
-    if (resLoginData) {
-      console.log(resLoginData);
+      if (resLoginData) {
+        console.log(resLoginData);
+        navigate("/all-posts"); // Navigate after successful login
+      }
+    } catch (error) {
+      console.error("Login failed:", error.response?.data || error.message);
     }
   };
+
   const handleLoginSubmit = (e) => {
     e.preventDefault();
 
@@ -40,8 +46,8 @@ const SignIn = () => {
       password: formValues.password,
     };
 
+    console.log(userInfo);
     loginUser(userInfo);
-    navigate("/all-posts");
   };
 
   return (
