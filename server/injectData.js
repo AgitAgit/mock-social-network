@@ -23,6 +23,9 @@ const injectData = async () => {
       postImageUrl: faker.image.url({ width: 500, height: 500 }),
       content: faker.lorem.sentences(3),
       authorId: faker.helpers.arrayElement(users)._id,
+      likedBy: faker.helpers
+        .shuffle(users)
+        .slice(0, Math.floor(Math.random() * users.length)), // Random number of users for 'likedBy'
       commentIds: [],
     }))
   );
@@ -34,6 +37,7 @@ const injectData = async () => {
       authorId: faker.helpers.arrayElement(users)._id,
     }))
   );
+
   // Populate commentIds in posts
   await Promise.all(
     comments.map((comment) => {
