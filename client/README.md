@@ -133,15 +133,68 @@
 
 ---
 
-### **GET /users/:id**
+### **GET /users/data/self**
 
-- **Description**: Retrieves details of a single user by ID.
+- **Description**: Retrieves details of the logged user.
 
-- **Route**: `/users/:id`
+- **Route**: `/users/data/self`
 
 - **Method**: `GET`
 
 - **Authentication**: Requires Bearer token authentication.
+
+- **Response**:
+
+  - **200 OK**: Returns the user details.
+  - **404 Not Found**: If the user does not exist.
+
+- **Example Request**:
+
+```
+  GET /users/data/self
+```
+
+- **Example Response**:
+
+```
+{
+    "user": {
+        "_id": "674f281b4049311283ecde14",
+        "displayName": "Pauline Torphy",
+        "username": "Keagan_K",
+        "password": "iAW7qvU5ePJzqjU",
+        "email": "Antonietta61@hotmail.com",
+        "role": "Member",
+        "profilePic": "https://picsum.photos/seed/dM1bUHY/500/500",
+        "savedPosts": [],
+        "__v": 0,
+        "createdAt": "2024-12-03T15:47:39.868Z",
+        "updatedAt": "2024-12-03T15:47:39.868Z"
+    },
+    "Posts": [
+        {
+            "id": "674f281c4049311283ecde22",
+            "image": "https://loremflickr.com/500/500?lock=5848338517748551"
+        },
+        {
+            "id": "674f281c4049311283ecde33",
+            "image": "https://loremflickr.com/500/500?lock=7445529010233412"
+        }
+    ],
+    "followers": 5,
+    "following": 4
+}
+```
+
+---
+
+### **GET /users/data/:id**
+
+- **Description**: Retrieves details of a single user by ID.
+
+- **Route**: `/users/data/:id`
+
+- **Method**: `GET`
 
 - **Path Parameters**:
 
@@ -155,20 +208,39 @@
 - **Example Request**:
 
 ```
-  GET /users/67446d8e8c9edc19b0f4b1df
-  Authorization: Bearer <token>
+  GET /users/data/67446d8e8c9edc19b0f4b1df
 ```
 
 - **Example Response**:
 
 ```
-  {
-    "_id": "67446d8e8c9edc19b0f4b1df",
-    "displayName": "John Doe",
-    "username": "john_doe",
-    "email": "john.doe@example.com",
-    "__v": 0
-  }
+{
+    "user": {
+        "_id": "674f281b4049311283ecde14",
+        "displayName": "Pauline Torphy",
+        "username": "Keagan_K",
+        "password": "iAW7qvU5ePJzqjU",
+        "email": "Antonietta61@hotmail.com",
+        "role": "Member",
+        "profilePic": "https://picsum.photos/seed/dM1bUHY/500/500",
+        "savedPosts": [],
+        "__v": 0,
+        "createdAt": "2024-12-03T15:47:39.868Z",
+        "updatedAt": "2024-12-03T15:47:39.868Z"
+    },
+    "Posts": [
+        {
+            "id": "674f281c4049311283ecde22",
+            "image": "https://loremflickr.com/500/500?lock=5848338517748551"
+        },
+        {
+            "id": "674f281c4049311283ecde33",
+            "image": "https://loremflickr.com/500/500?lock=7445529010233412"
+        }
+    ],
+    "followers": 5,
+    "following": 4
+}
 ```
 
 ---
