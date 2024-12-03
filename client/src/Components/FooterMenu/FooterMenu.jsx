@@ -35,6 +35,12 @@ const FooterBar = () => {
     if (newValue === "Profile") {
       navigate("/profile");
     }
+    if (newValue === "Search"){
+      navigate("/search");
+    }
+    if (newValue === "Home"){
+      navigate("/posts-feed");
+    }
   };
 
   return (
