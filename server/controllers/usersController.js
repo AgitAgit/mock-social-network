@@ -4,21 +4,6 @@ const bcrypt = require("bcrypt");
 const User = require("../models/userModel.js");
 
 const secretKey = "secretKey";
-//path params:none
-//query params:none
-//example request body:none
-/*example response:{
-    "users": [*users data*]
-}*/
-
-const getAllUsers = async function (req, res, next) {
-  try {
-    const users = await User.find();
-    res.json({ users });
-  } catch (error) {
-    next(error);
-  }
-};
 
 async function addUser(req, res, next) {
   try {
@@ -83,6 +68,25 @@ async function login(req, res, next) {
   }
 }
 
+const getAllUsers = async function (req, res, next) {
+  try {
+    const users = await User.find();
+    res.json({ users });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getUserById = async function (req, res, next) {
+  try {
+    const user = await User.findById(req.params.id);
+    res.json(user);
+    next();
+  } catch (error) {
+    next(error);
+  }
+};
+
 async function catchAll(err, req, res, next) {
   res.status(500).send("something went wrong in the server...");
 }
@@ -120,16 +124,6 @@ email:testy@gmail.com
         }
     ]
 } */
-
-// export const getUserById = async function (req, res, next) {
-//   try {
-//     const user = await User.findById(req.params.id);
-//     res.json(user);
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 
 // //expects a body that looks like { user: {name: "...", email: "...", password: "..."} }
 // export async function addUser(req, res, next) {

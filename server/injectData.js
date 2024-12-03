@@ -7,7 +7,7 @@ const injectData = async () => {
   const users = await User.insertMany(
     await Promise.all(
       Array.from({ length: 10 }).map(async () => ({
-        displayName: faker.person.fullName(),
+        displayName: faker.person.fullName().substring(0, 8),
         email: faker.internet.email(),
         username: faker.internet.username(),
         password: faker.internet.password(6),
@@ -32,7 +32,7 @@ const injectData = async () => {
 
   const comments = await Comment.insertMany(
     Array.from({ length: 60 }).map(() => ({
-      commentContent: faker.lorem.sentences(2),
+      commentContent: faker.lorem.words(2),
       parentPostId: faker.helpers.arrayElement(posts)._id,
       authorId: faker.helpers.arrayElement(users)._id,
     }))
