@@ -11,19 +11,24 @@ const injectData = async () => {
         email: faker.internet.email(),
         username: faker.internet.username(),
         password: faker.internet.password(6),
-        profileImg: faker.image.avatar(),
+        imageUrl: faker.image.avatar(),
         role: faker.helpers.arrayElement(["Member"]),
       }))
     )
   );
 
   const posts = await Post.insertMany(
-    Array.from({ length: 20 }).map(() => ({
-      title: faker.lorem.sentence(),
-      content: faker.lorem.sentences(3),
-      authorId: faker.helpers.arrayElement(users)._id,
-      commentIds: [],
-    }))
+    Array.from({ length: 20 }).map(() => {
+      const shouldAddImage = Math.random() > 0.3;
+      console.log(shouldAddImage);
+      return {
+        title: faker.lorem.sentence(),
+        postImageUrl: shouldAddImage && faker.image.url(),
+        content: faker.lorem.sentences(3),
+        authorId: faker.helpers.arrayElement(users)._id,
+        commentIds: [],
+      };
+    })
   );
 
   const comments = await Comment.insertMany(
@@ -46,4 +51,14 @@ const injectData = async () => {
   );
 };
 
-module.exports = injectData;
+const removeData = async () => {
+  try {
+    await User.deleteMany({});
+    await Post.deleteMany({});
+    await Comment.deleteMany({});
+  } catch (error) {
+    console.error("Error deleting documents:", error);
+  }
+};
+
+module.exports = { injectData, removeData };

@@ -32,11 +32,14 @@ async function getAllPosts(req, res, next) {
    */
   try {
     const posts = await Post.find()
-    .populate({path:"commentIds", populate: {path:"authorId", select:"displayName username"}})
-    .populate("authorId", "displayName username");
-    
-      // .populate("authorDisplayName", "displayName")
-      // .populate("commentDetails", "displayName");
+      .populate({
+        path: "commentIds",
+        populate: { path: "authorId", select: "displayName username imageUrl" },
+      })
+      .populate("authorId", "displayName username imageUrl");
+
+    // .populate("authorDisplayName", "displayName")
+    // .populate("commentDetails", "displayName");
 
     res.json(posts);
 

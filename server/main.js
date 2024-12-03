@@ -3,7 +3,7 @@ const { json } = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const injectData = require("./injectData.js");
+const { injectData, removeData } = require("./injectData.js");
 const User = require("./models/userModel.js");
 
 const usersRouter = require("./routes/usersRoute.js");
@@ -34,6 +34,8 @@ app.use(json());
 
 //app.use('/', logger);
 
+removeData();
+
 async function checkCollectionEmpty() {
   try {
     const isCollectionEmpty = (await User.countDocuments()) === 0;
@@ -49,6 +51,7 @@ async function checkCollectionEmpty() {
   }
 }
 checkCollectionEmpty();
+
 app.use("/api/users", usersRouter);
 app.use("/api/posts", postsRouter);
 app.use("/api/comments", commentsRouter);

@@ -10,6 +10,10 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    postImgUrl: {
+      type: String,
+      required: false,
+    },
     authorId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -27,32 +31,5 @@ const postSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-// Virtual for author display name
-postSchema.virtual("authorDisplayName", {
-  ref: "User", // The model to use
-  localField: "authorId", // Field in Post
-  foreignField: "_id", // Field in User
-  justOne: true, // Return a single user
-});
-
-// Virtual for comment authors' display names
-postSchema.virtual("commentDetails", {
-  ref: "Comment",
-  localField: "commentIds",
-  foreignField: "_id",
-  justOne: false,
-  options: {
-    select: "content",
-    populate: {
-      path: "authorId",
-      select: "displayName",
-    },
-  },
-});
-
-// Ensure virtuals are included in JSON and object outputs
-postSchema.set("toObject", { virtuals: true });
-postSchema.set("toJSON", { virtuals: true });
 
 module.exports = mongoose.model("Post", postSchema);
