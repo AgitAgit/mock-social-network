@@ -21,7 +21,7 @@ const injectData = async () => {
     Array.from({ length: 20 }).map(() => ({
       title: faker.lorem.sentence(),
       postImageUrl: faker.image.url({ width: 500, height: 500 }),
-      content: faker.lorem.sentences(3),
+      content: faker.lorem.sentences(1),
       authorId: faker.helpers.arrayElement(users)._id,
       likedBy: faker.helpers
         .shuffle(users)
@@ -32,7 +32,7 @@ const injectData = async () => {
 
   const comments = await Comment.insertMany(
     Array.from({ length: 60 }).map(() => ({
-      commentContent: faker.lorem.sentences(2),
+      commentContent: faker.lorem.words(2),
       parentPostId: faker.helpers.arrayElement(posts)._id,
       authorId: faker.helpers.arrayElement(users)._id,
     }))
