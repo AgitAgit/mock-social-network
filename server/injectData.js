@@ -11,7 +11,7 @@ const injectData = async () => {
         email: faker.internet.email(),
         username: faker.internet.username(),
         password: faker.internet.password(6),
-        imageUrl: faker.image.avatar(),
+        profilePic: faker.image.avatar(),
         role: faker.helpers.arrayElement(["Member"]),
       }))
     )

@@ -18,11 +18,9 @@ const app = express();
 
 const PORT = 3000;
 
-mongoose
-  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("mongo instance connected...");
-  });
+mongoose.connect(uri).then(() => {
+  console.log("mongo instance connected...");
+});
 
 app.use(
   cors({
@@ -31,8 +29,6 @@ app.use(
   })
 );
 app.use(json());
-
-//app.use('/', logger);
 
 // removeData();
 
