@@ -48,6 +48,7 @@ import { MdOutlineVerified } from "react-icons/md";
 import { VscGraph } from "react-icons/vsc";
 
 const lineStyle = "border-[0.001em] border-gray-400";
+const h3Style = "p-[0.5em] text-gray-500";
 
 const AccountOptions = () => {
   const navigate = useNavigate();
@@ -61,9 +62,9 @@ const AccountOptions = () => {
                 position: "absolute",
                 top: "30px",
                 left: "24px",
-                color: "white",
                 fontSize: "24px",
               }}
+              className="hover:rounded-[0.1em] hover:bg-white hover:tracking-[0.05em] hover:text-[var(--bgTheme)]"
             />
           </button>
           <h1 className="mb-[0.5em] w-full text-center text-white">
@@ -77,11 +78,11 @@ const AccountOptions = () => {
       </div>
       <div className="YourAccountContainer flex items-center justify-between">
         <div>
-          <h3 className="p-[0.5em] text-gray-500">Your account</h3>
+          <h3 className={h3Style}>Your account</h3>
         </div>
         <div className="flex items-center gap-[0.5em]">
           <GiFlipFlops />
-          <p className="p-[0.5em] text-gray-500">Babagram</p>
+          <p className={h3Style}>Babagram</p>
         </div>
       </div>
       <Link to="/account-center">
@@ -101,7 +102,7 @@ const AccountOptions = () => {
               </div>
             </div>
             <div>
-              <p className="p-[0.5em] text-gray-500">
+              <p className={h3Style}>
                 Password, security, personal details, ad preferences
               </p>
             </div>
@@ -118,7 +119,7 @@ const AccountOptions = () => {
         </p>
       </div>
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">How you use babagram</h2>
+      <h2 className={h3Style}>How you use babagram</h2>
       <OptionTab
         icon={<MdOutlineBookmarkBorder />}
         arrowIcon={<ArrowForwardIcon />}
@@ -145,7 +146,7 @@ const AccountOptions = () => {
         title="Time Management"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">Who can see your content</h2>
+      <h2 className={h3Style}>Who can see your content</h2>
       <OptionTab
         icon={<IoLockClosedOutline />}
         arrowIcon={<ArrowForwardIcon />}
@@ -172,9 +173,7 @@ const AccountOptions = () => {
         title="Hide Story and Live"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">
-        How others can interact with you
-      </h2>
+      <h2 className={h3Style}>How others can interact with you</h2>
       <OptionTab
         icon={<BiSolidMessageRoundedDots />}
         arrowIcon={<ArrowForwardIcon />}
@@ -216,7 +215,7 @@ const AccountOptions = () => {
         title="Follow and Invite Friends"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">What you see</h2>
+      <h2 className={h3Style}>What you see</h2>
       <OptionTab
         icon={<FaRegStar />}
         arrowIcon={<ArrowForwardIcon />}
@@ -238,7 +237,7 @@ const AccountOptions = () => {
         title="Like and Share Counts"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">Your app and media</h2>
+      <h2 className={h3Style}>Your app and media</h2>
       <OptionTab
         icon={<CiMobile3 />}
         arrowIcon={<ArrowForwardIcon />}
@@ -270,14 +269,14 @@ const AccountOptions = () => {
         title="App website permissions"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">For families</h2>
+      <h2 className={h3Style}>For families</h2>
       <OptionTab
         icon={<TbHomeShield />}
         arrowIcon={<ArrowForwardIcon />}
         title="App website permissions"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">For professionals</h2>
+      <h2 className={h3Style}>For professionals</h2>
       <OptionTab
         icon={<VscGraph />}
         arrowIcon={<ArrowForwardIcon />}
@@ -289,7 +288,7 @@ const AccountOptions = () => {
         title="Babagram Verified"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">Your orders and fundraisers</h2>
+      <h2 className={h3Style}>Your orders and fundraisers</h2>
       <OptionTab
         icon={<TbHomeShield />}
         arrowIcon={<ArrowForwardIcon />}
@@ -301,7 +300,7 @@ const AccountOptions = () => {
         title="Orders and payments"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">More info and support</h2>
+      <h2 className={h3Style}>More info and support</h2>
       <OptionTab
         icon={<MdSupport />}
         arrowIcon={<ArrowForwardIcon />}
@@ -323,7 +322,7 @@ const AccountOptions = () => {
         title="About"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">Also from Babagram</h2>
+      <h2 className={h3Style}>Also from Babagram</h2>
       <OptionTab
         icon={<FaWhatsapp />}
         arrowIcon={<ArrowForwardIcon />}
@@ -340,7 +339,7 @@ const AccountOptions = () => {
         title="Facebook"
       />
       <hr className={lineStyle} />
-      <h2 className="p-[0.5em] text-gray-500">Login</h2>
+      <h2 className={h3Style}>Login</h2>
       <OptionTab arrowIcon={<ArrowForwardIcon />} title="Add account" />
       <OptionTab
         arrowIcon={<ArrowForwardIcon />}
