@@ -6,8 +6,8 @@ import { IoSearchSharp } from "react-icons/io5";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { GrFavorite } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const iconConfiguration = {
   color: "white",
@@ -20,11 +20,15 @@ const iconConfiguration = {
 };
 
 const FooterBar = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState("Home");
   const [open, setOpen] = useState(false);
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
+    if (newValue === "Profile") {
+      navigate("/profile");
+    }
   };
 
   return (

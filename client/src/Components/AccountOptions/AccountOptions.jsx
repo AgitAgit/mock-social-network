@@ -122,31 +122,26 @@ const AccountOptions = () => {
       <OptionTab
         icon={<MdOutlineBookmarkBorder />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Saved"
       />
       <OptionTab
         icon={<MdOutlineArchive />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Archive"
       />
       <OptionTab
         icon={<LuActivitySquare />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Your Activity"
       />
       <OptionTab
         icon={<BiBell />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Notifications"
       />
       <OptionTab
         icon={<IoTimeOutline />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Time Management"
       />
       <hr className={lineStyle} />
@@ -154,31 +149,26 @@ const AccountOptions = () => {
       <OptionTab
         icon={<IoLockClosedOutline />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Account Privacy"
       />
       <OptionTab
         icon={<MdPeopleAlt />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Close Friends"
       />
       <OptionTab
         icon={<MdCompareArrows />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Crossposting"
       />
       <OptionTab
         icon={<MdBlock />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Blocked"
       />
       <OptionTab
         icon={<MdOutlineVisibilityOff />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Hide Story and Live"
       />
       <hr className={lineStyle} />
@@ -188,49 +178,41 @@ const AccountOptions = () => {
       <OptionTab
         icon={<BiSolidMessageRoundedDots />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Message and story replies"
       />
       <OptionTab
         icon={<CiAt />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Tags and Mentions"
       />
       <OptionTab
         icon={<FaRegComment />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Comments"
       />
       <OptionTab
         icon={<TiArrowSync />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Sharing"
       />
       <OptionTab
         icon={<MdOutlineLock />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Restricted"
       />
       <OptionTab
         icon={<MdOutlineAccessTime />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Limit Interactions"
       />
       <OptionTab
         icon={<AiOutlineFontSize />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Hidden Words"
       />
       <OptionTab
         icon={<MdPersonAdd />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Follow and Invite Friends"
       />
       <hr className={lineStyle} />
@@ -238,25 +220,21 @@ const AccountOptions = () => {
       <OptionTab
         icon={<FaRegStar />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Favorites"
       />
       <OptionTab
         icon={<BsBellSlash />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Muted Accounts"
       />
       <OptionTab
         icon={<TbPhotoVideo />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Suggested Content"
       />
       <OptionTab
         icon={<IoHeartDislikeOutline />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Like and Share Counts"
       />
       <hr className={lineStyle} />
@@ -264,37 +242,31 @@ const AccountOptions = () => {
       <OptionTab
         icon={<CiMobile3 />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Device permissions"
       />
       <OptionTab
         icon={<HiDownload />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Archiving and downloading"
       />
       <OptionTab
         icon={<LiaUniversalAccessSolid />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Accessibility and translations"
       />
       <OptionTab
         icon={<LiaLanguageSolid />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Language"
       />
       <OptionTab
         icon={<BsFillFileEarmarkBarGraphFill />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Media quality"
       />
       <OptionTab
         icon={<MdOutlineDevices />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="App website permissions"
       />
       <hr className={lineStyle} />
@@ -302,7 +274,6 @@ const AccountOptions = () => {
       <OptionTab
         icon={<TbHomeShield />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="App website permissions"
       />
       <hr className={lineStyle} />
@@ -310,12 +281,10 @@ const AccountOptions = () => {
       <OptionTab
         icon={<VscGraph />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Account type and tools"
       />
       <OptionTab
         icon={<MdOutlineVerified />}
-        navigateRoute={"/"}
         arrowIcon={<ArrowForwardIcon />}
         title="Babagram Verified"
       />
@@ -324,13 +293,11 @@ const AccountOptions = () => {
       <OptionTab
         icon={<TbHomeShield />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Fundraisers"
       />
       <OptionTab
         icon={<AiOutlineInbox />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Orders and payments"
       />
       <hr className={lineStyle} />
@@ -338,25 +305,21 @@ const AccountOptions = () => {
       <OptionTab
         icon={<MdSupport />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Help"
       />
       <OptionTab
         icon={<MdOutlinePrivacyTip />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Privacy Center"
       />
       <OptionTab
         icon={<IoPersonOutline />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Account Status"
       />
       <OptionTab
         icon={<MdInfoOutline />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="About"
       />
       <hr className={lineStyle} />
@@ -364,28 +327,21 @@ const AccountOptions = () => {
       <OptionTab
         icon={<FaWhatsapp />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="WhatsApp"
       />
       <OptionTab
         icon={<FaThreads />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Threads"
       />
       <OptionTab
         icon={<RiFacebookCircleLine />}
         arrowIcon={<ArrowForwardIcon />}
-        navigateRoute={"/"}
         title="Facebook"
       />
       <hr className={lineStyle} />
       <h2 className="p-[0.5em] text-gray-500">Login</h2>
-      <OptionTab
-        arrowIcon={<ArrowForwardIcon />}
-        title="Add account"
-        navigateRoute={"/"}
-      />
+      <OptionTab arrowIcon={<ArrowForwardIcon />} title="Add account" />
       <OptionTab
         arrowIcon={<ArrowForwardIcon />}
         title="Log out"
