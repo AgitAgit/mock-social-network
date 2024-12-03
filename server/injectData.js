@@ -20,7 +20,7 @@ const injectData = async () => {
   const posts = await Post.insertMany(
     Array.from({ length: 20 }).map(() => ({
       title: faker.lorem.sentence(),
-      postImageUrl: faker.image.url(),
+      postImageUrl: faker.image.url({ width: 500, height: 500 }),
       content: faker.lorem.sentences(3),
       authorId: faker.helpers.arrayElement(users)._id,
       commentIds: [],
