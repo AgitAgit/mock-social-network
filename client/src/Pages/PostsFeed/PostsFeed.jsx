@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import FooterBar from "../Footbar/Footbar.jsx";
-import MenuContainer from "../Menubar/Menubar.jsx";
-import Post from "../Post/Post.jsx";
+import FooterBar from "../../Components/FooterMenu/FooterMenu.jsx";
+import MenuContainer from "../../Components/Menubar/Menubar.jsx";
+import Post from "../../Components/Post/Post.jsx";
 
-const AllPosts = () => {
+const PostsFeed = () => {
   const [postsData, setPostsData] = useState([]);
 
   const fetchPosts = async () => {
@@ -29,4 +29,4 @@ const AllPosts = () => {
   );
 };
 
-export default AllPosts;
+export default PostsFeed;

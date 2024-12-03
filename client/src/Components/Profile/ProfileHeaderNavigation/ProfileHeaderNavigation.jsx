@@ -19,7 +19,7 @@ const styleIcon = {
 const ProfileHeaderNavigation = () => {
   return (
     <div className="ProfileNavigation flex flex-row justify-between p-[1em]">
-      <Link to="/all-posts">
+      <Link to="/posts-feed">
         <button>
           <ArrowForwardIcon sx={styleIcon} />
         </button>

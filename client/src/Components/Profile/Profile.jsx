@@ -1,10 +1,10 @@
-import EditProfile from "../EditProfile/EditProfile";
-import ProfileActionsBtns from "../ProfileActionsBtns/ProfileActionsBtns";
-import ProfileGallerySection from "../ProfileGallerySection/ProfileGallerySection";
-import ProfileHeaderNavigation from "../ProfileHeaderNavigation/ProfileHeaderNavigation";
-import ProfileImageDisplay from "../ProfileImageDisplay/ProfileImageDisplay";
-import ProfileStatsSection from "../ProfileStatsSection/ProfileStatsSection";
-import ProfileUserDetails from "../ProfileUserDetails/ProfileUserDetails";
+import EditProfile from "./EditProfile/EditProfile";
+import ProfileActionsBtns from "./ProfileActionsBtns/ProfileActionsBtns";
+import ProfileGallerySection from "./ProfileGallerySection/ProfileGallerySection";
+import ProfileHeaderNavigation from "./ProfileHeaderNavigation/ProfileHeaderNavigation";
+import ProfileImageDisplay from "./ProfileImageDisplay/ProfileImageDisplay";
+import ProfileStatsSection from "./ProfileStatsSection/ProfileStatsSection";
+import ProfileUserDetails from "./ProfileUserDetails/ProfileUserDetails";
 
 const Profile = () => {
   return (

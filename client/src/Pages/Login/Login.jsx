@@ -26,7 +26,7 @@ const SignIn = () => {
 
       if (resLoginData) {
         console.log(resLoginData);
-        navigate("/all-posts"); // Navigate after successful login
+        navigate("/posts-feed"); // Navigate after successful login
       }
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
@@ -79,7 +79,7 @@ const SignIn = () => {
                 Recovery Password
               </p>
             </Link>
-            <SubmitBtn btnPlaceholder="Sign-In" />
+            <SubmitBtn btnPlaceholder="login" />
           </form>
         </div>
 

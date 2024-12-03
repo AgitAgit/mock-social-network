@@ -1,10 +1,10 @@
 import timeSince from "../../utils/timeSince.js";
 import Comment from "../Comment/Comment.jsx";
-import PostHeader from "../PostHeader/PostHeader.jsx";
-import PostImage from "../PostImage/PostImage.jsx";
-import PostActions from "../PostActions/PostActions.jsx";
-import PostEngagements from "../PostEngagements/PostEngagements.jsx";
-import UserPostContent from "../UserPostContent/UserPostContent.jsx";
+import PostHeader from "./PostHeader/PostHeader.jsx";
+import PostImage from "./PostImage/PostImage.jsx";
+import PostActions from "./PostActions/PostActions.jsx";
+import PostEngagements from "./PostEngagements/PostEngagements.jsx";
+import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 
 const hoverColorIcon = {
   "&:hover": {

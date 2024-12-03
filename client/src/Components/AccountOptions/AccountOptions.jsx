@@ -19,8 +19,8 @@ import { IoLockClosedOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { GiFlipFlops } from "react-icons/gi";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import AccountSettingsSearchBar from "../AccountSettingsSearchBar/AccountSettingsSearchBar";
-import OptionTab from "./OptionTab";
+import AccountSettingsSearchBar from "../Searchbar/Searchbar";
+import OptionTab from "./OptionTabBtn/OptionTab";
 import { BiSolidMessageRoundedDots } from "react-icons/bi";
 import { CiAt } from "react-icons/ci";
 import { FaRegComment } from "react-icons/fa";
@@ -346,7 +346,7 @@ const AccountOptions = () => {
       <OptionTab
         arrowIcon={<ArrowForwardIcon />}
         title="Log out"
-        navigateRoute={"/sign-in"}
+        navigateRoute={"/login"}
       />
     </div>
   );
