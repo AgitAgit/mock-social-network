@@ -30,7 +30,7 @@ app.use(
 );
 app.use(json());
 
-// removeData();
+removeData();
 
 async function checkCollectionEmpty() {
   try {
