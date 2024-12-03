@@ -36,8 +36,8 @@ const FooterBar = () => {
     <BottomNavigation
       sx={{
         width: "100%",
-        background: "#ffffff05",
-        position: "absolute",
+        background: "black",
+        position: "fixed",
         bottom: "0",
         borderRadius: "100em",
         padding: "0.3em",

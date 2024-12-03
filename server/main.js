@@ -34,7 +34,7 @@ app.use(json());
 
 //app.use('/', logger);
 
-removeData();
+// removeData();
 
 async function checkCollectionEmpty() {
   try {
