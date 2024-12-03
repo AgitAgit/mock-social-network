@@ -9,7 +9,7 @@ import ProfileUserDetails from "../ProfileUserDetails/ProfileUserDetails";
 const Profile = () => {
   return (
     <div className="p-[0.5em] text-white">
-      <div className="rounded-[2em] bg-profileSectionTheme font-CaustenFont">
+      <div className="rounded-[1em] bg-profileSectionTheme font-CaustenFont">
         <ProfileHeaderNavigation />
         <div className="flex w-full flex-row items-center justify-center">
           <div className="flex w-full flex-col items-center">
