@@ -16,8 +16,6 @@ const hoverColorIcon = {
 };
 
 const Comment = ({ comment }) => {
-  console.log(comment);
-
   const userCommentProfileImg = comment.authorId.profilePic;
   const commentUsername = comment.authorId.username;
   const userContent = comment.commentContent;

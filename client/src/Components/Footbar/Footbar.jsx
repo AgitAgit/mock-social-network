@@ -10,13 +10,18 @@ import { useNavigate } from "react-router-dom";
 import { BiSolidVideos } from "react-icons/bi";
 
 const iconConfiguration = {
+  borderRadius: "0.5em",
   color: "white",
-  fontSize: "1.4em",
+  fontSize: "1.5em",
   minWidth: "auto",
+  padding: "0.3em",
   "&.Mui-selected": {
     color: "white",
     background: "#1D2A46",
-    borderRadius: "100em",
+  },
+  "&:hover": {
+    background: "#1D2A46",
+    borderRadius: "0.5em",
   },
 };
 
