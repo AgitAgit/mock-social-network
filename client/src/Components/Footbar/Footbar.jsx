@@ -20,7 +20,7 @@ const iconConfiguration = {
 };
 
 const FooterBar = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("Home");
   const [open, setOpen] = useState(false);
 
   const handleChange = (e, newValue) => {

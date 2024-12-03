@@ -10,8 +10,12 @@ import MenuContainer from "../Menubar/Menubar.jsx";
 
 const hoverColorIcon = {
   "&:hover": {
-    color: "#1D2A46",
+    color: "var(--bgTheme)",
+    background: "white",
   },
+  padding: "0.05em",
+  borderRadius: "0.1em",
+  color: "white",
 };
 
 const AllPosts = () => {
@@ -70,34 +74,29 @@ const AllPosts = () => {
                 <div>{post.content}</div>
               </div>
               <div className="CommentsContainer bg-slate-500 p-[0.5em]">
-                {post.commentIds.map(
-                  (comment) => (
-                    console.log(comment),
-                    (
-                      <div key={comment._id}>
-                        <div className="mb-[1em] flex flex-row items-center justify-start gap-[0.5em]">
-                          <div>
-                            <img
-                              src={comment.authorId.imageUrl}
-                              alt=""
-                              className=""
-                            />
-                          </div>
-                          <div className={comment.authorId.id}>
-                            {comment.authorId.username}
-                          </div>
-                          <div>{comment.commentContent}</div>
-                          <div className="text-gray-500">
-                            {timeSince(comment.createdAt)}
-                          </div>
-                          <div className="cursor-pointer">
-                            <FavoriteBorderIcon sx={hoverColorIcon} />
-                          </div>
-                        </div>
+                {post.commentIds.map((comment) => (
+                  <div key={comment._id}>
+                    <div className="mb-[1em] flex flex-row items-center justify-start gap-[0.5em]">
+                      <div>
+                        <img
+                          src={comment.authorId.imageUrl}
+                          alt=""
+                          className=""
+                        />
                       </div>
-                    )
-                  ),
-                )}
+                      <div className={comment.authorId.id}>
+                        {comment.authorId.username}
+                      </div>
+                      <div>{comment.commentContent}</div>
+                      <div className="text-gray-500">
+                        {timeSince(comment.createdAt)}
+                      </div>
+                      <div className="cursor-pointer">
+                        <FavoriteBorderIcon sx={hoverColorIcon} />
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
