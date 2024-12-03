@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 const iconConfiguration = {
   color: "white",
   fontSize: "1.4em",
+  minWidth: "auto",
   "&.Mui-selected": {
     color: "white",
     background: "#1D2A46",

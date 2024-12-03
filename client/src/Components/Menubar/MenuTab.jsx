@@ -3,10 +3,13 @@ import { IoMailUnreadOutline } from "react-icons/io5";
 import React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import { useState } from "react";
 
 const iconConfiguration = {
   color: "white",
-
+  padding: "0.5em",
+  minWidth: "auto",
+  maxWidth: "auto",
   "&.Mui-selected": {
     color: "white",
     background: "#1D2A46",
@@ -18,7 +21,7 @@ const iconConfiguration = {
 };
 
 const MenuTabs = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     if (value === newValue) {
       setValue(0);
