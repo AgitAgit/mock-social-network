@@ -4,6 +4,7 @@ const {
   addPost,
   getAllPosts,
   getPostById,
+  likePost,
 } = require("../controllers/postsController.js");
 const { authUser } = require("../middleware/authUser.js");
 
@@ -16,5 +17,7 @@ router.get("/", getAllPosts);
 router.post("/", addPost);
 
 router.get("/:postId", getPostById);
+
+router.post("/posts/:postId/like", likePost);
 
 module.exports = router;

@@ -7,7 +7,6 @@ const Post = require("../models/postModel.js");
 async function addPost(req, res, next) {
   try {
     const { title, content, postImageUrl } = req.body;
-    console.log(req.user);
 
     const post = new Post({
       title,
@@ -18,6 +17,28 @@ async function addPost(req, res, next) {
 
     const response = await post.save();
     res.json({ message: response });
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function likePost(req, res, next) {
+  try {
+    const { postId } = req.params;
+    const post = await Post.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    if (post.likedBy.includes(req.user.userId)) {
+      return res.status(400).json({ message: "You already liked this post" });
+    }
+
+    post.likedBy.push(req.user.userId);
+    const updatedPost = await post.save();
+
+    res.json({ message: "Post liked successfully", post: updatedPost });
   } catch (error) {
     next(error);
   }
@@ -62,4 +83,4 @@ async function getPostById(req, res, next) {
   }
 }
 
-module.exports = { addPost, getAllPosts, getPostById };
+module.exports = { addPost, getAllPosts, getPostById, likePost };
