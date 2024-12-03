@@ -6,12 +6,13 @@ const Post = require("../models/postModel.js");
 //example response: { message:<the new document generated>}
 async function addPost(req, res, next) {
   try {
-    const { title, content } = req.body;
+    const { title, content, postImageUrl } = req.body;
     console.log(req.user);
 
     const post = new Post({
       title,
       content,
+      postImageUrl,
       authorId: req.user.userId,
     });
 
@@ -34,16 +35,11 @@ async function getAllPosts(req, res, next) {
     const posts = await Post.find()
       .populate({
         path: "commentIds",
-        populate: { path: "authorId", select: "displayName username imageUrl" },
+        populate: { path: "authorId", select: "displayName imageUrl" },
       })
-      .populate("authorId", "displayName username imageUrl");
-
-    // .populate("authorDisplayName", "displayName")
-    // .populate("commentDetails", "displayName");
+      .populate("authorId", "displayName imageUrl");
 
     res.json(posts);
-
-    next();
   } catch (error) {
     next(error);
   }
@@ -61,8 +57,6 @@ async function getPostById(req, res, next) {
     await post.populate("commentIds");
 
     res.json({ post: post });
-
-    next();
   } catch (error) {
     next(error);
   }

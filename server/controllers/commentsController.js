@@ -14,7 +14,6 @@ async function getPostComments(req, res, next) {
     const comments = await Comment.find({ parentPostId: postId });
 
     res.json({ postId: postId, comments: comments });
-    next(error);
   } catch (error) {
     next(error);
   }
@@ -43,7 +42,7 @@ async function addComment(req, res, next) {
 
     const comment = new Comment({
       parentPostId,
-      commentContent:content,
+      commentContent: content,
       authorId: req.user.userId,
     });
 
@@ -55,7 +54,6 @@ async function addComment(req, res, next) {
     );
 
     res.json({ yourComment: response, parentPost: updateResult });
-    next();
   } catch (error) {
     next(error);
   }
