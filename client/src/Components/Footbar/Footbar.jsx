@@ -8,10 +8,8 @@ import { GrFavorite } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Dialog from "../Dialog/Dialog";
 
 const iconConfiguration = {
-  width: "100%",
   color: "white",
   fontSize: "1.4em",
   "&.Mui-selected": {
@@ -22,14 +20,11 @@ const iconConfiguration = {
 };
 
 const FooterBar = () => {
-  const [value, setValue] = useState("Add Post");
+  const [value, setValue] = useState("");
   const [open, setOpen] = useState(false);
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
-    if (newValue === "Add Post") {
-      setOpen(true);
-    }
   };
 
   return (
@@ -39,14 +34,12 @@ const FooterBar = () => {
         background: "black",
         position: "fixed",
         bottom: "0",
-        borderRadius: "100em",
         padding: "0.3em",
       }}
       showLabel={true}
       value={value}
       onChange={handleChange}
     >
-      <Dialog open={open} setOpen={setOpen} />
       <BottomNavigationAction
         value="Home"
         showLabel={true}

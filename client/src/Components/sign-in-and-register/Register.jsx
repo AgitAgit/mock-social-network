@@ -1,9 +1,6 @@
-//Import
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-// Import Components
 import SubmitBtn from "./SubmitBtn.jsx";
 
 const inputStyle =

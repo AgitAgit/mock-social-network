@@ -1,7 +1,5 @@
-//Import
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";

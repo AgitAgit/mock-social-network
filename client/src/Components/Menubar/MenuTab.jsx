@@ -1,4 +1,3 @@
-// Icons Import
 import { FaRegBell } from "react-icons/fa";
 import { IoMailUnreadOutline } from "react-icons/io5";
 import React from "react";

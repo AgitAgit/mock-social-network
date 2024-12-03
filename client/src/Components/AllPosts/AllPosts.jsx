@@ -1,7 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PlaceholderProfile from "../../../public/images/profile-image-holder.svg";
-import postPlaceHolder from "../../../public/images/post-placeholder.svg";
 import timeSince from "../../utils/timeSince.js";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
