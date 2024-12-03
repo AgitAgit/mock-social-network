@@ -2,6 +2,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const User = require("../models/userModel.js");
+const Post = require("../models/postModel.js");
+const Follower = require("../models/followerModel.js");
 
 const secretKey = "secretKey";
 
@@ -48,7 +50,7 @@ async function login(req, res, next) {
           userId: storedUser._id,
           role: storedUser.role || "user",
         },
-      }, //this is the payload
+      },
       secretKey,
       { expiresIn: "1h" }
     );
@@ -68,108 +70,82 @@ async function login(req, res, next) {
   }
 }
 
-const getAllUsers = async function (req, res, next) {
+async function getAllUsers(req, res, next) {
   try {
     const users = await User.find();
     res.json({ users });
   } catch (error) {
     next(error);
   }
-};
+}
 
-const getUserById = async function (req, res, next) {
+async function getUserData(req, res, next) {
   try {
-    const user = await User.findById(req.params.id);
-    res.json(user);
+    const user = await User.findById(req.user.userId);
+    const userPosts = await Post.find({ authorId: req.user.userId });
+    const followers = await Follower.countDocuments({
+      userId: req.user.userId,
+    });
+    const following = await Follower.countDocuments({
+      followerId: req.user.userId,
+    });
+    const userPostData = userPosts.map((post) => ({
+      id: post._id,
+      image: post.postImageUrl,
+    }));
+    res.json({ user, Posts: userPostData, followers, following });
   } catch (error) {
     next(error);
   }
-};
+}
+
+async function getSpecificUserData(req, res, next) {
+  try {
+    const user = await User.findById(req.params.id);
+    console.log(user);
+    const userPosts = await Post.find({ authorId: req.params.id });
+    const followers = await Follower.countDocuments({
+      userId: req.params.id,
+    });
+    const following = await Follower.countDocuments({
+      followerId: req.params.id,
+    });
+    const userPostData = userPosts.map((post) => ({
+      id: post._id,
+      image: post.postImageUrl,
+    }));
+    res.json({ user, Posts: userPostData, followers, following });
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function followUser(req, res, next) {
+  try {
+    const follower = new Follower({
+      userId: req.user.userId,
+      followerId: req.params.id,
+    });
+    const newFollower = await follower.save();
+    res.status(201).json({ mongoMessage: newFollower });
+  } catch (error) {
+    next(error);
+  }
+}
 
 async function catchAll(err, req, res, next) {
   res.status(500).send("something went wrong in the server...");
 }
 
-module.exports = { addUser, getAllUsers, getUserById, login, catchAll };
-
-//path params:none
-//path params:none
-//query params:none
-/*example request body:{
-displayName:testy,
-email:testy@gmail.com
-}*/
-/*example response:{
-    "mongoMessage": {
-        "displayName": "testy",
-        "email": "testy@gmail.com",
-        "_id": "67446d8e8c9edc19b0f4b1df",
-        "__v": 0
-    }
-}*/
-
-//query params:none
-/* example request body:{
-email:testy@gmail.com
-} */
-/* example response:{
-    "message": "Logged in successfully!",
-    "userDetails": [
-        {
-            "_id": "67446d8e8c9edc19b0f4b1df",
-            "displayName": "testy",
-            "email": "testy@gmail.com",
-            "__v": 0
-        }
-    ]
-} */
-
-// //expects a body that looks like { user: {name: "...", email: "...", password: "..."} }
-// export async function addUser(req, res, next) {
-//   try {
-//     console.log(req.body);
-//     const data = req.body.user;
-//     console.log(data);
-
-//     const hashedPass = await bcrypt.hash(data.password, 10);
-//     const user = new User({
-//       username: data.username,
-//       email: data.email,
-//       password: hashedPass,
-//     });
-//     const newUser = await user.save();
-//     res.status(201).json({ mongoMessage: newUser });
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// }
-
-// export async function addUsers(req, res, next) {
-//   try {
-//     const users = req.body.users;
-//     const reply = await User.insertMany(users);
-//     res.json({ message: "successfuly added users", users });
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// }
-
-// export async function patchUser(req, res, next) {
-//   try {
-//     const newUser = req.body.user;
-//     const user = await User.findById(req.body.user._id);
-//     if (newUser.username) user.username = newUser.username;
-//     if (newUser.password) user.password = newUser.password;
-//     if (newUser.email) user.email = newUser.email;
-//     const result = await user.save();
-//     res.json({ message: "patch successful", result });
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// }
+module.exports = {
+  addUser,
+  getAllUsers,
+  getUserData,
+  login,
+  followUser,
+  getSpecificUserData,
+  catchAll,
+};
 
 // export const deleteUserById = async function (req, res, next) {
 //   try {
@@ -180,43 +156,3 @@ email:testy@gmail.com
 //     next(error);
 //   }
 // };
-
-// export const validateLogin = async function (req, res, next) {
-//   try {
-//     const user = req.body.user;
-//     if(!user.password) return res.json({ message: "password is required..."});
-//     const storedUser = await User.findOne({ username: user.username });
-//     const isValid = bcrypt.compareSync(user.password, storedUser.password);
-
-//     const token = jwt.sign(
-//       { userId: storedUser._id, role:storedUser.role },//this is the payload
-//       secretKey,
-//       { expiresIn: '1h' }
-//     );
-
-//     if(isValid){
-//       return res.json({ isValid, token });
-//     }
-//     else return res.json({ message:"could not generate token..." });
-
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
-// export const verifyToken = async function(req, res, next){
-//   try{
-//     const token = req.headers["authorization"];
-//     if(!token) return res.status(403).send("token is required...");
-//     jwt.verify(token, secretKey, (err, decoded) => {
-//       if(err) return res.status(403).send("Invalid token");
-//       req.userId = decoded.userId;
-//       req.userRole = decoded.role;
-//       console.log("from usersController.verifyToken:\nThe users id is:",req.userId,"The user's role is:",req.userRole);
-//       console.log(decoded);
-//       next();
-//     })
-//   } catch(error){
-//     next(error);
-//   }
-// }

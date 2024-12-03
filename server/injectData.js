@@ -2,6 +2,7 @@ const { faker } = require("@faker-js/faker");
 const User = require("./models/userModel");
 const Post = require("./models/postModel");
 const Comment = require("./models/commentModel");
+const Follower = require("./models/followerModel");
 
 const injectData = async () => {
   const users = await User.insertMany(
@@ -27,6 +28,13 @@ const injectData = async () => {
         .shuffle(users)
         .slice(0, Math.floor(Math.random() * users.length)), // Random number of users for 'likedBy'
       commentIds: [],
+    }))
+  );
+
+  const followers = await Follower.insertMany(
+    Array.from({ length: 50 }).map(() => ({
+      userId: faker.helpers.arrayElement(users)._id,
+      followerId: faker.helpers.arrayElement(users)._id,
     }))
   );
 
