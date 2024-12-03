@@ -4,10 +4,10 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { IoHomeOutline } from "react-icons/io5";
 import { IoSearchSharp } from "react-icons/io5";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { GrFavorite } from "react-icons/gr";
 import { FaRegUser } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BiSolidVideos } from "react-icons/bi";
 
 const iconConfiguration = {
   color: "white",
@@ -62,9 +62,9 @@ const FooterBar = () => {
         icon={<IoMdAddCircleOutline />}
       />
       <BottomNavigationAction
-        value="Favorites"
+        value="Reels"
         sx={iconConfiguration}
-        icon={<GrFavorite />}
+        icon={<BiSolidVideos />}
       />
       <BottomNavigationAction
         value="Profile"

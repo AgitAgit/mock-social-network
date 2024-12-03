@@ -6,17 +6,21 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useState } from "react";
 
 const iconConfiguration = {
+  borderRadius: "100em",
   color: "white",
-  padding: "0.5em",
+  paddingRight: "0.5em",
+  paddingLeft: "0.5em",
   minWidth: "auto",
   maxWidth: "auto",
   "&.Mui-selected": {
     color: "white",
     background: "#1D2A46",
-    borderRadius: "100em",
   },
   "& .MuiBottomNavigationAction-label": {
     fontSize: "0.7em",
+  },
+  "&:hover": {
+    background: "#1D2A46",
   },
 };
 
@@ -36,6 +40,7 @@ const MenuTabs = () => {
         height: "3em",
         background: "#ffffff0d",
         borderRadius: "100em",
+        marginRight: "1em",
       }}
       value={value}
       onChange={handleChange}
@@ -50,7 +55,7 @@ const MenuTabs = () => {
         label="Messages"
         value="Messages"
         sx={iconConfiguration}
-        icon={<IoMailUnreadOutline sx={{}} />}
+        icon={<IoMailUnreadOutline />}
       />
     </BottomNavigation>
   );
