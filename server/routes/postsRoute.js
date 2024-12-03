@@ -19,8 +19,8 @@ router.post("/", addPost);
 
 router.get("/:postId", getPostById);
 
-router.post("/posts/:postId/like", likePost);
+router.post("/:postId/like", likePost);
 
-router.post("/posts/:postId/save", savePost);
+router.post("/:postId/save", savePost);
 
 module.exports = router;

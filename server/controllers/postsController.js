@@ -1,4 +1,5 @@
 const Post = require("../models/postModel.js");
+const User = require("../models/userModel.js");
 
 //path params:none
 //query params:none
@@ -48,6 +49,7 @@ async function savePost(req, res, next) {
   try {
     const { postId } = req.params;
     const post = await Post.findById(postId);
+
     const user = await User.findById(req.user.userId);
 
     if (!post) {
@@ -61,7 +63,7 @@ async function savePost(req, res, next) {
     user.savedPosts.push(postId);
     const updatedUser = await user.save();
 
-    res.json({ message: "Post saved successfully", post: updatedUser });
+    res.json({ message: "Post saved successfully", user: updatedUser });
   } catch (error) {
     next(error);
   }
@@ -82,18 +84,7 @@ async function getAllPosts(req, res, next) {
       })
       .populate("authorId", "username profilePic");
 
-    // Fetch likes count for each post
-    const postsWithLikes = await Promise.all(
-      posts.map(async (post) => {
-        const likesCount = await Like.countDocuments({ postId: post._id });
-        return {
-          ...post.toObject(),
-          likesCount,
-        };
-      })
-    );
-
-    res.json(postsWithLikes);
+    res.json(posts);
   } catch (error) {
     next(error);
   }
