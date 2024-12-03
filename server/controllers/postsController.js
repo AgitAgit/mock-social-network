@@ -56,9 +56,9 @@ async function getAllPosts(req, res, next) {
     const posts = await Post.find()
       .populate({
         path: "commentIds",
-        populate: { path: "authorId", select: "displayName profilePic" },
+        populate: { path: "authorId", select: "username profilePic" },
       })
-      .populate("authorId", "displayName profilePic");
+      .populate("authorId", "username profilePic");
 
     res.json(posts);
   } catch (error) {
