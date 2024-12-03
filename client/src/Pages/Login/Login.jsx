@@ -11,7 +11,7 @@ const divInputStyle =
   "rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
 
 // Import Components
-import SubmitBtn from "./SubmitBtn.jsx";
+import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
 
 const SignIn = () => {
   const navigate = useNavigate();

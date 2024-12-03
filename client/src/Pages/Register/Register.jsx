@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import SubmitBtn from "./SubmitBtn.jsx";
+import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
 
 const inputStyle =
   "rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
