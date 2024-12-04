@@ -9,6 +9,7 @@ const secretKey = "secretKey";
 
 async function addUser(req, res, next) {
   try {
+    console.log("aa");
     const { displayName, username, password, email, role, profilePic } =
       req.body;
     const hashedPass = await bcrypt.hash(password, 10);
