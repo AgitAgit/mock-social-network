@@ -23,6 +23,7 @@ async function addPost(req, res, next) {
   }
 }
 
+// change to toggleLikePost?
 async function likePost(req, res, next) {
   try {
     const { postId } = req.params;
@@ -37,7 +38,7 @@ async function likePost(req, res, next) {
     }
 
     post.likedBy.push(req.user.userId);
-    const updatedPost = await post.save();
+    const updatedPost = await post.save(); // change to find and update
 
     res.json({ message: "Post liked successfully", post: updatedPost });
   } catch (error) {
@@ -45,6 +46,7 @@ async function likePost(req, res, next) {
   }
 }
 
+// change to toggleSavePost?
 async function savePost(req, res, next) {
   try {
     const { postId } = req.params;
@@ -61,7 +63,7 @@ async function savePost(req, res, next) {
     }
 
     user.savedPosts.push(postId);
-    const updatedUser = await user.save();
+    const updatedUser = await user.save(); // change to find and update
 
     res.json({ message: "Post saved successfully", user: updatedUser });
   } catch (error) {

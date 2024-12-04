@@ -1,6 +1,8 @@
 const Comment = require("../models/commentModel.js");
 const Post = require("../models/postModel.js");
 
+// add toggleLike function
+
 //path params:postId
 //query params:none
 //example request body:none

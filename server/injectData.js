@@ -59,11 +59,13 @@ const injectData = async () => {
   );
 };
 
+// recreate test user at the end of the function
 const removeData = async () => {
   try {
     await User.deleteMany({});
     await Post.deleteMany({});
     await Comment.deleteMany({});
+    await Follower.deleteMany({});
   } catch (error) {
     console.error("Error deleting documents:", error);
   }
