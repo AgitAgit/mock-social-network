@@ -5,6 +5,7 @@ import PostImage from "./PostImage/PostImage.jsx";
 import PostActions from "./PostActions/PostActions.jsx";
 import PostEngagements from "./PostEngagements/PostEngagements.jsx";
 import UserPostContent from "./UserPostContent/UserPostContent.jsx";
+import SwipeableEdgeDrawer from "../Comment/OpenCommentWindow/OpenCommentWindow.jsx";
 
 const hoverColorIcon = {
   "&:hover": {
@@ -54,6 +55,7 @@ const Post = ({ post }) => {
             <Comment key={comment._id} comment={comment} />
           ))}
         </div>
+        <SwipeableEdgeDrawer />
       </div>
     </div>
   );
