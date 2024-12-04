@@ -1,36 +1,51 @@
-import styles from './Search.module.css';
+import styles from "./Search.module.css";
 import SearchIcon from "@mui/icons-material/Search";
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import axios from "axios";
+import { useState, useEffect } from "react";
 import FooterBar from "../../Components/FooterMenu/FooterMenu.jsx";
+import AccountSettingsSearchBar from "../../Components/Searchbar/Searchbar.jsx";
+import { data } from "react-router-dom";
+import ImageBlockDisplay from "../../Components/ImageBlockDisplay/ImageBlockDisplay.jsx";
 
 const Search = () => {
   const [posts, setPosts] = useState(null);
 
-  async function fetchData(){
-    const data = await axios.get('http://localhost:3000/api/posts', { withCredentials:true });
-    console.log(data);
+  async function fetchData() {
+    try {
+      const { data } = await axios.get("http://localhost:3000/api/posts", {
+        withCredentials: true,
+      });
+      setPosts(data);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   useEffect(() => {
     fetchData();
-  },[])
+  }, []);
+
+  const handleClick = (e) => {
+    const post = e.target.closest("button");
+    console.log(post.className);
+  };
 
   return (
-    <>
-      <div className="relative mt-[0.5em] h-[2em] w-full">
-        <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 transform text-gray-500" />
-        <input
-          type="text"
-          placeholder="Search"
-          className="h-full w-full rounded-[0.2em] bg-slate-700 pl-10 text-white placeholder-gray-500 focus:outline-black"
-          />
+    <div>
+      <AccountSettingsSearchBar />
+      <div
+        onClick={handleClick}
+        className="mt-2 flex w-full flex-row flex-wrap justify-center"
+      >
+        {posts &&
+          posts.slice(0, 18).map((post) => (
+            <button key={post.post.id} className={post.post.id}>
+              <ImageBlockDisplay post={post} />
+            </button>
+          ))}
       </div>
-      <div>
-
-      </div>
-      <FooterBar />
-    </>
+    </div>
   );
 };
 
