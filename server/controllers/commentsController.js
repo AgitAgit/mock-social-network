@@ -70,7 +70,7 @@ async function toggleCommentLike(req, res, next){
     let updateResult;
     let textMessage;
     const comment = await Comment.findOne({ "_id" : commentId });//need to test this...
-    console.log(comment);
+    // console.log(comment);
     const likes = comment.likedBy.includes(userId);
     console.log("commentsController.toggleCommentLike likes says:",likes);
     if(likes){
