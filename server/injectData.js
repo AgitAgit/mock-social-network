@@ -66,6 +66,14 @@ const removeData = async () => {
     await Post.deleteMany({});
     await Comment.deleteMany({});
     await Follower.deleteMany({});
+
+    const user = new User({
+      username: "test",
+      password: 123456,
+      email: "test",
+    });
+    const testUser = await user.save();
+    console.log(`Data deleted, test user created - ${testUser}`);
   } catch (error) {
     console.error("Error deleting documents:", error);
   }
