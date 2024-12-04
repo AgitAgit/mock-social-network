@@ -7,7 +7,7 @@ const Follower = require("./models/followerModel");
 
 async function checkCollectionEmpty() {
   try {
-    await removeData();
+    // await removeData();
     const isCollectionEmpty = (await User.countDocuments()) <= 1;
     if (isCollectionEmpty) {
       console.log("The User collection is empty.Injecting data...");

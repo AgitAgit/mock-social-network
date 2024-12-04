@@ -85,10 +85,10 @@ async function getLoggedUserData(req, res, next) {
   try {
     const user = await User.findById(req.user.userId);
     const userPosts = await Post.find({ authorId: req.user.userId });
-    const followers = await Follower.countDocuments({
+    const followers = await Follower.find({
       userId: req.user.userId,
     });
-    const following = await Follower.countDocuments({
+    const following = await Follower.find({
       followerId: req.user.userId,
     });
     const userPostData = userPosts.map((post) => ({
@@ -104,20 +104,22 @@ async function getLoggedUserData(req, res, next) {
 async function getSpecificUserData(req, res, next) {
   try {
     const user = await User.findById(req.params.id);
-    console.log(user);
-    const userPosts = await Post.find({ authorId: req.params.id });
-    const followers = await Follower.countDocuments({
-      userId: req.params.id,
-    });
-    const following = await Follower.countDocuments({
-      followerId: req.params.id,
-    });
+    const userPosts = await Post.find({ authorId: req.params.id })
+      .lean()
+      .select("_id postImageUrl");
+    const followers = await Follower.find({ userId: req.params.id }).select(
+      "followerId"
+    );
+    const following = await Follower.find({ followerId: req.params.id }).select(
+      "userId"
+    );
     const userPostData = userPosts.map((post) => ({
       id: post._id,
       image: post.postImageUrl,
     }));
-    res.json({ user, Posts: userPostData, followers, following });
+    res.json({ user, Posts: userPosts, followers, following });
   } catch (error) {
+    console.log(error);
     next(error);
   }
 }
