@@ -49,7 +49,7 @@ const Post = ({ post }) => {
           postContent={postContent}
           postUsername={postUsername}
         />
-        <div className="CommentsContainer bg-slate-500 p-[0.5em]">
+        <div className="CommentsContainer w-full bg-slate-500 p-[0.5em]">
           {post.commentIds.map((comment) => (
             <Comment key={comment._id} comment={comment} />
           ))}
