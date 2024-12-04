@@ -4,7 +4,7 @@ const {
   addUser,
   login,
   catchAll,
-  getUserData,
+  getLoggedUserData,
   getSpecificUserData,
   followUser,
 } = require("../controllers/usersController.js");
@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.get("/", authUser, getAllUsers);
 
-router.get("/data/self", authUser, getUserData);
+router.get("/data/self", authUser, getLoggedUserData);
 
 router.get("/data/:id", getSpecificUserData);
 

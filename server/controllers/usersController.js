@@ -9,7 +9,8 @@ const secretKey = "secretKey";
 
 async function addUser(req, res, next) {
   try {
-    const { displayName, username, password, email, role, imageUrl } = req.body;
+    const { displayName, username, password, email, role, profilePic } =
+      req.body;
     const hashedPass = await bcrypt.hash(password, 10);
     const user = new User({
       displayName,
@@ -17,7 +18,7 @@ async function addUser(req, res, next) {
       password: hashedPass,
       email,
       role,
-      imageUrl,
+      profilePic,
     });
     const newUser = await user.save();
     res.status(201).json({ mongoMessage: newUser });
@@ -79,7 +80,7 @@ async function getAllUsers(req, res, next) {
   }
 }
 
-async function getUserData(req, res, next) {
+async function getLoggedUserData(req, res, next) {
   try {
     const user = await User.findById(req.user.userId);
     const userPosts = await Post.find({ authorId: req.user.userId });
@@ -123,8 +124,8 @@ async function getSpecificUserData(req, res, next) {
 async function followUser(req, res, next) {
   try {
     const follower = new Follower({
-      userId: req.user.userId,
-      followerId: req.params.id,
+      userId: req.params.id,
+      followerId: req.user.userId,
     });
     const newFollower = await follower.save();
     res.status(201).json({ mongoMessage: newFollower });
@@ -140,7 +141,7 @@ async function catchAll(err, req, res, next) {
 module.exports = {
   addUser,
   getAllUsers,
-  getUserData,
+  getLoggedUserData,
   login,
   followUser,
   getSpecificUserData,
