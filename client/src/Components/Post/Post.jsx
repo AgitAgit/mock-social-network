@@ -5,28 +5,6 @@ import PostImage from "./PostImage/PostImage.jsx";
 import PostActions from "./PostActions/PostActions.jsx";
 import PostEngagements from "./PostEngagements/PostEngagements.jsx";
 import UserPostContent from "./UserPostContent/UserPostContent.jsx";
-import SwipeableEdgeDrawer from "../Comment/OpenCommentWindow/OpenCommentWindow.jsx";
-
-const hoverColorIcon = {
-  "&:hover": {
-    color: "var(--bgTheme)",
-    background: "white",
-  },
-  padding: "0.05em",
-  borderRadius: "0.1em",
-  color: "white",
-};
-
-const styleIcon = {
-  transform: "rotate(90deg)",
-  cursor: "pointer",
-  color: "white",
-  borderRadius: "1em",
-  padding: "0.1em",
-  "&:hover": {
-    background: "#2A3751",
-  },
-};
 
 const Post = ({ post }) => {
   const postUsername = post.authorId.username;
@@ -50,12 +28,11 @@ const Post = ({ post }) => {
           postContent={postContent}
           postUsername={postUsername}
         />
-        <div className="CommentsContainer w-full bg-slate-500 p-[0.5em]">
+        <div className="CommentsContainer w-full">
           {post.commentIds.map((comment) => (
             <Comment key={comment._id} comment={comment} />
           ))}
         </div>
-        <SwipeableEdgeDrawer />
       </div>
     </div>
   );

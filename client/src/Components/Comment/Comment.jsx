@@ -21,13 +21,24 @@ const Comment = ({ comment }) => {
   const userContent = comment.commentContent;
 
   return (
-    <div className="mb-[0.8em] flex flex-row justify-start gap-[0.5em] text-[0.8em]">
-      <UserCommentProfileImg userCommentProfileImg={userCommentProfileImg} />
-      <UsernameOfComment commentUsername={commentUsername} />
-      <UsernameCommentContent userContent={userContent} />
-
-      <div className="cursor-pointer">
-        <FavoriteBorderIcon sx={hoverColorIcon} />
+    <div className="flex w-full flex-col">
+      <div className="flex flex-row justify-start gap-[0.5em] text-[0.8em]">
+        <UserCommentProfileImg userCommentProfileImg={userCommentProfileImg} />
+        <UsernameOfComment commentUsername={commentUsername} />
+        <UsernameCommentContent userContent={userContent} />
+        <div className="cursor-pointer">
+          <FavoriteBorderIcon sx={hoverColorIcon} />
+        </div>
+      </div>
+      <div className="mt-[-0.6em] flex items-start">
+        <button className="mb-[1em] ml-[2.6em] text-[0.8em] text-gray-700 hover:text-white">
+          Reply
+        </button>
+        <input
+          type="text"
+          placeholder={`Reply to ${commentUsername}...`}
+          className="w-[50%] rounded-[10em] bg-gray-500 pl-[0.5em]"
+        />
       </div>
     </div>
   );

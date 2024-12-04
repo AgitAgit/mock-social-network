@@ -1,377 +1,638 @@
-# **Mock Social Network Project Requirements**
+## **API Documentation**
 
-# Mobile First - Instagram Inspired
+## **Users**
 
-## **1. Project Description**
+### **POST /users**
 
-Build a mock social network application where users can:
+- **Description**: Creates a new user with the specified details.
 
-3. add comments to individual posts.
-4. Create new posts.
+- **Route**: `/users`
 
-## **2. Functional Requirements**
+- **Method**: `POST`
 
-### **Frontend Features**
+- **Request Body**:
 
-- **Session Simulation**:
-  - Persist the "logged-in" user data in localStorage for session simulation.
-  - On app reload, restore the user session from localStorage.
+  - `displayName` (string, required): The display name of the user.
+  - `username` (string, required): The username of the user.
+  - `password` (string, required): The password of the user.
+  - `email` (string, required): The email address of the user.
+  - `role` (string, optional): The role of the user (e.g., "admin", "user").
+  - `imageUrl` (string, optional): The URL of the user's profile image.
 
-2. **Logout**:
-   - Provide a “Logout” button to clear user data from localStorage and redirect to the login page.
-3. **Homepage**:
-   - Show the logged-in user’s display name in the navigation bar.
-   - Provide a “Create Post” button to navigate to the post creation form.
-4. **Post Details Page**:
-   - Allow users to add comments.
-5. **Create Post Page**:
-   - Provide a form for creating a new post.
-   - Ensure only a logged-in user can create posts (checked on the frontend).
+- **Response**:
 
----
+  - **201 Created**: Returns the created user.
+  - **500 Internal Server Error**: If an error occurs during the process.
 
-### **Backend Features**
+- **Example Request**:
 
-## **3. Technical Requirements**
+```
+  POST /users
+  Content-Type: application/json
+  Body:
+  {
+    "displayName": "John Doe",
+    "username": "john_doe",
+    "password": "password123",
+    "email": "john.doe@example.com",
+    "role": "user",
+    "imageUrl": "http://example.com/john.jpg"
+  }
+```
 
-### **Frontend**
+- **Example Response**:
 
-1. **React**:
-   - Routes for `/signup`, `/login`, `/`, `/post/:postId`, `/add-post`.
-   - Simulate session persistence using localStorage.
-2. **State Management**:
-   - Use `useState` or `useContext` to manage user state and app data.
-3. **Validation**:
-   - Validate user input (e.g., non-empty display name and email format) before sending data to the backend.
-
-### **Backend**
-
-1. **Fake Authentication**:
-   - No password or session management.
-   - Simply store and retrieve user data from the database.
-2. **Data Handling**:
-   - Handle basic CRUD operations for users, posts, and comments using Mongoose.
-3. **API Endpoints**:
-   - Users:
-     - POST `/users/signup`: Save new user data to MongoDB.
-     - POST `/users/login`: Find a user by email and return their data.
-   - Posts:
-     - GET `/posts`: Retrieve all posts from MongoDB.
-     - GET `/posts/:postId`: Retrieve a single post and populate its comments.
-     - POST `/posts`: Add a new post to MongoDB.
-   - Comments:
-     - GET `/comments/post/:postId`: Retrieve comments for a specific post.
-     - POST `/comments`: Add a new comment to MongoDB.
+```
+  {
+    "mongoMessage": {
+      "displayName": "John Doe",
+      "username": "john_doe",
+      "email": "john.doe@example.com",
+      "_id": "67446d8e8c9edc19b0f4b1df",
+      "__v": 0
+    }
+  }
+```
 
 ---
 
-## **4. Functional Routes**
+### **POST /users/login**
 
-### **Frontend Routes**
+- **Description**: Authenticates a user and generates a JWT token.
 
-1. **Public Routes**:
-   - `/signup`: Signup page.
-   - `/login`: Login page.
-2. **General Routes**:
-   - `/`: Homepage (list of posts).
-   - `/post/:postId`: Post details page.
-   - `/add-post`: Create post page.
+- **Route**: `/users/login`
 
-### **Backend API Endpoints**
+- **Method**: `POST`
 
-1. **Users**:
-   - POST `/users/signup`: Register a new user with a display name and email.
-   - POST `/users/login`: Retrieve user data by email.
-2. **Posts**:
-   - GET `/posts`: Retrieve all posts.
-   - GET `/posts/:postId`: Retrieve a single post and its comments.
-   - POST `/posts`: Add a new post.
-3. **Comments**:
-   - GET `/comments/post/:postId`: Retrieve all comments for a specific post.
-   - POST `/comments`: Add a new comment.
+- **Request Body**:
+
+  - `username` (string, required): The username of the user.
+  - `password` (string, required): The password of the user.
+
+- **Response**:
+
+  - **200 OK**: Returns the authentication token and a success message.
+  - **400 Bad Request**: If the username or password is invalid.
+
+- **Example Request**:
+
+```
+ POST /users/login
+  Content-Type: application/json
+  Body:
+  {
+    "username": "john_doe",
+    "password": "password123"
+  }
+```
+
+- **Example Response**:
+
+```
+ {
+    "message": "User john_doe logged in successfully.",
+    "token": "<JWT token>"
+ }
+```
 
 ---
 
-## **5. Deliverables**
+### **GET /users**
 
-1. **Frontend**:
-   - A React app with:
-     - Mock signup and login functionality.
-     - LocalStorage-based session simulation.
-     - Features for viewing, adding, and interacting with posts and comments.
-2. **Backend**:
-   - A Node.js backend with:
-     - RESTful APIs for users, posts, and comments.
-     - Data persistence using MongoDB.
+- **Description**: Retrieves all users from the database.
+
+- **Route**: `/users`
+
+- **Method**: `GET`
+
+- **Authentication**: Requires Bearer token authentication.
+
+- **Response**:
+
+  - **200 OK**: Returns an array of users.
+  - **401 Unauthorized**: If the user is not authenticated.
+
+- **Example Request**:
+
+```
+ GET /users
+  Authorization: Bearer <token>
+```
+
+- **Example Response**:
+
+```
+{
+  "_id": "67446d8e8c9edc19b0f4b1df",
+  "displayName": "John Doe",
+  "username": "john_doe",
+  "email": "john.doe@example.com",
+  "__v": 0
+}
+```
 
 ---
 
-## **6. Stretch Goals**
+### **GET /users/data/self**
 
-1. **User Profile**:
-   - Add a page showing the user’s posts and comments.
-2. **Search Functionality**:
-   - Add a search bar to filter posts by title or content.
+- **Description**: Retrieves details of the logged user.
 
-## **[27/11/2024]**
+- **Route**: `/users/data/self`
 
-## **7. Manage Full User Object in Redux**
+- **Method**: `GET`
 
-### **Objective**: Use Redux to manage the entire logged-in user's object, including properties like `displayName` and `email`. This will replace any local state or `localStorage` dependency.
+- **Authentication**: Requires Bearer token authentication.
 
-### **Steps to Implement**:
+- **Response**:
 
-1. **Directory and File Organization**:
-   - Create a `store` or `redux` directory at the root level.
-   - Inside, create a `slices` subdirectory for managing different pieces of state.
-   - Create a `userSlice.js` file in `slices` to manage user-related state.
-2. **Define the Initial State**:
-   - The initial state in the `userSlice` should include:
-     - `loggedInUser`: Initially `null`, representing no user logged in.
-   - The structure of the user object could be:
-     ```json
+  - **200 OK**: Returns the user details.
+  - **404 Not Found**: If the user does not exist.
+
+- **Example Request**:
+
+```
+  GET /users/data/self
+```
+
+- **Example Response**:
+
+```
+{
+    "user": {
+        "_id": "674f281b4049311283ecde14",
+        "displayName": "Pauline Torphy",
+        "username": "Keagan_K",
+        "password": "iAW7qvU5ePJzqjU",
+        "email": "Antonietta61@hotmail.com",
+        "role": "Member",
+        "profilePic": "https://picsum.photos/seed/dM1bUHY/500/500",
+        "savedPosts": [],
+        "__v": 0,
+        "createdAt": "2024-12-03T15:47:39.868Z",
+        "updatedAt": "2024-12-03T15:47:39.868Z"
+    },
+    "Posts": [
+        {
+            "id": "674f281c4049311283ecde22",
+            "image": "https://loremflickr.com/500/500?lock=5848338517748551"
+        },
+        {
+            "id": "674f281c4049311283ecde33",
+            "image": "https://loremflickr.com/500/500?lock=7445529010233412"
+        }
+    ],
+    "followers": 5,
+    "following": 4
+}
+```
+
+---
+
+### **GET /users/data/:id**
+
+- **Description**: Retrieves details of a single user by ID.
+
+- **Route**: `/users/data/:id`
+
+- **Method**: `GET`
+
+- **Path Parameters**:
+
+  - `id` (string, required): MongoDB Object ID of the user.
+
+- **Response**:
+
+  - **200 OK**: Returns the user details.
+  - **404 Not Found**: If the user does not exist.
+
+- **Example Request**:
+
+```
+  GET /users/data/67446d8e8c9edc19b0f4b1df
+```
+
+- **Example Response**:
+
+```
+{
+    "user": {
+        "_id": "674f281b4049311283ecde14",
+        "displayName": "Pauline Torphy",
+        "username": "Keagan_K",
+        "password": "iAW7qvU5ePJzqjU",
+        "email": "Antonietta61@hotmail.com",
+        "role": "Member",
+        "profilePic": "https://picsum.photos/seed/dM1bUHY/500/500",
+        "savedPosts": [],
+        "__v": 0,
+        "createdAt": "2024-12-03T15:47:39.868Z",
+        "updatedAt": "2024-12-03T15:47:39.868Z"
+    },
+    "Posts": [
+        {
+            "id": "674f281c4049311283ecde22",
+            "image": "https://loremflickr.com/500/500?lock=5848338517748551"
+        },
+        {
+            "id": "674f281c4049311283ecde33",
+            "image": "https://loremflickr.com/500/500?lock=7445529010233412"
+        }
+    ],
+    "followers": 5,
+    "following": 4
+}
+```
+
+---
+
+### **GET /users/logout**
+
+- **Description**: Logs the user out by clearing the JWT token from the cookie.
+
+- **Route**: `/users/logout`
+
+- **Method**: `GET`
+
+- **Authentication**: No authentication required.
+
+- **Response**:
+
+  - **200 OK**: Logs the user out by clearing the token cookie.
+  - **500 Internal Server Error**: If an error occurs during the process.
+
+- **Example Request**:
+
+```
+ GET /users/logout
+```
+
+- **Example Response**:
+
+```
+  {
+    "message": "User logged out successfully."
+  }
+```
+
+## **Posts**
+
+### **GET /posts**
+
+- **Description**: Retrieves all posts with their comments and author details.
+
+- **Route**: `/posts`
+
+- **Method**: `GET`
+
+- **Authentication**: Requires Bearer token authentication (`authUser` middleware).
+
+- **Response**:
+
+  - **200 OK**: Returns an array of posts with nested author and comment details.
+  - **401 Unauthorized**: If the user is not authenticated.
+
+- **Example Request**:
+
+```
+
+GET /posts
+Authorization: Bearer <token>
+
+```
+
+- **Example Response**:
+
+```
+
+`[
+{
+"id": "64d0f2c81b8e8c635f5b4d8e",
+"title": "Post Title 1",
+"content": "This is the content of the first post.",
+"postImageUrl": "http://example.com/post1.jpg",
+"authorId": {
+"displayName": "John Doe",
+"profilePic": "http://example.com/johndoe.jpg"
+},
+"commentIds": [
+{
+"content": "Great post!",
+"authorId": {
+"displayName": "Jane Doe",
+"profilePic": "http://example.com/janedoe.jpg"
+}
+}
+]
+}
+]
+
+```
+
+---
+
+### **POST /posts**
+
+- **Description**: Creates a new post.
+
+- **Route**: `/posts`
+
+- **Method**: `POST`
+
+- **Authentication**: Requires Bearer token authentication.
+
+- **Request Body**:
+
+  - `title` (string, required): The title of the post.
+  - `content` (string, required): The content of the post.
+  - `postImageUrl` (string, optional): URL of the post's image.
+
+- **Response**:
+
+  - **200 OK**: The newly created post.
+  - **500 Internal Server Error**: If an error occurs during the process.
+
+- **Example Request**:
+
+```
+
+`POST /posts
+Authorization: Bearer <token>
+Content-Type: application/json
+Body:
+{
+  "title": "Post title",
+  "content": "Post content",
+  "postImageUrl": "http://example.com/image.jpg"
+}`
+
+```
+
+- **Example Response**:
+
+```
+
+`{
+  "message": {
+    "title": "test",
+    "content": "test2",
+    "authorId": "674ee2983c78591a416d640e",
+    "commentIds": [],
+    "_id": "674ee8b1a668e59df3fe70d2",
+    "createdAt": "2024-12-03T11:17:05.921Z",
+    "updatedAt": "2024-12-03T11:17:05.921Z",
+    "__v": 0
+  }
+}`
+
+```
+
+---
+
+### **GET /posts/:postId**
+
+- **Description**: Retrieves details of a single post by ID, including its author and comments.
+
+- **Route**: `/posts/:postId`
+
+- **Method**: `GET`
+
+- **Authentication**: Requires Bearer token authentication.
+
+- **Path Parameters**:
+
+  - `postId` (string, required): MongoDB Object ID of the post.
+
+- **Response**:
+
+  - **200 OK**: The post details, including author and comments.
+  - **404 Not Found**: If the post does not exist.
+
+- **Example Request**:
+
+```
+
+GET /posts/64d0f2c81b8e8c635f5b4d8e
+Authorization: Bearer <token>`
+
+```
+
+- **Example Response**:
+
+```
+
+`{
+ "post": {
+   "title": "Post title",
+   "content": "Post content",
+   "authorId": {
+     "displayName": "Author Display Name",
+     "profilePic": "http://example.com/author.jpg"
+   },
+   "commentIds": [
      {
-       "_id": "user123",
-       "displayName": "John Doe",
-       "email": "john.doe@example.com"
+       "authorId": {
+         "displayName": "Commenter Display Name",
+         "profilePic": "http://example.com/commenter.jpg"
+       },
+       "content": "Comment content"
      }
-     ```
-3. **Define Actions**:
-   - **`setLoggedInUser`**:
-     - Updates the `loggedInUser` with the full user object retrieved after signup or login.
-   - **`logout`**:
-     - Clears the `loggedInUser` object, resetting it to `null`.
-4. **Reducer Implementation**:
-   - Write reducers for `setLoggedInUser` and `logout` to handle state updates based on dispatched actions.
-   - Ensure that these reducers can handle partial or complete updates to the user object.
-5. **Connect Redux Store**:
-   - Configure the Redux store in a `store/index.js` file and combine slices if needed (e.g., a `userSlice` and other future slices).
-   - Wrap the app in the `Provider` component in `index.js` to make the Redux state available globally.
-6. **Session Restoration**:
-   - During app initialization (e.g., in `App.js` or a root-level component), check `localStorage` for saved user data.
-   - If found, dispatch the `setLoggedInUser` action to restore the session to Redux.
-7. **Middleware Consideration**:
-   - For persisting changes, you can add middleware to synchronize the `loggedInUser` state with `localStorage` on updates (optional but useful for clean state management).
+   ]
+ }
+}`
+
+```
 
 ---
 
-## **8. Dynamically Display User Information in the Navbar**
+### **POST /posts/:postId/like**
 
-### **Objective**: Dynamically show the user's display name or the "Login/Signup" links in the navbar based on the `loggedInUser` state from Redux.
+- **Description**: Likes a specific post.
 
-### **Steps to Implement**:
+- **Route**: `/posts/:postId/like`
 
-1. **Navbar Component Setup**:
-   - Create a `components/Navbar.js` file.
-   - Design the navbar to include space for:
-     - The app name or logo.
-     - A section to display:
-       - The user’s `displayName` and a "Logout" button if logged in.
-       - "Login" and "Signup" links if no user is logged in.
-2. **Connect Redux State**:
-   - Use the `useSelector` hook to access the `loggedInUser` object from Redux.
-   - Dynamically render components or links based on whether `loggedInUser` is `null` or populated.
-3. **Logout Handling**:
-   - Add a logout button that:
-     - Dispatches the `logout` action to reset `loggedInUser` to `null`.
-     - Clears the `localStorage` user session.
-4. **Testing and Validation**:
-   - Log in as a user to see the name appear in the navbar.
-   - Log out and verify that the UI updates correctly to show "Login/Signup."
-   - Ensure the app correctly handles:
-     - Initial state with no user logged in.
-     - A restored session where the user is already logged in.
+- **Method**: `POST`
 
-### **[28/11/2024]**
+- **Authentication**: Requires Bearer token authentication.
 
----
+- **Path Parameters**:
 
-### **9. MongoDB & Mongoose Integration**
+  - `postId` (string, required): MongoDB Object ID of the post.
 
-### **Learning Objectives**
+- **Response**:
 
-- Understand how to define schemas in Mongoose.
-- Learn to interact with MongoDB using Mongoose (CRUD operations).
+  - **200 OK**: Post liked successfully.
+  - **404 Not Found**: If the post does not exist.
+  - **400 Bad Request**: If the user has already liked the post.
 
-### **Tasks**
+- **Example Request**:
 
-1. **Setup MongoDB and Mongoose**:
-   - Connect to MongoDB using Mongoose.
-   - Create a `models` directory for schema definitions.
-2. **Define User Schema**:
-   - Create a schema with fields for `displayName`, `email`, and `password`.
-   - Ensure `email` is unique.
-3. **Define Post Schema**:
-   - Include fields for `title`, `content`, and `authorId`.
-4. **Define Comment Schema**:
-   - Include fields for `postId`, `text`, and `authorId`.
-5. **Test CRUD Operations**:
-   - Create and manipulate sample data using Mongoose methods.
+```
+
+`POST: /posts/64d0f2c81b8e8c635f5b4d8e/like
+
+Authorization: Bearer <token>`
+
+```
+
+- **Example Response**:
+
+```
+
+`{
+  "message": "Post liked successfully",
+  "post": {
+    "_id": "64d0f2c81b8e8c635f5b4d8e",
+    "likedBy": ["userId"]
+  }
+}`
+
+```
 
 ---
 
-### **10. Password Management with Bcrypt**
+### **POST /posts/:postId/save**
 
-### **Learning Objectives**
+- **Description**: Saves a specific post to the user's saved posts list.
 
-- Understand why passwords must be hashed.
-- Learn how to use bcrypt for hashing and verification.
+- **Route**: `/posts/:postId/save`
 
-### **Tasks**
+- **Method**: `POST`
 
-1. **Install Bcrypt**:
-   - Add bcrypt to the project for password security.
-2. **Modify Signup Endpoint**:
-   - Hash the password before saving user data.
-3. **Modify Login Endpoint**:
-   - Verify the hashed password during login.
+- **Authentication**: Requires Bearer token authentication.
 
----
+- **Path Parameters**:
 
-### **11. JWT Authentication**
+  - `postId` (string, required): MongoDB Object ID of the post.
 
-### **Learning Objectives**
+- **Response**:
 
-- Understand JWTs for stateless authentication.
-- Learn how to generate and verify JWTs.
+  - **200 OK**: Post saved successfully.
+  - **404 Not Found**: If the post does not exist.
+  - **400 Bad Request**: If the user has already saved the post.
 
-### **Tasks**
+- **Example Request**:
 
-1. **Install JWT**:
-   - Add JSON Web Token support to the project.
-2. **Generate JWT on Login**:
-   - Issue a token for authenticated users.
-3. **Store JWT in Cookies**:
-   - Use secure HTTP-only cookies to store the JWT.
+```
 
----
+POST /posts/64d0f2c81b8e8c635f5b4d8e/save
+Authorization: Bearer <token>
 
-### **12. Middleware for Protected Routes**
+```
 
-### **Learning Objectives**
+- **Example Response**:
 
-- Learn to use middleware to secure routes with JWTs.
+```
+{
+"message": "Post saved successfully",
+"user": {
+"_id": "userId",
+"savedPosts": ["64d0f2c81b8e8c635f5b4d8e"]
+  }
+}
+```
 
-### **13. Frontend Routing Precision for Auth Page**
+## **Comments**
 
-### **1. Dedicated `/auth` Page**
+### **GET /api/comments/:postId**
 
-- The `/auth` route will display a single **Auth Page** component.
-- This component will include two child components:
-  - **Sign In Component**: For existing users to log in.
-  - **Sign Up Component**: For new users to register.
-- Use a state variable within the Auth Page to toggle between **Sign In** and **Sign Up** views.
+- **Description**: Retrieves all comments for a specific post by its ID.
 
----
+- **Route**: `/api/comments/:postId`
 
-### **Proposed Routing Structure**
+- **Method**: `GET`
 
-### **Public Routes**
+- **Authentication**: No authentication required.
 
-- **`/auth`**: Authentication page (Sign In or Sign Up).
+- **Path Parameters**:
 
-### **Protected Routes**
+  - `postId` (string, required): MongoDB Object ID of the post.
 
-- Routes such as `/`, `/add-post`, `/post/:postId`, etc., are protected by middleware that ensures the user is authenticated.
+- **Response**:
 
----
+  - **200 OK**: An array of comments for the specified post.
 
-### **Flow for `/auth`**
+- **Example Request**:
 
-1. **Components**:
-   - **AuthPage**: The parent component managing the toggle state.
-   - **SignInForm**: The component with the login form.
-   - **SignUpForm**: The component with the registration form.
-2. **State Management**:
-   - The toggle state is managed within the **AuthPage**.
-   - A simple state variable (e.g., `isSignUp`) determines which form to display.
-3. **UI Details**:
-   - The AuthPage has buttons or links to toggle between **Sign In** and **Sign Up**.
-   - Example:
-     - "Don't have an account? Sign Up" (shows the Sign Up form).
-     - "Already have an account? Sign In" (shows the Sign In form).
+```
+ GET /api/comments/674444e4810707ebc8505bb2
+```
 
----
+- **Example Response**:
 
-### **Frontend Route Configuration Example**
-
-| Route       | Component        | Access    | Description                                          |
-| ----------- | ---------------- | --------- | ---------------------------------------------------- |
-| `/auth`     | `AuthPage`       | Public    | Displays the Sign In or Sign Up form based on state. |
-| `/`         | `HomePage`       | Protected | Displays the list of posts (requires auth).          |
-| `/add-post` | `CreatePostPage` | Protected | Form to create a new post (requires auth).           |
-| `/post/:id` | `PostDetails`    | Protected | Displays a post and its comments (requires auth).    |
+```
+ {
+    "postId": "674444e4810707ebc8505bb2",
+    "comments": [
+      {
+        "_id": "674466c3ab88a86725c6c0a8",
+        "parentPostId": "674444e4810707ebc8505bb2",
+        "commentContent": "This is a comment",
+        "authorId": "67432e35d9cabb6b21047e40",
+        "createdAt": "2024-12-03T11:17:05.921Z",
+        "updatedAt": "2024-12-03T11:17:05.921Z",
+        "__v": 0
+      },
+      ...
+    ]
+  }
+```
 
 ---
 
-### **Expected Component Behavior**
+### **POST /api/comments/:postId**
 
-1. **SignInForm**:
-   - Accepts email and password.
-   - Sends data to `/users/login`.
-   - On success:
-     - Stores the JWT or token securely.
-     - Redirects to the protected homepage (`/`).
-2. **SignUpForm**:
-   - Accepts display name, email, and password.
-   - Sends data to `/users/signup`.
-   - On success:
-     - Logs the user in automatically or prompts them to log in.
-3. **AuthPage**:
-   - Displays either the **SignInForm** or **SignUpForm** based on the toggle state.
-   - Includes toggle links/buttons to switch between forms.
+- **Description**: Adds a new comment to a specific post.
 
----
+- **Route**: `/api/comments/:postId`
 
-### **Session Flow**
+- **Method**: `POST`
 
-- **Logged-In State**: Check JWT in localStorage or Redux state.
-- **Not Logged In**:
-  - Redirect the user to `/auth` for authentication.
+- **Authentication**: Requires authentication (user must be logged in).
 
----
+- **Path Parameters**:
 
-### **Stretch Goal**
+  - `postId` (string, required): MongoDB Object ID of the post.
 
-Add animations or transitions when toggling between the Sign In and
+- **Request Body**:
 
-### **Tasks**
+  - `content` (string, required): The content of the comment.
 
-1. **Create Authentication Middleware**:
-   - Implement middleware to verify the JWT and extract user information.
-2. **Protect the `POST /posts` Endpoint**:
-   - Restrict post creation to authenticated users.
-3. **Protect the `POST /comments` Endpoint**:
-   - Ensure only authenticated users can add comments.
+- **Response**:
 
----
+  - **200 OK**: The newly created comment and the updated post.
+  - **500 Internal Server Error**: If an error occurs during the process.
 
-[Build and Deploy a Full Stack MERN Social Media App with Auth, Pagination, Comments | MERN Course](https://www.youtube.com/watch?app=desktop&v=VsUzmlZfYNg&t=12191s)
+- **Example Request**:
 
-[MERN Stack Social Media App Tutorial | React Node.js full Course for Beginners](https://www.youtube.com/watch?v=WWhgssiyfwY)
+```
+ POST /api/comments/674444e4810707ebc8505bb2
+  Authorization: Bearer <token>
+  Content-Type: application/json
+  Body:
+  {
+    "content": "This is a new comment"
+  }
+```
 
----
+- **Example Response**:
 
-### **Stretch Goals**
-
-1. **Logout Functionality**:
-   - Implement a feature to clear the JWT cookie on logout.
-2. **Custom Error Handling**:
-   - Add middleware for centralized error handling.
-
----
-
-### **Expected Outcomes**
-
-By the end of the session, students will:
-
-- Set up MongoDB and Mongoose for data persistence.
-- Use bcrypt for secure password management.
-- Implement JWT-based authentication for secure, stateless sessions.
-- Protect sensitive routes with middleware.
-
----
-
-This setup emphasizes simplicity while providing opportunities for students to practice CRUD operations and basic frontend-backend communication. Let me know if you need further tweaks!
-
-חלוקת צוותים
+```
+ {
+    "yourComment": {
+      "parentPostId": "674444e4810707ebc8505bb2",
+      "commentContent": "This is a new comment",
+      "authorId": "67432e35d9cabb6b21047e40",
+      "_id": "674466c3ab88a86725c6c0a8",
+      "__v": 0
+    },
+    "parentPost": {
+      "_id": "674444e4810707ebc8505bb2",
+      "title": "Post Title",
+      "content": "Post Content",
+      "commentIds": [
+        "674466c3ab88a86725c6c0a8"
+      ],
+      "__v": 0
+    }
+  }
+```
