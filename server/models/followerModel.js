@@ -15,7 +15,9 @@ const followerSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true,
+    _id: false,
+    timestamps: { createdAt: "followedAt", updatedAt: false },
+    versionKey: false,
   }
 );
 

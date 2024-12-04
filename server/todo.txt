@@ -4,7 +4,3 @@ comments -
 posts - 
     - change 'likePost' to 'toggleLikePost'
       and do the same with 'savePost'
-
-
-injectData - 
-    recreate test user at the end of the removeData function
