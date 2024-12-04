@@ -20,6 +20,7 @@ const PORT = 3000;
 mongoose
   .connect(uri)
   .then(() => {
+    console.log("Connected to database.Checking documents...");
     return checkCollectionEmpty(); // Wait for checkCollectionEmpty to finish
   })
   .catch((error) => {

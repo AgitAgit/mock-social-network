@@ -2,18 +2,16 @@ const express = require("express");
 const {
   addComment,
   getPostComments,
-  toggleCommentLike
+  toggleCommentLike,
 } = require("../controllers/commentsController.js");
 const { authUser } = require("../middleware/authUser.js");
 
 const router = express.Router();
 
-router.use("/", authUser);
+router.post("/:postId", authUser, addComment);
 
 router.get("/:postId", getPostComments);
 
-router.post("/", addComment);
-
-router.post("/like/:commentId", toggleCommentLike);
+router.post("/like/:commentId", authUser, toggleCommentLike);
 
 module.exports = router;

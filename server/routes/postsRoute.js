@@ -15,9 +15,9 @@ router.use("/", authUser);
 
 router.get("/", getAllPosts);
 
-router.post("/", addPost);
-
 router.get("/:postId", getPostById);
+
+router.post("/", addPost);
 
 router.post("/:postId/like", likePost);
 

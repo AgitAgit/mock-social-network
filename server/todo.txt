@@ -1,3 +1,4 @@
 posts - 
     - change 'likePost' to 'toggleLikePost'
       and do the same with 'savePost'
+

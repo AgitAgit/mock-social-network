@@ -1,15 +1,49 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-
 const User = require("../models/userModel.js");
 const Post = require("../models/postModel.js");
 const Follower = require("../models/followerModel.js");
 
 const secretKey = "secretKey";
 
+async function getAllUsers(req, res, next) {
+  try {
+    const users = await User.find();
+    res.json({ users });
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getUserData(req, res, next) {
+  try {
+    const userId = req.params.id ? req.params.id : req.user.userId;
+
+    const user = await User.findById(userId);
+
+    const userPosts = await Post.find({ authorId: userId })
+      .lean()
+      .select("_id postImageUrl");
+
+    const followers = await Follower.find({ userId }).select("followerId");
+    const following = await Follower.find({ followerId: userId }).select(
+      "userId"
+    );
+
+    const userPostData = userPosts.map((post) => ({
+      id: post._id,
+      image: post.postImageUrl,
+    }));
+
+    res.json({ user, Posts: userPostData, followers, following });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+}
+
 async function addUser(req, res, next) {
   try {
-    console.log("aa");
     const { displayName, username, password, email, role, profilePic } =
       req.body;
     const hashedPass = await bcrypt.hash(password, 10);
@@ -72,54 +106,19 @@ async function login(req, res, next) {
   }
 }
 
-async function getAllUsers(req, res, next) {
+async function logout(req, res, next) {
   try {
-    const users = await User.find();
-    res.json({ users });
+    // Clear the JWT cookie
+    res
+      .clearCookie("jwt", {
+        httpOnly: false,
+        secure: true,
+        sameSite: "strict",
+      })
+      .status(200)
+      .json({ message: "User logged out successfully." });
+    console.log("A user has logged out...");
   } catch (error) {
-    next(error);
-  }
-}
-
-async function getLoggedUserData(req, res, next) {
-  try {
-    const user = await User.findById(req.user.userId);
-    const userPosts = await Post.find({ authorId: req.user.userId });
-    const followers = await Follower.find({
-      userId: req.user.userId,
-    });
-    const following = await Follower.find({
-      followerId: req.user.userId,
-    });
-    const userPostData = userPosts.map((post) => ({
-      id: post._id,
-      image: post.postImageUrl,
-    }));
-    res.json({ user, Posts: userPostData, followers, following });
-  } catch (error) {
-    next(error);
-  }
-}
-
-async function getSpecificUserData(req, res, next) {
-  try {
-    const user = await User.findById(req.params.id);
-    const userPosts = await Post.find({ authorId: req.params.id })
-      .lean()
-      .select("_id postImageUrl");
-    const followers = await Follower.find({ userId: req.params.id }).select(
-      "followerId"
-    );
-    const following = await Follower.find({ followerId: req.params.id }).select(
-      "userId"
-    );
-    const userPostData = userPosts.map((post) => ({
-      id: post._id,
-      image: post.postImageUrl,
-    }));
-    res.json({ user, Posts: userPosts, followers, following });
-  } catch (error) {
-    console.log(error);
     next(error);
   }
 }
@@ -130,24 +129,40 @@ async function followUser(req, res, next) {
       userId: req.params.id,
       followerId: req.user.userId,
     });
+    console.log(follower);
     const newFollower = await follower.save();
-    res.status(201).json({ mongoMessage: newFollower });
+    res
+      .status(201)
+      .json({ message: "Followed successfully!", followerField: newFollower });
   } catch (error) {
     next(error);
   }
 }
 
 async function catchAll(err, req, res, next) {
-  res.status(500).send("something went wrong in the server...");
+  // Log the full error for debugging (useful in development or monitoring)
+  console.error("Error occurred:", err);
+
+  // Determine if the error has a specific status code; default to 500
+  const statusCode = err.status || 500;
+
+  // Send an appropriate response to the client
+  res.status(statusCode).json({
+    message:
+      statusCode === 500
+        ? "An internal server error occurred. Please try again later."
+        : err.message, // Use the error's message if it's not a 500
+    ...(process.env.NODE_ENV === "development" && { stack: err.stack }), // Include stack trace in development mode
+  });
 }
 
 module.exports = {
   addUser,
   getAllUsers,
-  getLoggedUserData,
+  getUserData,
   login,
+  logout,
   followUser,
-  getSpecificUserData,
   catchAll,
 };
 

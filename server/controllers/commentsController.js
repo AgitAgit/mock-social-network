@@ -1,7 +1,6 @@
 const Comment = require("../models/commentModel.js");
 const Post = require("../models/postModel.js");
 
-
 //path params:postId
 //query params:none
 //example request body:none
@@ -9,12 +8,12 @@ const Post = require("../models/postModel.js");
     "postId": *entered post id*,
     "comments": [*selected post comments*]
     }}*/
-   async function getPostComments(req, res, next) {
-     try {
-       const postId = req.params.postId;
-       const comments = await Comment.find({ parentPostId: postId });
-       
-       res.json({ postId: postId, comments: comments });
+async function getPostComments(req, res, next) {
+  try {
+    const postId = req.params.postId;
+    const comments = await Comment.find({ parentPostId: postId });
+
+    res.json({ postId: postId, comments: comments });
   } catch (error) {
     next(error);
   }
@@ -27,7 +26,7 @@ const Post = require("../models/postModel.js");
   "content": "test3",
   "authorId":"67432e35d9cabb6b21047e40"
   }*/
- /*example response:{
+/*example response:{
   "yourComment": {
     "parentPostId": "674444e4810707ebc8505bb2",
     "content": "test3",
@@ -40,55 +39,59 @@ const Post = require("../models/postModel.js");
 
 async function addComment(req, res, next) {
   try {
-    const { parentPostId, content } = req.body;
-    
+    const { postId } = req.params;
+    console.log(postId);
+    const { content } = req.body;
+
     const comment = new Comment({
-      parentPostId,
+      parentPostId: postId,
       commentContent: content,
       authorId: req.user.userId,
     });
-    
+
     const response = await comment.save();
 
     const updateResult = await Post.findOneAndUpdate(
-      { _id: parentPostId },
+      { _id: postId },
       { $push: { commentIds: response._id } }
     );
-    
-    res.json({ yourComment: response, parentPost: updateResult });
+
+    res.json({
+      yourComment: response.commentContent,
+      parentPost: updateResult,
+    });
   } catch (error) {
     next(error);
   }
 }
 
-// add toggleLike function
-async function toggleCommentLike(req, res, next){
+async function toggleCommentLike(req, res, next) {
   try {
     const { userId } = req.user;
-    const { commentId } = req.params;//the id of the comment to update
+    const { commentId } = req.params; //the id of the comment to update
     //check if the user likes the comment
     let updateResult;
     let textMessage;
-    const comment = await Comment.findOne({ "_id" : commentId });//need to test this...
+    const comment = await Comment.findOne({ _id: commentId }); //need to test this...
     // console.log(comment);
     const likes = comment.likedBy.includes(userId);
-    console.log("commentsController.toggleCommentLike likes says:",likes);
-    if(likes){
-      textMessage = 'The user already likes this comment. The like will be removed';
+    console.log("commentsController.toggleCommentLike likes says:", likes);
+    if (likes) {
+      textMessage =
+        "The user already likes this comment. The like will be removed";
       updateResult = await Comment.findOneAndUpdate(
-        { _id : commentId },
-        { $pullAll: { likedBy: userId } }
+        { _id: commentId },
+        { $pull: { likedBy: userId } }
       );
-    }
-    else {
-      textMessage = 'The user will be added to the comments likes...';
+    } else {
+      textMessage = "Liked comment successfully";
       updateResult = await Comment.findOneAndUpdate(
-        { _id : commentId },
+        { _id: commentId },
         { $push: { likedBy: userId } }
       );
     }
-    res.json({ textMessage, message: updateResult});
-  } catch(error){
+    res.json({ textMessage, message: updateResult });
+  } catch (error) {
     next(error);
   }
 }
