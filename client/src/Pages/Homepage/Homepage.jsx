@@ -18,12 +18,12 @@ const Homepage = () => {
         </p>
       </div>
       <div className="mb-[2em] flex w-full items-center justify-center gap-2">
-        <Link to="/register" className="">
+        <Link to="/register">
           <button className="cursor-pointer rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-[#eb903b]">
             Register
           </button>
         </Link>
-        <Link to="/sign-in" className="">
+        <Link to="/login">
           <button className="cursor-pointer rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-[#eb903b]">
             Sign in
           </button>

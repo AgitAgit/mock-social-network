@@ -6,7 +6,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import { useState } from "react";
 
 const iconConfiguration = {
-  borderRadius: "100em",
+  borderRadius: "0.5em",
   color: "white",
   paddingRight: "0.5em",
   paddingLeft: "0.5em",
@@ -39,7 +39,7 @@ const MenuTabs = () => {
       sx={{
         height: "3em",
         background: "#ffffff0d",
-        borderRadius: "100em",
+        borderRadius: "0.5em",
         marginRight: "1em",
       }}
       value={value}

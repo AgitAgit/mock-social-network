@@ -3,15 +3,13 @@ import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
+import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
 
 const divIconStyle =
   "rounded-[100em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
 
 const divInputStyle =
   "rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
-
-// Import Components
-import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -26,7 +24,7 @@ const SignIn = () => {
 
       if (resLoginData) {
         console.log(resLoginData);
-        navigate("/all-posts"); // Navigate after successful login
+        navigate("/posts-feed"); // Navigate after successful login
       }
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
@@ -79,7 +77,7 @@ const SignIn = () => {
                 Recovery Password
               </p>
             </Link>
-            <SubmitBtn btnPlaceholder="Sign-In" />
+            <SubmitBtn btnPlaceholder="login" />
           </form>
         </div>
 

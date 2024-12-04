@@ -33,17 +33,17 @@ const Register = () => {
     };
 
     registerUser(userInfo);
-    navigate("/sign-in");
+    navigate("/login");
   };
 
   return (
     <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] bg-profileSectionTheme p-[2em]">
       <div className="text-center">
-        <div className="">
+        <div>
           <h1 className="text-2xl">Welcome to Babagram!</h1>
-          <h3 className="">Few more step and your in</h3>
+          <h3>Few more step and your in</h3>
         </div>
-        <div className="">
+        <div>
           <form
             onSubmit={handleSubmit}
             className="mt-[0.5em] flex w-full flex-col gap-[0.5em]"
@@ -84,7 +84,7 @@ const Register = () => {
               className={inputStyle}
             />
             <SubmitBtn btnPlaceholder="Register" />
-            <Link to="/" className="">
+            <Link to="/">
               <button className="w-full cursor-pointer rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-[#eb903b]">
                 Back
               </button>

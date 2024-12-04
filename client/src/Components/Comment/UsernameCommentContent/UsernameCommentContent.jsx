@@ -1,6 +1,6 @@
 const UsernameCommentContent = ({ userContent }) => {
   return (
-    <div>
+    <div className="flex w-full">
       <p>{userContent}</p>
     </div>
   );

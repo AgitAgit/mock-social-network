@@ -1,4 +1,4 @@
-import FakeProfileImage from "../../../public/images/static-profile-image.svg";
+import FakeProfileImage from "/images/static-profile-image.svg";
 
 const ProfileImageDisplay = () => {
   return (

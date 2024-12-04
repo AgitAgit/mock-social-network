@@ -1,7 +1,7 @@
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import UserCommentProfileImg from "../UserCommentProfileImg/UserCommentProfileImg";
-import UsernameOfComment from "../UsernameOfComment/UsernameOfComment";
-import UsernameCommentContent from "../UsernameCommentContent/UsernameCommentContent";
+import UserCommentProfileImg from "./UserCommentProfileImg/UserCommentProfileImg";
+import UsernameOfComment from "./UsernameOfComment/UsernameOfComment";
+import UsernameCommentContent from "./UsernameCommentContent/UsernameCommentContent";
 
 const hoverColorIcon = {
   width: "5vw",
@@ -16,8 +16,6 @@ const hoverColorIcon = {
 };
 
 const Comment = ({ comment }) => {
-  console.log(comment);
-
   const userCommentProfileImg = comment.authorId.profilePic;
   const commentUsername = comment.authorId.username;
   const userContent = comment.commentContent;
