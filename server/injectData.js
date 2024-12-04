@@ -1,8 +1,24 @@
 const { faker } = require("@faker-js/faker");
+const bcrypt = require("bcrypt");
 const User = require("./models/userModel");
 const Post = require("./models/postModel");
 const Comment = require("./models/commentModel");
 const Follower = require("./models/followerModel");
+
+async function checkCollectionEmpty() {
+  try {
+    // await removeData();
+    const isCollectionEmpty = (await User.countDocuments()) <= 1;
+    if (isCollectionEmpty) {
+      console.log("The User collection is empty.Injecting data...");
+      injectData();
+    } else {
+      console.log("The User collection has documents.No need to inject data.");
+    }
+  } catch (error) {
+    console.error("Error checking User collection:", error);
+  }
+}
 
 const injectData = async () => {
   const users = await User.insertMany(
@@ -59,24 +75,15 @@ const injectData = async () => {
   );
 };
 
-// recreate test user at the end of the function
 const removeData = async () => {
   try {
-    await User.deleteMany({});
+    await User.deleteMany({ username: { $ne: "test" } });
     await Post.deleteMany({});
     await Comment.deleteMany({});
     await Follower.deleteMany({});
-
-    const user = new User({
-      username: "test",
-      password: 123456,
-      email: "test",
-    });
-    const testUser = await user.save();
-    console.log(`Data deleted, test user created - ${testUser}`);
   } catch (error) {
     console.error("Error deleting documents:", error);
   }
 };
 
-module.exports = { injectData, removeData };
+module.exports = { injectData, checkCollectionEmpty, removeData };
