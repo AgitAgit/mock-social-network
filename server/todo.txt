@@ -3,7 +3,6 @@ comments -
 
 posts - 
     - change 'likePost' to 'toggleLikePost'
-        and change to find and update
       and do the same with 'savePost'
 
 
