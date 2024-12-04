@@ -9,12 +9,13 @@ import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import { useState } from "react";
 
 const drawerBleeding = 56;
 
 const Root = styled("div")(({ theme }) => ({
   height: "100%",
-  backgroundColor: grey[100],
+  backgroundColor: "unset",
   ...theme.applyStyles("dark", {
     backgroundColor: theme.palette.background.default,
   }),
@@ -42,7 +43,7 @@ const Puller = styled("div")(({ theme }) => ({
 
 function SwipeableEdgeDrawer(props) {
   const { window } = props;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -64,7 +65,7 @@ function SwipeableEdgeDrawer(props) {
         }}
       />
       <Box sx={{ textAlign: "center", pt: 1 }}>
-        <Button onClick={toggleDrawer(true)}>Open</Button>
+        <Button onClick={toggleDrawer(true)}>View all comments</Button>
       </Box>
       <SwipeableDrawer
         container={container}
@@ -90,9 +91,12 @@ function SwipeableEdgeDrawer(props) {
           }}
         >
           <Puller />
-          <Typography sx={{ p: 2, color: "text.secondary" }}>
-            51 results
-          </Typography>
+          <Typography
+            sx={{
+              p: 2,
+              color: "text.secondary",
+            }}
+          ></Typography>
         </StyledBox>
         <StyledBox sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}>
           <Skeleton variant="rectangular" height="100%" />
