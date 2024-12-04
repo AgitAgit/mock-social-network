@@ -64,23 +64,23 @@ async function addComment(req, res, next) {
 // add toggleLike function
 async function toggleCommentLike(req, res, next){
   try {
-    const { _id } = req.body;//the id of the comment to update
+    const { commentId } = req.params;//the id of the comment to update
     //check if the user likes the comment
     let updateResult;
     let textMessage;
-    const likes = await Comment.find({ _id }, { likedBy : { "$in": [req.user.id] } });//need to test this...
+    const likes = await Comment.find({ "_id" : commentId }, { likedBy : { "$in": [req.user.id] } });//need to test this...
     console.log("commentsController.toggleCommentLike likes says:",likes);
     if(likes){
       textMessage = 'The user already likes this comment. The like will be removed';
       updateResult = await Comment.findOneAndUpdate(
-        { _id },
+        { '_id' : commentId },
         { $pullAll: { likedBy: req.user.id } }
       );
     }
     else {
       textMessage = 'The user will be added to the comments likes...';
       updateResult = await Comment.findOneAndUpdate(
-        { _id },
+        { '_id' : commentId },
         { $push: { likedBy: req.user.id } }
       );
     }
@@ -90,4 +90,4 @@ async function toggleCommentLike(req, res, next){
   }
 }
 
-module.exports = { getPostComments, addComment };
+module.exports = { getPostComments, addComment, toggleCommentLike };
