@@ -10,7 +10,7 @@ import Register from "./Pages/Register/Register.jsx";
 import PostsFeed from "./Pages/PostsFeed/PostsFeed.jsx";
 import Homepage from "./Pages/Homepage/Homepage.jsx";
 import Search from "./Pages/Search/Search.jsx";
-import AddPost from "./Pages/AddPost/AddPost.jsx";
+import NewPost from "./Pages/NewPost/NewPost.jsx";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/add-post" element={<AddPost />} />
+          <Route path="/new-post" element={<NewPost />} />
           <Route path="/search" element={<Search />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
