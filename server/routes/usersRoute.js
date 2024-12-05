@@ -1,6 +1,7 @@
 const express = require("express");
 const {
   getAllUsers,
+  getUserByUsername,
   addUser,
   login,
   logout,
@@ -20,6 +21,8 @@ router.get("/", getAllUsers);
 router.get("/data", authUser, getUserData);
 
 router.get("/data/:id", authUser, getUserData);
+
+router.get("/:username", authUser, getUserByUsername);
 
 router.post("/signup", addUser);
 
