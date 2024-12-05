@@ -24,23 +24,23 @@ async function addPost(req, res, next) {
 }
 
 // change to toggleLikePost?
-async function likePost(req, res, next) {
+async function toggleLikePost(req, res, next) {
   try {
     const { postId } = req.params;
     const post = await Post.findById(postId);
-
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
-
     if (post.likedBy.includes(req.user.userId)) {
-      return res.status(400).json({ message: "You already liked this post" });
+      post.likedBy.pull(req.user.userId);
+      const updatedPost = await post.save();
+      res.json({ message: "You already liked this post. Like will be removed.", updatedPost});
     }
-
-    post.likedBy.push(req.user.userId);
-    const updatedPost = await post.save(); // change to find and update
-
-    res.json({ message: "Post liked successfully", post: updatedPost });
+    else{
+      post.likedBy.push(req.user.userId);
+      const updatedPost = await post.save(); // change to find and update
+      res.json({ message: "Post liked successfully", post: updatedPost });
+    }
   } catch (error) {
     next(error);
   }
@@ -109,4 +109,4 @@ async function getPostById(req, res, next) {
   }
 }
 
-module.exports = { addPost, getAllPosts, getPostById, likePost, savePost };
+module.exports = { addPost, getAllPosts, getPostById, likePost: toggleLikePost, savePost };
