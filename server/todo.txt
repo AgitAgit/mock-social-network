@@ -1,4 +1,19 @@
 posts - 
-    - change 'likePost' to 'toggleLikePost'
-      and do the same with 'savePost'
+    - change save post to toggle save post
+users -
+    - add route to update user details
+    - add route to delete user
+    
+comments -
 
+- implement post pagination using limit-offset / cursor scrolling
+
+
+from the requirements page:
+- fetch user by email
+- GET `/comments/post/:postId`: Retrieve all comments for a specific post
+- Handle basic CRUD operations for users, posts, and comments using Mongoose. -------------add update and delete functionalities?
+    -users: update?, delete?
+    -posts: update?, delete DONE.
+    -comments: update?, delete DONE.
+- Add middleware for centralized error handling. ----------done?

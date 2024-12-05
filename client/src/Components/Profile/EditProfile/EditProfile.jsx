@@ -1,5 +1,5 @@
 import { IoPersonAddOutline } from "react-icons/io5";
-import { useNavigate } from "react-dom";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
   const navigate = useNavigate();

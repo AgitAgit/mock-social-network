@@ -31,8 +31,8 @@ async function getUserData(req, res, next) {
     );
 
     const userPostData = userPosts.map((post) => ({
-      id: post._id,
-      image: post.postImageUrl,
+      _id: post._id,
+      postImageUrl: post.postImageUrl,
     }));
 
     res.json({ user, Posts: userPostData, followers, following });
