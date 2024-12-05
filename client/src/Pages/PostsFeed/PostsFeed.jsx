@@ -11,7 +11,6 @@ const PostsFeed = () => {
   const usernameFromStore = useSelector((state) => state.user.name);
   console.log(usernameFromStore);
 
-  const usernameFromStore = useSelector((state) => state.user.name);
   const fetchPosts = async () => {
     try {
       const allPostsResponse = await axios.get(
