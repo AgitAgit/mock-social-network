@@ -6,7 +6,7 @@ users -
     
 comments -
 
-- implement post pagination using limit-offset / cursor scrolling
+- implement post pagination using limit-offset / cursor scrolling - DONE
 
 
 from the requirements page:
