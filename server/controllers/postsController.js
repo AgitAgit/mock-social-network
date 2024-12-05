@@ -62,7 +62,7 @@ async function savePost(req, res, next) {
     if (user.savedPosts.includes(postId)) {
       user.savedPosts.pull(postId);
       const updatedUser = await user.save();
-      res.json({
+      return res.json({
         message: "You already saved this post. Unsaving...",
         updatedUser,
       });
@@ -71,7 +71,7 @@ async function savePost(req, res, next) {
     user.savedPosts.push(postId);
     const updatedUser = await user.save(); // change to find and update
 
-    res.json({ message: "Post saved successfully", user: updatedUser });
+    return res.json({ message: "Post saved successfully", user: updatedUser });
   } catch (error) {
     next(error);
   }

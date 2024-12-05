@@ -7,14 +7,14 @@ const {
   catchAll,
   getUserData,
   followUser,
-  deleteUser
+  deleteUser,
 } = require("../controllers/usersController.js");
 
 const { authUser } = require("../middleware/authUser.js");
 
 const router = express.Router();
 
-router.get("/", authUser, getAllUsers);
+router.get("/", getAllUsers);
 
 router.get("/data", authUser, getUserData);
 
@@ -31,6 +31,5 @@ router.post("/follow/:id", authUser, followUser);
 router.delete("/:id", authUser, deleteUser);
 
 router.use(catchAll);
-
 
 module.exports = router;
