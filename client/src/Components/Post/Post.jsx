@@ -5,15 +5,19 @@ import PostImage from "./PostImage/PostImage.jsx";
 import PostActions from "./PostActions/PostActions.jsx";
 import PostEngagements from "./PostEngagements/PostEngagements.jsx";
 import UserPostContent from "./UserPostContent/UserPostContent.jsx";
+import Loader from "../Loader/Loader.jsx";
 
 const Post = ({ post }) => {
-  console.log(post.commentIds);
+  if (!post) {
+    return <Loader />;
+  }
 
-  const postUsername = post.authorId.username;
-  const userProfileImg = post.authorId.profilePic;
-  const postUploadTime = timeSince(post.createdAt);
-  const postImage = post.postImageUrl;
-  const postContent = post.content;
+  const postUsername = post?.authorId?.username || "Unknown User";
+  const userProfileImg = post?.authorId?.profilePic || "";
+  const postUploadTime = timeSince(post?.createdAt) || "Just now";
+  const postImage = post?.postImageUrl || "";
+  const postContent = post?.content || "";
+  const commentsArr = post?.commentIds || [];
 
   return (
     <div>
@@ -31,15 +35,17 @@ const Post = ({ post }) => {
           postUsername={postUsername}
         />
         <div className="CommentsContainer w-full">
-          {post.commentIds.map((comment) => (
-            <Comment
-              key={comment._id}
-              className={comment._id}
-              comment={comment}
-            />
-          ))}
+          {commentsArr.length > 0 ? (
+            commentsArr.map((comment) => (
+              <Comment key={comment._id || comment.id} comment={comment} />
+            ))
+          ) : (
+            <div>
+              <Loader />
+            </div>
+          )}
         </div>
-      </div>{" "}
+      </div>
     </div>
   );
 };
