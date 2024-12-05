@@ -15,7 +15,7 @@ from the requirements page:
 - GET `/comments/post/:postId`: Retrieve all comments for a specific post - DONE
 - Handle basic CRUD operations for users, posts, and comments using Mongoose. -------------add update and delete functionalities?
     -users: update DONE, delete DONE
-    -posts: update?, delete DONE.
+    -posts: update (doesn't seem relevant practically), delete DONE.
     -comments: update?, delete DONE.
 - Add middleware for centralized error handling. ----------done?
 

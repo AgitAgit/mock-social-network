@@ -15,6 +15,16 @@ async function getAllUsers(req, res, next) {
   }
 }
 
+async function getUserByUsername(req, res, next){
+  try {
+    const { username } = req.params;
+    const user = await User.findOne({ username: username});
+    res.json({ message: { foundUser: user } });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function getUserData(req, res, next) {
   try {
     const userId = req.params.id ? req.params.id : req.user.userId;
@@ -192,6 +202,7 @@ module.exports = {
   addUser,
   getAllUsers,
   getUserData,
+  getUserByUsername,
   login,
   logout,
   followUser,
