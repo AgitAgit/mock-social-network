@@ -17,14 +17,8 @@ const ViewPost = () => {
         },
       );
 
-<<<<<<< HEAD
       if (data) {
         setPost(data);
-=======
-      if (res.data) {
-
-        setPost(res.data.post);
->>>>>>> 0635d03c94e06395d5bb665cb2e089bda8ba3386
       }
     } catch (error) {
       console.error(`Error has been occurred durning API post: `, error);
@@ -34,8 +28,6 @@ const ViewPost = () => {
   useEffect(() => {
     fetchPost();
   }, [postId]);
-
-  console.log(post);
 
   return (
     <div className="text-white">

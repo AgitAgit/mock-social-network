@@ -27,6 +27,7 @@ const Profile = () => {
   useEffect(() => {
     fetchUserData();
   }, []);
+
   console.log(userData);
 
   return (

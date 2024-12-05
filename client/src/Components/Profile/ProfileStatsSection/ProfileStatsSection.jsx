@@ -6,11 +6,11 @@ const ProfileStatsSection = ({ followers, following, posts }) => {
         <h4 className="text-[0.8em] text-gray-500">Posts</h4>
       </div>
       <div className="FollowersStat">
-        <h2 className="text-[1.2em]">{followers?.length}</h2>
+        <h2 className="text-[1.2em]">{followers}</h2>
         <h4 className="text-[0.8em] text-gray-500">Followers</h4>
       </div>
       <div className="Following">
-        <h2 className="text-[1.2em]">{following?.length}</h2>
+        <h2 className="text-[1.2em]">{following}</h2>
         <h4 className="text-[0.8em] text-gray-500">Following</h4>
       </div>
     </div>

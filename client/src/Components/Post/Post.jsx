@@ -19,8 +19,6 @@ const Post = ({ post }) => {
   const postContent = post?.content || "";
   const commentsArr = post?.commentIds || [];
 
-  console.log(post.commentIds);
-
   return (
     <div>
       <div className="mb-[2em] flex flex-col items-center gap-[0.5em] rounded-[1em] p-[1.5em]">

@@ -6,11 +6,12 @@ import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
 
 const PostsFeed = () => {
   const [postsData, setPostsData] = useState([]);
+  const [limit, setLimit] = useState(1);
 
   const fetchPosts = async () => {
     try {
       const allPostsResponse = await axios.get(
-        "http://localhost:3000/api/posts",
+        `http://localhost:3000/api/posts?limit=${limit}`, //offset from which post id we start and limit amount of posts
         { withCredentials: true },
       );
       setPostsData(allPostsResponse.data);
@@ -27,7 +28,6 @@ const PostsFeed = () => {
     const button = e.target.closest("button");
     if (button) {
     }
-
   };
 
   return (
