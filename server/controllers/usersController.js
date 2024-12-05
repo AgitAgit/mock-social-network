@@ -22,10 +22,8 @@ async function getUserData(req, res, next) {
     const user = await User.findById(userId);
 
     const userPosts = await Post.find({ authorId: userId });
-    const followers = await Follower.find({ userId }).select("followerId");
-    const following = await Follower.find({ followerId: userId }).select(
-      "userId"
-    );
+    const followers = await Follower.countDocuments({ userId });
+    const following = await Follower.countDocuments({ followerId: userId });
 
     const userPostData = userPosts.map((post) => ({
       _id: post._id,
