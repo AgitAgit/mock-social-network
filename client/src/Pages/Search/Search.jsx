@@ -42,7 +42,7 @@ const Search = () => {
             </button>
           ))}
       </div>
-      <FooterMenu />
+      <FooterMenu pageValue={"Search"} />
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import FooterBar from "../../Components/FooterMenu/FooterMenu.jsx";
 import MenuContainer from "../../Components/Menubar/Menubar.jsx";
 import Post from "../../Components/Post/Post.jsx";
+import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
 
 const PostsFeed = () => {
   const [postsData, setPostsData] = useState([]);
@@ -41,7 +41,7 @@ const PostsFeed = () => {
           postsData.map((post) => (
             <Post key={post._id} className={post._id} post={post} />
           ))}
-        <FooterBar />
+        <FooterMenu pageValue={"Home"} />
       </div>
     );
   };

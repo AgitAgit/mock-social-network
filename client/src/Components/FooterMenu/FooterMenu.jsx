@@ -25,9 +25,9 @@ const iconConfiguration = {
   },
 };
 
-const FooterMenu = () => {
+const FooterMenu = ({ pageValue }) => {
   const navigate = useNavigate();
-  const [value, setValue] = useState("Home");
+  const [value, setValue] = useState(pageValue);
   const [open, setOpen] = useState(false);
 
   const handleChange = (e, newValue) => {
