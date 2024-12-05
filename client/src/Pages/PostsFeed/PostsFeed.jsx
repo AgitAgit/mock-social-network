@@ -13,23 +13,21 @@ const PostsFeed = () => {
         "http://localhost:3000/api/posts",
         { withCredentials: true },
       );
+      setPostsData(allPostsResponse.data);
     } catch (error) {
       console.error(`Error has occurred durning fetching API: `, error);
     }
-    console.log(allPostsResponse);
-
-    setPostsData(allPostsResponse.data);
   };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const handleClick = (e) => {
     const button = e.target.closest("button");
     if (button) {
-      console.log(button.className);
     }
 
-    useEffect(() => {
-      fetchPosts();
-    }, []);
   };
 
   return (

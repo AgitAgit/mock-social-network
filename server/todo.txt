@@ -1,16 +1,17 @@
 posts - 
-    - change save post to toggle save post
+
+    - change save post to toggle save post - DONE
 users -
     - add route to update user details
     - add route to delete user
     
 comments -
 
-- implement post pagination using limit-offset / cursor scrolling
+- implement post pagination using limit-offset / cursor scrolling - DONE
 
 
 from the requirements page:
-- fetch user by email
+- fetch user by email(do that by username instead. return an error message if it's not done);
 - GET `/comments/post/:postId`: Retrieve all comments for a specific post
 - Handle basic CRUD operations for users, posts, and comments using Mongoose. -------------add update and delete functionalities?
     -users: update?, delete?
