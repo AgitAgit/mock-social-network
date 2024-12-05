@@ -19,7 +19,7 @@ const ProfileGallerySection = () => {
     <div>
       <div
         // onClick={handleClick}
-        className="mt-2 flex w-full flex-row flex-wrap justify-center"
+        className="mb-12 mt-2 flex w-full flex-row flex-wrap justify-center"
       >
         {dammyPosts &&
           dammyPosts.map((post) => (

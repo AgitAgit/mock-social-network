@@ -44,8 +44,6 @@ import { RiFacebookCircleLine } from "react-icons/ri";
 import { AiOutlineInbox } from "react-icons/ai";
 import { MdOutlineVerified } from "react-icons/md";
 import { VscGraph } from "react-icons/vsc";
-import SearchBarInput from "../SearchBarInput/SearchBarInput";
-import ArrowBackIcon from "../ArrowBackIcon/ArrowBackIcon";
 
 const lineStyle = "border-[0.001em] border-gray-400";
 const h3Style = "p-[0.5em] text-gray-500";

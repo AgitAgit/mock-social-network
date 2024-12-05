@@ -93,13 +93,13 @@ This project includes both a **React frontend** and a **Node.js backend**, focus
 3. **API Endpoints**:
     - Users:
         - POST `/users/signup`: Save new user data to MongoDB. DONE.
-        - POST `/users/login`: Find a user by email and return their data. -----------------add this?
+        - POST `/users/login`: Find a user by email and return their data. REPEAT OF EARLIER TASK.
     - Posts:
         - GET `/posts`: Retrieve all posts from MongoDB. DONE.
         - GET `/posts/:postId`: Retrieve a single post and populate its comments. DONE.
         - POST `/posts`: Add a new post to MongoDB. DONE.
     - Comments:
-        - GET `/comments/post/:postId`: Retrieve comments for a specific post. ------------------is this done?
+        - GET `/comments/post/:postId`: Retrieve comments for a specific post. REPEAT OF EARLIER TASK.
         - POST `/comments`: Add a new comment to MongoDB. DONE.
 
 ---
@@ -120,7 +120,7 @@ This project includes both a **React frontend** and a **Node.js backend**, focus
 
 1. **Users**:
     - POST `/users/signup`: Register a new user with a display name and email. DONE(with username and password instead)
-    - POST `/users/login`: Retrieve user data by email. -------------------------should we add this?
+    - POST `/users/login`: Retrieve user data by email. REPEAT OF EARLIER TASK.
 2. **Posts**:
     - GET `/posts`: Retrieve all posts. DONE.
     - GET `/posts/:postId`: Retrieve a single post and its comments. DONE.
@@ -399,7 +399,7 @@ Add animations or transitions when toggling between the Sign In and
 1. **Logout Functionality**:
     - Implement a feature to clear the JWT cookie on logout. DONE.
 2. **Custom Error Handling**:
-    - Add middleware for centralized error handling. ----------done?
+    - Add middleware for centralized error handling. ----------------------------done?
 
 ---
 
