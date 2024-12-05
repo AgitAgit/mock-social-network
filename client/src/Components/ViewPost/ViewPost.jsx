@@ -17,7 +17,7 @@ const ViewPost = () => {
       });
 
       if (res.data) {
-        setPost(res.data);
+        setPost(res.data.post);
       }
     } catch (error) {
       console.error(`Error has been occurred durning API post: `, error);

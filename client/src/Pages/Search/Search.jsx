@@ -34,7 +34,9 @@ const Search = () => {
 
   return (
     <div className="p-[0.2em] pt-[0em]">
-      <SearchBarInput />
+      <div className="pl-[0.5em] pr-[0.5em]">
+        <SearchBarInput />
+      </div>
 
       <div
         onClick={handleClick}
