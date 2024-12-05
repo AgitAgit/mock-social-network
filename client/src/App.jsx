@@ -2,7 +2,6 @@ import "./App.css";
 import { store } from "./store/index.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-
 import AccountOptions from "./Components/AccountOptions/AccountOptions.jsx";
 import AccountCenter from "./Components/AccountOptions/AccountCenter/AccountCenter.jsx";
 import Login from "./Pages/Login/Login.jsx";
