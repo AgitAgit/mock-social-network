@@ -18,7 +18,6 @@ const Profile = () => {
       });
 
       setUserData(data);
-      console.log(userData);
     } catch (error) {
       console.error(`Error has occurred durning fetching API: `, error);
     }
@@ -27,6 +26,7 @@ const Profile = () => {
   useEffect(() => {
     fetchUserData();
   }, []);
+  console.log(userData);
 
   return (
     <div className="p-[0.5em] text-white">
