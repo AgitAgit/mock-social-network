@@ -96,4 +96,28 @@ async function toggleCommentLike(req, res, next) {
   }
 }
 
-module.exports = { getPostComments, addComment, toggleCommentLike };
+async function deleteComment(req, res, next) {
+  try {
+    const { commentId } = req.params;
+    if (!commentId) {
+      return res.status(400).json({ message: "Undefined/missing comment id" });
+    }
+    const deletedComment = await Comment.deleteOne({ _id: commentId });
+    if (deletedComment.deletedCount === 0) {
+      return res.status(400).json({ message: "Comment doesn't exist" });
+    }
+    return res.status(200).json({
+      message: "Message deleted successfully",
+      comment: deletedComment,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = {
+  getPostComments,
+  addComment,
+  toggleCommentLike,
+  deleteComment,
+};
