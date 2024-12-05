@@ -39,7 +39,7 @@ const Search = () => {
       >
         {posts &&
           posts.slice(0, 18).map((post) => (
-            <button key={post.id} className={post.id}>
+            <button key={post._id} className={post._id}>
               <ImageBlockDisplay post={post} />
             </button>
           ))}
