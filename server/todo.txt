@@ -2,8 +2,8 @@ posts -
 
     - change save post to toggle save post - DONE
 users -
-    - add route to update user details
-    - add route to delete user
+    - add route to update user details - DONE
+    - add route to delete user - DONE
     
 comments -
 
@@ -14,7 +14,7 @@ from the requirements page:
 - fetch user by email(do that by username instead. return an error message if it's not done);
 - GET `/comments/post/:postId`: Retrieve all comments for a specific post - DONE
 - Handle basic CRUD operations for users, posts, and comments using Mongoose. -------------add update and delete functionalities?
-    -users: update?, delete?
+    -users: update DONE, delete DONE
     -posts: update?, delete DONE.
     -comments: update?, delete DONE.
 - Add middleware for centralized error handling. ----------done?
