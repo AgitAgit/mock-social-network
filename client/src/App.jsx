@@ -13,6 +13,7 @@ import NewPost from "./Pages/NewPost/NewPost.jsx";
 import ViewPost from "./Components/ViewPost/ViewPost.jsx";
 import Profile from "./Components/Profile/Profile.jsx";
 import EditProfile from "./Components/Profile/EditProfile/EditProfile.jsx";
+import ReelsSection from "./Components/ReelsSection/ReelsSection.jsx";
 
 function App() {
   return (
@@ -25,11 +26,12 @@ function App() {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/view-post/:postId" element={<ViewPost />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/posts-feed" element={<PostsFeed />} />
           <Route path="/account-options" element={<AccountOptions />} />
           <Route path="/account-center" element={<AccountCenter />} />
+          <Route path="/reels" element={<ReelsSection />} />
         </Routes>
       </BrowserRouter>
     </Provider>

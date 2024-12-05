@@ -8,6 +8,7 @@ import { FaRegUser } from "react-icons/fa";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiSolidVideos } from "react-icons/bi";
+import { useSelector } from "react-redux";
 
 const iconConfiguration = {
   borderRadius: "0.5em",
@@ -26,6 +27,9 @@ const iconConfiguration = {
 };
 
 const FooterMenu = ({ pageValue }) => {
+  const username = useSelector((state) => state.user.name);
+  console.log(username);
+
   const navigate = useNavigate();
   const [value, setValue] = useState(pageValue);
   const [open, setOpen] = useState(false);
@@ -33,7 +37,7 @@ const FooterMenu = ({ pageValue }) => {
   const handleChange = (e, newValue) => {
     setValue(newValue);
     if (newValue === "Profile") {
-      navigate("/profile");
+      navigate(`/profile/${username}`);
     }
     if (newValue === "Search") {
       navigate("/search");
@@ -44,6 +48,9 @@ const FooterMenu = ({ pageValue }) => {
 
     if (newValue === "Add Post") {
       navigate("/new-post");
+    }
+    if (newValue === "Reels") {
+      navigate("/reels");
     }
   };
 
