@@ -48,7 +48,6 @@ async function toggleLikePost(req, res, next) {
   }
 }
 
-// change to toggleSavePost?
 async function savePost(req, res, next) {
   try {
     const { postId } = req.params;
@@ -61,13 +60,18 @@ async function savePost(req, res, next) {
     }
 
     if (user.savedPosts.includes(postId)) {
-      return res.status(400).json({ message: "You already saved this post" });
+      user.savedPosts.pull(postId);
+      const updatedUser = await user.save();
+      return res.json({
+        message: "You already saved this post. Unsaving...",
+        updatedUser,
+      });
     }
 
     user.savedPosts.push(postId);
     const updatedUser = await user.save(); // change to find and update
 
-    res.json({ message: "Post saved successfully", user: updatedUser });
+    return res.json({ message: "Post saved successfully", user: updatedUser });
   } catch (error) {
     next(error);
   }
@@ -112,7 +116,7 @@ async function getPostById(req, res, next) {
 
     await post.populate("commentIds");
 
-    res.json({ post: post });
+    res.json(post);
   } catch (error) {
     next(error);
   }
