@@ -163,10 +163,11 @@ async function deleteUser(req, res, next) {
     const { id } = req.params;
     const result = await User.findByIdAndDelete(id);
     const userPosts = await Post.deleteMany({ authorId: id });
+    const userComments = await Comment.deleteMany({ authorId: id });
     const followers = await Follower.deleteMany({
       $or: [{ userId: id }, { followerId: id }],
     });
-    res.json({ result, userPosts, followers });
+    res.json({ result, userPosts, userComments, followers });
   } catch (error) {
     next(error);
   }
