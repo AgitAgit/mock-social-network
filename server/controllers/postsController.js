@@ -114,7 +114,10 @@ async function getPostById(req, res, next) {
       "username profilePic"
     );
 
-    await post.populate("commentIds");
+    await post.populate({
+      path: "commentIds",
+      populate: { path: "authorId", select: "username profilePic" },
+    });
 
     res.json(post);
   } catch (error) {
