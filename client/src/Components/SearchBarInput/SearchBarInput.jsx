@@ -1,6 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 
-const AccountSettingsSearchBar = () => {
+const SearchBarInput = () => {
   return (
     <div className="relative mt-[0.5em] h-[2em] w-full">
       <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 transform text-gray-500" />
@@ -13,4 +13,4 @@ const AccountSettingsSearchBar = () => {
   );
 };
 
-export default AccountSettingsSearchBar;
+export default SearchBarInput;
