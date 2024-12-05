@@ -1,5 +1,5 @@
 const ViewPost = () => {
-  return <div>ViewPost</div>;
+  return <div className="text-white">ViewPost</div>;
 };
 
 export default ViewPost;
