@@ -7,8 +7,7 @@ import PostEngagements from "./PostEngagements/PostEngagements.jsx";
 import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 
 const Post = ({ post }) => {
-
-  console.log(post.commentIds);
+  // console.log(post.commentIds);
 
   const postUsername = post.authorId.username;
   const userProfileImg = post.authorId.profilePic;

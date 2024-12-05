@@ -4,6 +4,8 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/slices/userSlice.js";
 
 const divIconStyle =
   "rounded-[100em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
@@ -12,6 +14,7 @@ const divInputStyle =
   "rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
 
 const SignIn = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const loginUser = async (userInfo) => {
@@ -42,6 +45,7 @@ const SignIn = () => {
     };
 
     console.log(userInfo);
+    dispatch(setUser(userInfo.username));
     loginUser(userInfo);
   };
 
