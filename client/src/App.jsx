@@ -2,7 +2,7 @@ import "./App.css";
 import { store } from "./store/index.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import Profile from "./components/Profile/Profile.jsx";
+import Profile from "./Components/Profile/Profile.jsx";
 import AccountOptions from "./Components/AccountOptions/AccountOptions.jsx";
 import AccountCenter from "./Components/AccountOptions/AccountCenter/AccountCenter.jsx";
 import Login from "./Pages/Login/Login.jsx";
