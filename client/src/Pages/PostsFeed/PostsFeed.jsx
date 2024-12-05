@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const PostsFeed = () => {
   const [postsData, setPostsData] = useState([]);
-  const [limit, setLimit] = useState(1);
+  const [limit, setLimit] = useState(3);
 
   const usernameFromStore = useSelector((state) => state.user.name);
 

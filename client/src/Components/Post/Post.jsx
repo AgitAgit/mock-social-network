@@ -8,7 +8,6 @@ import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 import Loader from "../Loader/Loader.jsx";
 
 const Post = ({ post }) => {
-
   if (!post) {
     return <Loader />;
   }

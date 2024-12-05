@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import BackPageArrow from "../../BackPageArrow/BackPageArrow";
 
 const styleIcon = {
   color: "white",
@@ -21,7 +20,7 @@ const ProfileHeaderNavigation = () => {
     <div className="ProfileNavigation flex flex-row justify-between p-[1em]">
       <Link to="/posts-feed">
         <button>
-          <ArrowForwardIcon sx={styleIcon} />
+          <BackPageArrow top={35} left={25} />
         </button>
       </Link>
       <Link to="/account-options">
