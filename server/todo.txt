@@ -1,4 +1,13 @@
 posts - 
     - change 'likePost' to 'toggleLikePost'
       and do the same with 'savePost'
+    - add route to delete post
 
+users -
+    - add route to update user details
+    - add route to delete user
+    
+comments -
+    - add route to delete comment
+
+- implement post pagination using limit-offset / cursor scrolling
