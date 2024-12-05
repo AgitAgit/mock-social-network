@@ -15,6 +15,16 @@ async function getAllUsers(req, res, next) {
   }
 }
 
+async function getUserByUsername(req, res, next){
+  try {
+    const { username } = req.params;
+    const user = await User.findOne({ username: username});
+    res.json({ message: { foundUser: user } });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function getUserData(req, res, next) {
   try {
     const userId = req.params.id ? req.params.id : req.user.userId;
@@ -22,10 +32,8 @@ async function getUserData(req, res, next) {
     const user = await User.findById(userId);
 
     const userPosts = await Post.find({ authorId: userId });
-    const followers = await Follower.find({ userId }).select("followerId");
-    const following = await Follower.find({ followerId: userId }).select(
-      "userId"
-    );
+    const followers = await Follower.countDocuments({ userId });
+    const following = await Follower.countDocuments({ followerId: userId });
 
     const userPostData = userPosts.map((post) => ({
       _id: post._id,
@@ -194,6 +202,7 @@ module.exports = {
   addUser,
   getAllUsers,
   getUserData,
+  getUserByUsername,
   login,
   logout,
   followUser,
