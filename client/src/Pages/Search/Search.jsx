@@ -1,11 +1,9 @@
-import styles from "./Search.module.css";
-import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import FooterBar from "../../Components/FooterMenu/FooterMenu.jsx";
 import AccountSettingsSearchBar from "../../Components/Searchbar/Searchbar.jsx";
-import { data } from "react-router-dom";
 import ImageBlockDisplay from "../../Components/ImageBlockDisplay/ImageBlockDisplay.jsx";
+import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
 
 const Search = () => {
   const [posts, setPosts] = useState(null);
@@ -44,6 +42,7 @@ const Search = () => {
             </button>
           ))}
       </div>
+      <FooterMenu />
     </div>
   );
 };

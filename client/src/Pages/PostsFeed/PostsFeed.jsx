@@ -8,10 +8,14 @@ const PostsFeed = () => {
   const [postsData, setPostsData] = useState([]);
 
   const fetchPosts = async () => {
-    const allPostsResponse = await axios.get(
-      "http://localhost:3000/api/posts/",
-      { withCredentials: true },
-    );
+    try {
+      const allPostsResponse = await axios.get(
+        "http://localhost:3000/api/posts",
+        { withCredentials: true },
+      );
+    } catch (error) {
+      console.error(`Error has occurred durning fetching API: `, error);
+    }
     console.log(allPostsResponse);
 
     setPostsData(allPostsResponse.data);
