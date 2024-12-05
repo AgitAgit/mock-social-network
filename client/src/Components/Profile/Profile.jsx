@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import EditProfile from "./EditProfile/EditProfile";
 import ProfileActionsBtns from "./ProfileActionsBtns/ProfileActionsBtns";
 import ProfileGallerySection from "./ProfileGallerySection/ProfileGallerySection";
@@ -5,8 +6,29 @@ import ProfileHeaderNavigation from "./ProfileHeaderNavigation/ProfileHeaderNavi
 import ProfileImageDisplay from "./ProfileImageDisplay/ProfileImageDisplay";
 import ProfileStatsSection from "./ProfileStatsSection/ProfileStatsSection";
 import ProfileUserDetails from "./ProfileUserDetails/ProfileUserDetails";
+import axios from "axios";
+import FooterMenu from "../FooterMenu/FooterMenu";
 
 const Profile = () => {
+  const [userData, setUserData] = useState(null);
+
+  const fetchUserData = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:3000/api/users/data", {
+        withCredentials: true,
+      });
+
+      setUserData(data);
+    } catch (error) {
+      console.error(`Error has occurred durning fetching API: `, error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+  console.log(userData);
+
   return (
     <div className="p-[0.5em] text-white">
       <div className="rounded-[1em] bg-profileSectionTheme font-CaustenFont">
@@ -32,6 +54,7 @@ const Profile = () => {
         <EditProfile />
       </div>
       <ProfileGallerySection />
+      <FooterMenu pageValue={"Profile"} />
     </div>
   );
 };

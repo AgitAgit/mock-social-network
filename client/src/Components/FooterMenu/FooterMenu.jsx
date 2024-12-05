@@ -25,9 +25,9 @@ const iconConfiguration = {
   },
 };
 
-const FooterBar = () => {
+const FooterMenu = ({ pageValue }) => {
   const navigate = useNavigate();
-  const [value, setValue] = useState("Home");
+  const [value, setValue] = useState(pageValue);
   const [open, setOpen] = useState(false);
 
   const handleChange = (e, newValue) => {
@@ -35,11 +35,15 @@ const FooterBar = () => {
     if (newValue === "Profile") {
       navigate("/profile");
     }
-    if (newValue === "Search"){
+    if (newValue === "Search") {
       navigate("/search");
     }
-    if (newValue === "Home"){
+    if (newValue === "Home") {
       navigate("/posts-feed");
+    }
+
+    if (newValue === "Add Post") {
+      navigate("/new-post");
     }
   };
 
@@ -85,4 +89,4 @@ const FooterBar = () => {
     </BottomNavigation>
   );
 };
-export default FooterBar;
+export default FooterMenu;

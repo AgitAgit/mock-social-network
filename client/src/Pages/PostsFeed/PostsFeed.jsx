@@ -1,17 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import FooterBar from "../../Components/FooterMenu/FooterMenu.jsx";
 import MenuContainer from "../../Components/Menubar/Menubar.jsx";
 import Post from "../../Components/Post/Post.jsx";
+import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
 
 const PostsFeed = () => {
   const [postsData, setPostsData] = useState([]);
 
   const fetchPosts = async () => {
-    const allPostsResponse = await axios.get(
-      "http://localhost:3000/api/posts/",
-      { withCredentials: true },
-    );
+    try {
+      const allPostsResponse = await axios.get(
+        "http://localhost:3000/api/posts",
+        { withCredentials: true },
+      );
+    } catch (error) {
+      console.error(`Error has occurred durning fetching API: `, error);
+    }
     console.log(allPostsResponse);
 
     setPostsData(allPostsResponse.data);
@@ -37,7 +41,7 @@ const PostsFeed = () => {
           postsData.map((post) => (
             <Post key={post._id} className={post._id} post={post} />
           ))}
-        <FooterBar />
+        <FooterMenu pageValue={"Home"} />
       </div>
     );
   };
