@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import ImageBlockDisplay from "../../Components/ImageBlockDisplay/ImageBlockDisplay.jsx";
 import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
 import SearchBarInput from "../../Components/SearchBarInput/SearchBarInput.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [posts, setPosts] = useState(null);
   const [chosenPost, setChosenPost] = useState(null);
+  const navigate = useNavigate();
 
   async function fetchData() {
     try {
@@ -24,8 +26,10 @@ const Search = () => {
   }, []);
 
   const handleClick = (e) => {
-    const post = e.target.closest("button").className;
-    console.log(post);
+    const postId = e.target.closest("button").className;
+    console.log(postId);
+
+    navigate(`/view-post/${postId}`);
   };
 
   return (

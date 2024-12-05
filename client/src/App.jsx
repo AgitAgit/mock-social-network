@@ -23,7 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/new-post" element={<NewPost />} />
           <Route path="/edit-profile" element={<EditProfile />} />
-          <Route path="/view-post" element={<ViewPost />} />
+          <Route path="/view-post/:postId" element={<ViewPost />} />
           <Route path="/search" element={<Search />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />

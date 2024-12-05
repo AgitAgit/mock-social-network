@@ -30,20 +30,20 @@ const PostsFeed = () => {
     useEffect(() => {
       fetchPosts();
     }, []);
-
-    return (
-      <div
-        className="m-8 mt-[4em] flex flex-col items-center justify-center text-white"
-        onClick={handleClick}
-      >
-        <MenuContainer />
-        {postsData &&
-          postsData.map((post) => (
-            <Post key={post._id} className={post._id} post={post} />
-          ))}
-        <FooterMenu pageValue={"Home"} />
-      </div>
-    );
   };
+
+  return (
+    <div
+      className="m-8 mt-[4em] flex flex-col items-center justify-center text-white"
+      onClick={handleClick}
+    >
+      <MenuContainer />
+      {postsData &&
+        postsData.map((post) => (
+          <Post key={post._id} className={post._id} post={post} />
+        ))}
+      <FooterMenu pageValue={"Home"} />
+    </div>
+  );
 };
 export default PostsFeed;
