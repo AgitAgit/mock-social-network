@@ -31,6 +31,7 @@ const Search = () => {
   return (
     <div className="p-[0.2em] pt-[0em]">
       <SearchBarInput />
+
       <div
         onClick={handleClick}
         className="mt-2 flex w-full flex-row flex-wrap justify-center"
