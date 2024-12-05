@@ -19,4 +19,4 @@ from the requirements page:
     -comments: update?, delete DONE.
 - Add middleware for centralized error handling. ----------done?
 
-- change follower and following to count instead of array in users
+- change follower and following to count instead of array in users -DONE

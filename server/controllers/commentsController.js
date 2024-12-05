@@ -1,5 +1,6 @@
 const Comment = require("../models/commentModel.js");
 const Post = require("../models/postModel.js");
+const User = require("../models/userModel.js");
 
 //path params:postId
 //query params:none
@@ -57,7 +58,7 @@ async function addComment(req, res, next) {
     );
 
     res.json({
-      yourComment: response.commentContent,
+      yourComment: response,
       parentPost: updateResult,
     });
   } catch (error) {
@@ -73,7 +74,6 @@ async function toggleCommentLike(req, res, next) {
     let updateResult;
     let textMessage;
     const comment = await Comment.findOne({ _id: commentId }); //need to test this...
-    // console.log(comment);
     const likes = comment.likedBy.includes(userId);
     console.log("commentsController.toggleCommentLike likes says:", likes);
     if (likes) {
@@ -91,6 +91,32 @@ async function toggleCommentLike(req, res, next) {
       );
     }
     res.json({ textMessage, message: updateResult });
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function updateComment(req, res, next) {
+  try {
+    const { userId } = req.user;
+    const { commentId } = req.params;
+    const { content } = req.body;
+    const comment = await Comment.findById(commentId);
+    const existingUser = await User.findById(userId);
+    if (!existingUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (comment.authorId.toString() !== userId) {
+      return res.status(404).json({ message: "Not this users comment" });
+    }
+
+    comment.commentContent = content;
+    const updatedComment = await comment.save();
+
+    res
+      .status(201)
+      .json({ message: "Comment updated successfully!", updatedComment });
   } catch (error) {
     next(error);
   }
@@ -119,5 +145,6 @@ module.exports = {
   getPostComments,
   addComment,
   toggleCommentLike,
+  updateComment,
   deleteComment,
 };
