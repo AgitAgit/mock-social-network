@@ -34,9 +34,11 @@ async function toggleLikePost(req, res, next) {
     if (post.likedBy.includes(req.user.userId)) {
       post.likedBy.pull(req.user.userId);
       const updatedPost = await post.save();
-      res.json({ message: "You already liked this post. Like will be removed.", updatedPost});
-    }
-    else{
+      res.json({
+        message: "You already liked this post. Like will be removed.",
+        updatedPost,
+      });
+    } else {
       post.likedBy.push(req.user.userId);
       const updatedPost = await post.save(); // change to find and update
       res.json({ message: "Post liked successfully", post: updatedPost });
@@ -78,8 +80,12 @@ async function savePost(req, res, next) {
 
 async function getAllPosts(req, res, next) {
   try {
-    // Fetch posts with required fields
+    const limit = req.query.limit || 3;
+    const offset = req.query.offset || 0;
+
     const posts = await Post.find()
+      .skip(offset)
+      .limit(limit)
       .populate({
         path: "commentIds",
         populate: { path: "authorId", select: "username profilePic" },
@@ -99,7 +105,11 @@ async function getAllPosts(req, res, next) {
 async function getPostById(req, res, next) {
   try {
     const { postId } = req.params;
-    const post = await Post.findById(postId).populate("authorId", "username");
+    const post = await Post.findById(postId).populate(
+      "authorId",
+      "username",
+      "profilePic"
+    );
 
     await post.populate("commentIds");
 
@@ -112,11 +122,18 @@ async function getPostById(req, res, next) {
 async function deletePost(req, res, next) {
   try {
     const { postId } = req.params;
-    const result = await Post.deleteOne({_id:postId});
-    res.json({message:result});
+    const result = await Post.deleteOne({ _id: postId });
+    res.json({ message: result });
   } catch (error) {
     next(error);
   }
 }
 
-module.exports = { addPost, getAllPosts, getPostById, likePost: toggleLikePost, savePost, deletePost };
+module.exports = {
+  addPost,
+  getAllPosts,
+  getPostById,
+  likePost: toggleLikePost,
+  savePost,
+  deletePost,
+};
