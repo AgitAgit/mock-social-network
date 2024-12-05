@@ -23,8 +23,7 @@ const SignIn = () => {
       );
 
       if (resLoginData) {
-        console.log(resLoginData);
-        navigate("/posts-feed"); // Navigate after successful login
+        navigate("/posts-feed");
       }
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);

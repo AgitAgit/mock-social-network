@@ -7,10 +7,12 @@ import PostEngagements from "./PostEngagements/PostEngagements.jsx";
 import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 
 const Post = ({ post }) => {
-  const postUsername = post.authorId.username;
-  const userProfileImg = post.authorId.profilePic;
+  console.log(post);
+
+  const postUsername = post.authorId.username || post.authorId;
+  const userProfileImg = post.authorId.profilePic || post.postImageUrl;
   const postUploadTime = timeSince(post.createdAt);
-  const postImage = post.postImageUrl;
+  const postImage = post.postImageUrl || post.postImageUrl;
   const postContent = post.content;
 
   return (
