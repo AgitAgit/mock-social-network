@@ -539,7 +539,7 @@ Body:
 
 ### **POST /posts/:postId/like**
 
-- **Description**: Toggles the user's like of a specific post.
+- **Description**: Likes a specific post.
 
 - **Route**: `/posts/:postId/like`
 
@@ -555,6 +555,7 @@ Body:
 
   - **200 OK**: Post liked successfully.
   - **404 Not Found**: If the post does not exist.
+  - **400 Bad Request**: If the user has already liked the post.
 
 - **Example Request**:
 

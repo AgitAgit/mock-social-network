@@ -34,7 +34,7 @@ const Search = () => {
 
       <div
         onClick={handleClick}
-        className="mt-2 flex w-full flex-row flex-wrap justify-center"
+        className="mb-12 mt-2 flex w-full flex-row flex-wrap justify-center"
       >
         {posts &&
           posts.slice(0, 18).map((post) => (
