@@ -34,12 +34,12 @@ async function toggleLikePost(req, res, next) {
     if (post.likedBy.includes(req.user.userId)) {
       post.likedBy.pull(req.user.userId);
       const updatedPost = await post.save();
-      res.json({ message: "You already liked this post. Like will be removed.", updatedPost});
+      res.status(200).json({ message: "You already liked this post. Like will be removed.", updatedPost});
     }
     else{
       post.likedBy.push(req.user.userId);
       const updatedPost = await post.save(); // change to find and update
-      res.json({ message: "Post liked successfully", post: updatedPost });
+      res.status(200).json({ message: "Post liked successfully", post: updatedPost });
     }
   } catch (error) {
     next(error);

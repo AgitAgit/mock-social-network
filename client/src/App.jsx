@@ -2,7 +2,6 @@ import "./App.css";
 import { store } from "./store/index.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import Profile from "./components/Profile/Profile.jsx";
 import AccountOptions from "./Components/AccountOptions/AccountOptions.jsx";
 import AccountCenter from "./Components/AccountOptions/AccountCenter/AccountCenter.jsx";
 import Login from "./Pages/Login/Login.jsx";
@@ -12,7 +11,8 @@ import Homepage from "./Pages/Homepage/Homepage.jsx";
 import Search from "./Pages/Search/Search.jsx";
 import NewPost from "./Pages/NewPost/NewPost.jsx";
 import ViewPost from "./Components/ViewPost/ViewPost.jsx";
-import EditProfile from "./Components/EditProfile/EditProfile.jsx";
+import Profile from "./Components/Profile/Profile.jsx";
+import EditProfile from "./Components/Profile/EditProfile/EditProfile.jsx";
 
 function App() {
   return (
