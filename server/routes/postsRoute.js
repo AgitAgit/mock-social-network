@@ -4,7 +4,7 @@ const {
   addPost,
   getAllPosts,
   getPostById,
-  likePost,
+  likePost: toggleLikePost,
   savePost,
 } = require("../controllers/postsController.js");
 const { authUser } = require("../middleware/authUser.js");
@@ -19,7 +19,7 @@ router.get("/:postId", getPostById);
 
 router.post("/", addPost);
 
-router.post("/:postId/like", likePost);
+router.post("/:postId/like", toggleLikePost);
 
 router.post("/:postId/save", savePost);
 
