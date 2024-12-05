@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   MdOutlineBookmarkBorder,
   MdOutlineArchive,
@@ -44,8 +44,8 @@ import { RiFacebookCircleLine } from "react-icons/ri";
 import { AiOutlineInbox } from "react-icons/ai";
 import { MdOutlineVerified } from "react-icons/md";
 import { VscGraph } from "react-icons/vsc";
-import ArrowBackIcon from "../ArrowbackIcon/ArrowBackIcon";
 import SearchBarInput from "../SearchBarInput/SearchBarInput";
+import BackPageArrow from "../BackPageArrow/BackPageArrow";
 
 const lineStyle = "border-[0.001em] border-gray-400";
 const h3Style = "p-[0.5em] text-gray-500";
@@ -55,14 +55,11 @@ const left = "24px";
 const position = "absolute";
 
 const AccountOptions = () => {
-  const navigate = useNavigate();
   return (
     <div className="mt-1 flex w-[100vw] flex-col p-[1.5em] text-white">
       <div className="ml-[1em] flex flex-col items-start justify-start">
         <div className="flex w-full flex-row items-center justify-between">
-          <button onClick={() => navigate(-1)}>
-            <ArrowBackIcon top={top} left={left} position={position} />
-          </button>
+          <BackPageArrow />
           <h1 className="mb-[0.5em] w-full text-center text-white">
             Setting and activity
           </h1>
