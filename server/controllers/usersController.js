@@ -29,7 +29,7 @@ async function getUserData(req, res, next) {
     );
 
     const userPostData = userPosts.map((post) => ({
-      id: post._id,
+      _id: post._id,
       postImageUrl: post.postImageUrl,
     }));
 
