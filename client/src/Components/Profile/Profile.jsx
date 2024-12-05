@@ -39,7 +39,9 @@ const Profile = () => {
               <div className="flex w-full flex-row items-center justify-start gap-[1em]">
                 <div className="rounded-full bg-profileCircleColor p-[0.1em]">
                   <div className="rounded-full bg-profileSectionTheme">
-                    <ProfileImageDisplay />
+                    <ProfileImageDisplay
+                      profileImgUrl={userData?.user?.profilePic}
+                    />
                   </div>
                 </div>
                 <div>
@@ -48,7 +50,11 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <ProfileStatsSection />
+            <ProfileStatsSection
+              followers={userData?.followers}
+              following={userData?.following}
+              posts={userData?.Posts}
+            />
           </div>
         </div>
         <EditProfile />
