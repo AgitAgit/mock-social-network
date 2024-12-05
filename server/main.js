@@ -8,6 +8,7 @@ const { checkCollectionEmpty } = require("./injectData.js");
 const usersRouter = require("./routes/usersRoute.js");
 const postsRouter = require("./routes/postsRoute.js");
 const commentsRouter = require("./routes/commentsRoute.js");
+const centralizedErrorHandler = require("./middleware/centralizedErrorHandler.js");
 
 dotenv.config();
 
@@ -55,6 +56,8 @@ app.use((err, req, res, next) => {
   }
   res.status(500).json({ message: err.message });
 });
+
+app.use((err, req, res, next) => centralizedErrorHandler(err, req, res, next));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
