@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import FooterBar from "../../Components/FooterMenu/FooterMenu.jsx";
-import AccountSettingsSearchBar from "../../Components/Searchbar/Searchbar.jsx";
 import ImageBlockDisplay from "../../Components/ImageBlockDisplay/ImageBlockDisplay.jsx";
 import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
+import SearchBarInput from "../../Components/SearchBarInput/SearchBarInput.jsx";
 
 const Search = () => {
   const [posts, setPosts] = useState(null);
@@ -26,13 +25,13 @@ const Search = () => {
 
   const handleClick = (e) => {
     const post = e.target.closest("button").className;
-    setChosenPost(post);
-    console.log(chosenPost);
+    console.log(post);
   };
 
   return (
     <div className="p-[0.2em] pt-[0em]">
-      <AccountSettingsSearchBar />
+      <SearchBarInput />
+
       <div
         onClick={handleClick}
         className="mt-2 flex w-full flex-row flex-wrap justify-center"
@@ -44,7 +43,7 @@ const Search = () => {
             </button>
           ))}
       </div>
-      <FooterMenu />
+      <FooterMenu pageValue={"Search"} />
     </div>
   );
 };

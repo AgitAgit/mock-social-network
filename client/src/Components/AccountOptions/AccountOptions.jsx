@@ -19,7 +19,6 @@ import { IoLockClosedOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { GiFlipFlops } from "react-icons/gi";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import AccountSettingsSearchBar from "../Searchbar/Searchbar";
 import OptionTab from "./OptionTabBtn/OptionTab";
 import { BiSolidMessageRoundedDots } from "react-icons/bi";
 import { CiAt } from "react-icons/ci";
@@ -46,6 +45,7 @@ import { RiFacebookCircleLine } from "react-icons/ri";
 import { AiOutlineInbox } from "react-icons/ai";
 import { MdOutlineVerified } from "react-icons/md";
 import { VscGraph } from "react-icons/vsc";
+import SearchBarInput from "../SearchBarInput/SearchBarInput";
 
 const lineStyle = "border-[0.001em] border-gray-400";
 const h3Style = "p-[0.5em] text-gray-500";
@@ -76,7 +76,7 @@ const AccountOptions = () => {
       </div>
       <hr className={lineStyle} />
       <div className="SearchbarContainer mb-[0.5em] flex w-full flex-row items-start justify-around">
-        <AccountSettingsSearchBar />
+        <SearchBarInput />
       </div>
       <div className="YourAccountContainer flex items-center justify-between">
         <div>

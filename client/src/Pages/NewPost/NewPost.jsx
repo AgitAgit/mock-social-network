@@ -4,6 +4,7 @@ import { MdOutlineZoomOutMap } from "react-icons/md";
 import { MdZoomInMap } from "react-icons/md";
 import NewPostHeader from "./NewPostHeader/NewPostHeader";
 import NewPostRecentsFooter from "./NewPostRecentsFooter/NewPostRecentsFooter";
+import FooterMenu from "../../Components/FooterMenu/FooterMenu";
 
 const NewPost = () => {
   const [icon, setIcon] = useState(<MdOutlineZoomOutMap />);
@@ -36,6 +37,7 @@ const NewPost = () => {
         <button className="icon">{icon}</button>
       </div>
       <NewPostRecentsFooter />
+      <FooterMenu pageValue={"Add Post"} />
     </div>
   );
 };

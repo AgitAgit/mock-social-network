@@ -23,14 +23,19 @@ async function checkCollectionEmpty() {
 const injectData = async () => {
   const users = await User.insertMany(
     await Promise.all(
-      Array.from({ length: 10 }).map(async () => ({
-        displayName: faker.person.fullName(),
-        email: faker.internet.email(),
-        username: faker.internet.username().substring(0, 8),
-        password: faker.internet.password(6),
-        profilePic: faker.image.url({ width: 500, height: 500 }),
-        role: faker.helpers.arrayElement(["Member"]),
-      }))
+      Array.from({ length: 10 }).map(async () => {
+        const password = faker.internet.password(6);
+        console.log(password);
+        return {
+          displayName: faker.person.fullName(),
+          email: faker.internet.email(),
+          username: faker.internet.username().substring(0, 8),
+          plainPassword: password,
+          password: await bcrypt.hash(password, 10),
+          profilePic: faker.image.url({ width: 500, height: 500 }),
+          role: faker.helpers.arrayElement(["Member"]),
+        };
+      })
     )
   );
 

@@ -7,6 +7,7 @@ import ProfileImageDisplay from "./ProfileImageDisplay/ProfileImageDisplay";
 import ProfileStatsSection from "./ProfileStatsSection/ProfileStatsSection";
 import ProfileUserDetails from "./ProfileUserDetails/ProfileUserDetails";
 import axios from "axios";
+import FooterMenu from "../FooterMenu/FooterMenu";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
@@ -53,6 +54,7 @@ const Profile = () => {
         <EditProfile />
       </div>
       <ProfileGallerySection />
+      <FooterMenu pageValue={"Profile"} />
     </div>
   );
 };
