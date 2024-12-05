@@ -116,7 +116,7 @@ async function getPostById(req, res, next) {
 
     await post.populate("commentIds");
 
-    res.json({ post });
+    res.json(post);
   } catch (error) {
     next(error);
   }
