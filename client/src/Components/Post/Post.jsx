@@ -8,7 +8,6 @@ import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 import Loader from "../Loader/Loader.jsx";
 
 const Post = ({ post }) => {
-<<<<<<< HEAD
   if (!post) {
     return <Loader />;
   }
@@ -19,16 +18,8 @@ const Post = ({ post }) => {
   const postImage = post?.postImageUrl || "";
   const postContent = post?.content || "";
   const commentsArr = post?.commentIds || [];
-=======
 
   console.log(post.commentIds);
-
-  const postUsername = post.authorId.username;
-  const userProfileImg = post.authorId.profilePic;
-  const postUploadTime = timeSince(post.createdAt);
-  const postImage = post.postImageUrl || post.postImageUrl;
-  const postContent = post.content;
->>>>>>> 0635d03c94e06395d5bb665cb2e089bda8ba3386
 
   return (
     <div>
