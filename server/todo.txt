@@ -17,6 +17,6 @@ from the requirements page:
     -users: update DONE, delete DONE
     -posts: update (doesn't seem relevant practically), delete DONE.
     -comments: update?, delete DONE.
-- Add middleware for centralized error handling. ----------done?
+- Add middleware for centralized error handling. DONE.
 
 - change follower and following to count instead of array in users
