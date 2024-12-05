@@ -16,7 +16,6 @@ const Search = () => {
         withCredentials: true,
       });
       setPosts(data);
-      console.log(data);
     } catch (error) {
       console.error(error);
     }
@@ -32,7 +31,7 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className="p-[0.2em] pt-[0em]">
       <AccountSettingsSearchBar />
       <div
         onClick={handleClick}
@@ -40,7 +39,7 @@ const Search = () => {
       >
         {posts &&
           posts.slice(0, 18).map((post) => (
-            <button key={post.post.id} className={post.post.id}>
+            <button key={post._id} className={post._id}>
               <ImageBlockDisplay post={post} />
             </button>
           ))}

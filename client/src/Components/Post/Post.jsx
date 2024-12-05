@@ -30,7 +30,11 @@ const Post = ({ post }) => {
         />
         <div className="CommentsContainer w-full">
           {post.commentIds.map((comment) => (
-            <Comment key={comment._id} comment={comment} />
+            <Comment
+              key={comment._id}
+              className={comment._id}
+              comment={comment}
+            />
           ))}
         </div>
       </div>

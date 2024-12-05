@@ -2,7 +2,7 @@ import PlaceholderImage from "/images/post-placeholder.svg";
 
 const AddPost = () => {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex w-full flex-col">
       <div className="flex w-full flex-row flex-wrap text-white">
         <h2>New post</h2>
         <div className="flex items-center">

@@ -1,6 +1,4 @@
 const ImageBlockDisplay = (post) => {
-  console.log(post);
-
   return (
     <div className="m-1 flex w-[30vw] text-white">
       <img

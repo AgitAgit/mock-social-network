@@ -12,13 +12,15 @@ const PostsFeed = () => {
       "http://localhost:3000/api/posts/",
       { withCredentials: true },
     );
+    console.log(allPostsResponse);
+
     setPostsData(allPostsResponse.data);
   };
 
   const handleClick = (e) => {
     const button = e.target.closest("button");
     if (button) {
-      console.log(button);
+      console.log(button.className);
     }
 
     useEffect(() => {
@@ -33,7 +35,7 @@ const PostsFeed = () => {
         <MenuContainer />
         {postsData &&
           postsData.map((post) => (
-            <Post key={post._id} post={post} className={`postId-${post._id}`} />
+            <Post key={post._id} className={post._id} post={post} />
           ))}
         <FooterBar />
       </div>
