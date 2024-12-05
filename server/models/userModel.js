@@ -34,6 +34,7 @@ const userSchema = new mongoose.Schema(
     profilePic: {
       type: String,
       required: false,
+      default: "https://loremflickr.com/500/500?lock=8792450353592873",
     },
     savedPosts: [
       {

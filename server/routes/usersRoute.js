@@ -7,6 +7,7 @@ const {
   catchAll,
   getUserData,
   followUser,
+  updateUserData,
   deleteUser,
 } = require("../controllers/usersController.js");
 
@@ -27,6 +28,8 @@ router.post("/login", login);
 router.post("/logout", logout);
 
 router.post("/follow/:id", authUser, followUser);
+
+router.put("/edit-profile", authUser, updateUserData);
 
 router.delete("/:id", authUser, deleteUser);
 

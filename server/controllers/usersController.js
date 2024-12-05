@@ -136,13 +136,37 @@ async function followUser(req, res, next) {
   }
 }
 
+async function updateUserData(req, res, next) {
+  try {
+    const { userId } = req.user;
+    const { displayName, profilePic } = req.body;
+    const existingUser = await User.findById(userId);
+    if (!existingUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const updatedUser = User.findByIdAndUpdate(
+      userId,
+      { displayName, profilePic },
+      { new: true }
+    );
+
+    res
+      .status(201)
+      .json({ message: "User updated successfully!", updatedUser });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function deleteUser(req, res, next) {
   try {
     const { id } = req.params;
     const result = await User.findByIdAndDelete(id);
     const userPosts = await Post.deleteMany({ authorId: id });
-    const followers = await Follower.deleteMany({ $or:[{ userId: id }, { followerId: id }] });
-    res.json({result, userPosts, followers});
+    const followers = await Follower.deleteMany({
+      $or: [{ userId: id }, { followerId: id }],
+    });
+    res.json({ result, userPosts, followers });
   } catch (error) {
     next(error);
   }
@@ -172,8 +196,9 @@ module.exports = {
   login,
   logout,
   followUser,
+  updateUserData,
   deleteUser,
-  catchAll
+  catchAll,
 };
 
 // export const deleteUserById = async function (req, res, next) {
