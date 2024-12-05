@@ -109,4 +109,14 @@ async function getPostById(req, res, next) {
   }
 }
 
-module.exports = { addPost, getAllPosts, getPostById, likePost: toggleLikePost, savePost };
+async function deletePost(req, res, next) {
+  try {
+    const { postId } = req.params;
+    const result = await Post.deleteOne({_id:postId});
+    res.json({message:result});
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { addPost, getAllPosts, getPostById, likePost: toggleLikePost, savePost, deletePost };
