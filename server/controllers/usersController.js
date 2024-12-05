@@ -21,10 +21,7 @@ async function getUserData(req, res, next) {
 
     const user = await User.findById(userId);
 
-    const userPosts = await Post.find({ authorId: userId })
-      .lean()
-      .select("_id postImageUrl");
-
+    const userPosts = await Post.find({ authorId: userId });
     const followers = await Follower.find({ userId }).select("followerId");
     const following = await Follower.find({ followerId: userId }).select(
       "userId"
@@ -139,6 +136,18 @@ async function followUser(req, res, next) {
   }
 }
 
+async function deleteUser(req, res, next) {
+  try {
+    const { id } = req.params;
+    const result = await User.findByIdAndDelete(id);
+    const userPosts = await Post.deleteMany({ authorId: id });
+    const followers = await Follower.deleteMany({ $or:[{ userId: id }, { followerId: id }] });
+    res.json({result, userPosts, followers});
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function catchAll(err, req, res, next) {
   // Log the full error for debugging (useful in development or monitoring)
   console.error("Error occurred:", err);
@@ -163,7 +172,8 @@ module.exports = {
   login,
   logout,
   followUser,
-  catchAll,
+  deleteUser,
+  catchAll
 };
 
 // export const deleteUserById = async function (req, res, next) {

@@ -7,6 +7,7 @@ const {
   catchAll,
   getUserData,
   followUser,
+  deleteUser
 } = require("../controllers/usersController.js");
 
 const { authUser } = require("../middleware/authUser.js");
@@ -17,7 +18,7 @@ router.get("/", authUser, getAllUsers);
 
 router.get("/data", authUser, getUserData);
 
-router.get("/data/:id", getUserData);
+router.get("/data/:id", authUser, getUserData);
 
 router.post("/signup", addUser);
 
@@ -27,6 +28,9 @@ router.post("/logout", logout);
 
 router.post("/follow/:id", authUser, followUser);
 
+router.delete("/:id", authUser, deleteUser);
+
 router.use(catchAll);
+
 
 module.exports = router;
