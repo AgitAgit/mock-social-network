@@ -7,6 +7,7 @@ import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
 
 const Search = () => {
   const [posts, setPosts] = useState(null);
+  const [chosenPost, setChosenPost] = useState(null);
 
   async function fetchData() {
     try {
@@ -24,8 +25,9 @@ const Search = () => {
   }, []);
 
   const handleClick = (e) => {
-    const post = e.target.closest("button");
-    console.log(post.className);
+    const post = e.target.closest("button").className;
+    setChosenPost(post);
+    console.log(chosenPost);
   };
 
   return (
