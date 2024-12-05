@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { IoArrowBackOutline } from "react-icons/io5";
 import {
   MdOutlineBookmarkBorder,
   MdOutlineArchive,
@@ -46,9 +45,14 @@ import { AiOutlineInbox } from "react-icons/ai";
 import { MdOutlineVerified } from "react-icons/md";
 import { VscGraph } from "react-icons/vsc";
 import SearchBarInput from "../SearchBarInput/SearchBarInput";
+import ArrowBackIcon from "../ArrowBackIcon/ArrowBackIcon";
 
 const lineStyle = "border-[0.001em] border-gray-400";
 const h3Style = "p-[0.5em] text-gray-500";
+
+const top = "30px";
+const left = "24px";
+const position = "absolute";
 
 const AccountOptions = () => {
   const navigate = useNavigate();
@@ -57,17 +61,7 @@ const AccountOptions = () => {
       <div className="ml-[1em] flex flex-col items-start justify-start">
         <div className="flex w-full flex-row items-center justify-between">
           <button onClick={() => navigate(-1)}>
-            <IoArrowBackOutline
-              style={{
-                position: "absolute",
-                top: "30px",
-                left: "24px",
-                fontSize: "24px",
-                color: "white",
-                borderRadius: "100em",
-              }}
-              className="hover:rounded-[0.1em] hover:bg-profileSectionTheme hover:tracking-[0.05em] hover:text-[var(--bgTheme)]"
-            />
+            <ArrowBackIcon top={top} left={left} position={position} />
           </button>
           <h1 className="mb-[0.5em] w-full text-center text-white">
             Setting and activity
