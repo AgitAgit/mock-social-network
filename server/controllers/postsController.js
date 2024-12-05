@@ -99,7 +99,7 @@ async function getAllPosts(req, res, next) {
 async function getPostById(req, res, next) {
   try {
     const { postId } = req.params;
-    const post = await Post.findById(postId);
+    const post = await Post.findById(postId).populate("authorId", "username");
 
     await post.populate("commentIds");
 

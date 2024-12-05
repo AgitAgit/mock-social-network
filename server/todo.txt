@@ -12,7 +12,7 @@ comments -
 
 
 from the requirements page:
--fetch user by email
+- fetch user by email
 - GET `/comments/post/:postId`: Retrieve all comments for a specific post
 - Handle basic CRUD operations for users, posts, and comments using Mongoose. -------------add update and delete functionalities?
 - Add middleware for centralized error handling. ----------done?
