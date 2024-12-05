@@ -6,6 +6,7 @@ const {
   getPostById,
   likePost: toggleLikePost,
   savePost,
+  deletePost
 } = require("../controllers/postsController.js");
 const { authUser } = require("../middleware/authUser.js");
 
@@ -22,5 +23,7 @@ router.post("/", addPost);
 router.post("/:postId/like", toggleLikePost);
 
 router.post("/:postId/save", savePost);
+
+router.delete("/:postId", deletePost);
 
 module.exports = router;
