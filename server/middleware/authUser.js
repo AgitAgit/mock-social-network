@@ -3,17 +3,18 @@ const bcrypt = require("bcrypt");
 
 function parseCookie(cookie) {
   try{
-
-      let result = {};
-      // console.log("cookie: ", cookie);
-      const cookies = cookie.split("; ");
-      // console.log("cookies",cookies);
-      cookies.forEach((cookie) => {
+    let result = {};
+      if(cookie){
+        // console.log("cookie: ", cookie);
+        const cookies = cookie.split("; ");
+        // console.log("cookies",cookies);
+        cookies.forEach((cookie) => {
           const pair = cookie.split("=");
           result[`${pair[0]}`] = pair[1];
         });
         // console.log("cookie parser result:",result);
-        return result;
+      }
+      return result;
     } catch (error){
       console.log(error);
       return null;
@@ -44,6 +45,8 @@ async function authUser(req, res, next) {
       return res.status(400).json({ message: "invalid token..." });
     }
   } catch (error) {
+    // console.log(error);
+    res.status(400).json({message: "invalid token..."});
     next(error);
   }
 }
