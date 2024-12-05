@@ -84,7 +84,7 @@ async function savePost(req, res, next) {
 
 async function getAllPosts(req, res, next) {
   try {
-    const limit = req.query.limit || 3;
+    const limit = req.query.limit || 18;
     const offset = req.query.offset || 0;
 
     const posts = await Post.find()
@@ -114,7 +114,10 @@ async function getPostById(req, res, next) {
       "username profilePic"
     );
 
-    await post.populate("commentIds");
+    await post.populate({
+      path: "commentIds",
+      populate: { path: "authorId", select: "username profilePic" },
+    });
 
     res.json(post);
   } catch (error) {

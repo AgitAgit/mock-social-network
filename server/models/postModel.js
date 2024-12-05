@@ -13,6 +13,7 @@ const postSchema = new mongoose.Schema(
     postImageUrl: {
       type: String,
       required: false,
+      default: "https://loremflickr.com/500/500?lock=8792450353592873",
     },
     authorId: {
       type: mongoose.Schema.Types.ObjectId,

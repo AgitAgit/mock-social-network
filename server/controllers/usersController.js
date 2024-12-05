@@ -15,6 +15,16 @@ async function getAllUsers(req, res, next) {
   }
 }
 
+async function getUserByUsername(req, res, next){
+  try {
+    const { username } = req.params;
+    const user = await User.findOne({ username: username});
+    res.json({ message: { foundUser: user } });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function getUserData(req, res, next) {
   try {
     const userId = req.params.id ? req.params.id : req.user.userId;
@@ -22,10 +32,8 @@ async function getUserData(req, res, next) {
     const user = await User.findById(userId);
 
     const userPosts = await Post.find({ authorId: userId });
-    const followers = await Follower.find({ userId }).select("followerId");
-    const following = await Follower.find({ followerId: userId }).select(
-      "userId"
-    );
+    const followers = await Follower.countDocuments({ userId });
+    const following = await Follower.countDocuments({ followerId: userId });
 
     const userPostData = userPosts.map((post) => ({
       _id: post._id,
@@ -136,13 +144,38 @@ async function followUser(req, res, next) {
   }
 }
 
+async function updateUserData(req, res, next) {
+  try {
+    const { userId } = req.user;
+    const { displayName, profilePic } = req.body;
+    const existingUser = await User.findById(userId);
+    if (!existingUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { displayName, profilePic },
+      { new: true }
+    );
+
+    res
+      .status(201)
+      .json({ message: "User updated successfully!", updatedUser });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function deleteUser(req, res, next) {
   try {
     const { id } = req.params;
     const result = await User.findByIdAndDelete(id);
     const userPosts = await Post.deleteMany({ authorId: id });
-    const followers = await Follower.deleteMany({ $or:[{ userId: id }, { followerId: id }] });
-    res.json({result, userPosts, followers});
+    const userComments = await Comment.deleteMany({ authorId: id });
+    const followers = await Follower.deleteMany({
+      $or: [{ userId: id }, { followerId: id }],
+    });
+    res.json({ result, userPosts, userComments, followers });
   } catch (error) {
     next(error);
   }
@@ -169,11 +202,13 @@ module.exports = {
   addUser,
   getAllUsers,
   getUserData,
+  getUserByUsername,
   login,
   logout,
   followUser,
+  updateUserData,
   deleteUser,
-  catchAll
+  catchAll,
 };
 
 // export const deleteUserById = async function (req, res, next) {

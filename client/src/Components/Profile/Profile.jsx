@@ -45,7 +45,10 @@ const Profile = () => {
                   </div>
                 </div>
                 <div>
-                  <ProfileUserDetails />
+                  <ProfileUserDetails
+                    userName={userData?.user?.username}
+                    displayName={userData?.user?.displayName}
+                  />
                   <ProfileActionsBtns />
                 </div>
               </div>
@@ -59,7 +62,7 @@ const Profile = () => {
         </div>
         <EditProfile />
       </div>
-      <ProfileGallerySection />
+      <ProfileGallerySection posts={userData?.Posts} />
       <FooterMenu pageValue={"Profile"} />
     </div>
   );
