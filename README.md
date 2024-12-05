@@ -789,3 +789,105 @@ Authorization: Bearer <token>
   }
 }
 ```
+
+---
+
+### **POST /api/comments/:postId**
+
+- **Description**: Adds a new comment to a specific post.
+
+- **Route**: `/api/comments/:postId`
+
+- **Method**: `POST`
+
+- **Authentication**: Requires authentication (user must be logged in).
+
+- **Path Parameters**:
+
+  - `postId` (string, required): MongoDB Object ID of the post.
+
+- **Request Body**:
+
+  - `content` (string, required): The content of the comment.
+
+- **Response**:
+
+  - **200 OK**: The newly created comment and the updated post.
+  - **500 Internal Server Error**: If an error occurs during the process.
+
+- **Example Request**:
+
+```
+ POST /api/comments/674444e4810707ebc8505bb2
+  Authorization: Bearer <token>
+  Content-Type: application/json
+  Body:
+  {
+    "content": "This is a new comment"
+  }
+```
+
+- **Example Response**:
+
+```json
+    {
+    "yourComment": "This is a new comment",
+    "parentPost": {
+        "_id": "67507cbc5e3a3b992571fc57",
+        ...other comment variables
+    }
+}
+```
+
+### **DELETE /api/comments/:commentId**
+
+- **Description**:Delete a single comment.
+
+- **Route**: `/api/comments/:commentId`
+
+- **Method**: `DELETE`
+
+- **Authentication**: Requires authentication (user must be logged in).
+  Comment must belong to the user trying to delete it.
+
+- **Path Parameters**:
+
+  - `commentId` (string, required): MongoDB Object ID of the comment.
+
+- **Response**:
+
+  - **200 OK**: The newly created comment and the updated post.
+  - **400 ERROR**:The comment doesn't exist.
+  - **500 Internal Server Error**: If an error occurs during the process.
+
+- **Example Request**:
+
+```
+ DELETE /api/comments/67515d2a15c61d3f9a201368
+  Authorization: Bearer <token>
+  Content-Type: application/json
+```
+
+- **Example Response**:
+
+##### If the comment exists:
+
+```json
+{
+  "message": "Message deleted successfully",
+  "comment": {
+    "acknowledged": true,
+    "deletedCount": 1
+  }
+}
+```
+
+##### If the comment doesn't exist:
+
+```json
+{
+  "message": "Comment doesn't exist"
+}
+```
+
+---
