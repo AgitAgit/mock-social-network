@@ -144,7 +144,7 @@ async function updateUserData(req, res, next) {
     if (!existingUser) {
       return res.status(404).json({ message: "User not found" });
     }
-    const updatedUser = User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       userId,
       { displayName, profilePic },
       { new: true }
