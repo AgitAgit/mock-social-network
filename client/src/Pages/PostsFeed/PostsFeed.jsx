@@ -27,6 +27,7 @@ const PostsFeed = () => {
     const button = e.target.closest("button");
     if (button) {
     }
+
   };
 
   return (

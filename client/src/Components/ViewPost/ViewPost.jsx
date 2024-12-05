@@ -17,6 +17,7 @@ const ViewPost = () => {
       });
 
       if (res.data) {
+
         setPost(res.data.post);
       }
     } catch (error) {
