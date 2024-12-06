@@ -11,9 +11,9 @@ import Homepage from "./Pages/Homepage/Homepage.jsx";
 import Search from "./Pages/Search/Search.jsx";
 import NewPost from "./Pages/NewPost/NewPost.jsx";
 import Profile from "./Components/Profile/Profile.jsx";
-import EditProfile from "./Components/Profile/EditProfile/EditProfile.jsx";
 import ReelsSection from "./Components/ReelsSection/ReelsSection.jsx";
 import ViewPost from "./Components/Post/ViewPost/ViewPost.jsx";
+import EditProfile from "./Components/EditProfile/EditProfile.jsx";
 
 function App() {
   return (

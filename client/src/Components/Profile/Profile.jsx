@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import EditProfile from "./EditProfile/EditProfile";
+import ProfileEditBtns from "./ProfileEditBtns/ProfileEditBtns";
 import ProfileActionsBtns from "./ProfileActionsBtns/ProfileActionsBtns";
 import ProfileGallerySection from "./ProfileGallerySection/ProfileGallerySection";
 import ProfileHeaderNavigation from "./ProfileHeaderNavigation/ProfileHeaderNavigation";
@@ -59,7 +59,7 @@ const Profile = () => {
             />
           </div>
         </div>
-        <EditProfile />
+        <ProfileEditBtns />
       </div>
       <ProfileGallerySection posts={userData?.Posts} />
       <FooterMenu pageValue={"Profile"} />
