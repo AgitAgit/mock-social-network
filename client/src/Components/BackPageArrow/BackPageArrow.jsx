@@ -1,7 +1,7 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const BackPageArrow = ({ top, left }) => {
+const BackPageArrow = () => {
   const navigate = useNavigate();
   const handleBackClick = () => {
     navigate(-1);
@@ -9,7 +9,7 @@ const BackPageArrow = ({ top, left }) => {
 
   return (
     <button
-      className={`absolute top-[${top || 0}px] left-[${left || 0}px] text-white`}
+      className={`absolute left-[25px] top-[35px] text-white`}
       onClick={handleBackClick}
     >
       <FaArrowLeft size={"20px"} />

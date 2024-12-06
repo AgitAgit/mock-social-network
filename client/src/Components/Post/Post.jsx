@@ -8,6 +8,8 @@ import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 import Loader from "../Loader/Loader.jsx";
 
 const Post = ({ post }) => {
+  console.log(post);
+
   if (!post) {
     return <Loader />;
   }
@@ -18,6 +20,7 @@ const Post = ({ post }) => {
   const postImage = post?.postImageUrl || "";
   const postContent = post?.content || "";
   const commentsArr = post?.commentIds || [];
+  const likeCounts = post.likesCount;
 
   return (
     <div>
@@ -29,7 +32,7 @@ const Post = ({ post }) => {
         />
         <PostImage postImage={postImage} />
         <PostActions />
-        <PostEngagements />
+        {likeCounts > 1 ? <PostEngagements likeCounts={likeCounts} /> : ""}
         <UserPostContent
           postContent={postContent}
           postUsername={postUsername}

@@ -28,8 +28,6 @@ const Profile = () => {
     fetchUserData();
   }, []);
 
-  console.log(userData);
-
   return (
     <div className="p-[0.5em] text-white">
       <div className="rounded-[1em] bg-profileSectionTheme font-CaustenFont">

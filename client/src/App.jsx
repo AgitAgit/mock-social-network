@@ -10,10 +10,10 @@ import PostsFeed from "./Pages/PostsFeed/PostsFeed.jsx";
 import Homepage from "./Pages/Homepage/Homepage.jsx";
 import Search from "./Pages/Search/Search.jsx";
 import NewPost from "./Pages/NewPost/NewPost.jsx";
-import ViewPost from "./Components/ViewPost/ViewPost.jsx";
 import Profile from "./Components/Profile/Profile.jsx";
 import EditProfile from "./Components/Profile/EditProfile/EditProfile.jsx";
 import ReelsSection from "./Components/ReelsSection/ReelsSection.jsx";
+import ViewPost from "./Components/Post/ViewPost/ViewPost.jsx";
 
 function App() {
   return (

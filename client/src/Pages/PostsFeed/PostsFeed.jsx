@@ -3,23 +3,25 @@ import { useEffect, useState } from "react";
 import MenuContainer from "../../Components/Menubar/Menubar.jsx";
 import Post from "../../Components/Post/Post.jsx";
 import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
-import { useSelector } from "react-redux";
+import Loader from "../../Components/Loader/Loader.jsx";
 
 const PostsFeed = () => {
   const [postsData, setPostsData] = useState([]);
   const [limit, setLimit] = useState(3);
-
-  const usernameFromStore = useSelector((state) => state.user.name);
+  const [loading, setLoading] = useState(true);
 
   const fetchPosts = async () => {
+    setLoading(true);
     try {
       const allPostsResponse = await axios.get(
-        `http://localhost:3000/api/posts?limit=${limit}`, //offset from which post id we start and limit amount of posts
+        `http://localhost:3000/api/posts?limit=${limit}`,
         { withCredentials: true },
       );
       setPostsData(allPostsResponse.data);
     } catch (error) {
-      console.error(`Error has occurred durning fetching API: `, error);
+      console.error(`Error has occurred during fetching API:`, error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -30,6 +32,7 @@ const PostsFeed = () => {
   const handleClick = (e) => {
     const button = e.target.closest("button");
     if (button) {
+      // Your button handling logic
     }
   };
 
@@ -39,13 +42,16 @@ const PostsFeed = () => {
       onClick={handleClick}
     >
       <MenuContainer />
-      <p className="text-white">{usernameFromStore}</p>
-      {postsData &&
+      {loading ? (
+        <Loader />
+      ) : (
         postsData.map((post) => (
           <Post key={post._id} className={post._id} post={post} />
-        ))}
+        ))
+      )}
       <FooterMenu pageValue={"Home"} />
     </div>
   );
 };
+
 export default PostsFeed;

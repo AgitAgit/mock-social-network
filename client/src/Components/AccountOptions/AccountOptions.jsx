@@ -50,10 +50,6 @@ import BackPageArrow from "../BackPageArrow/BackPageArrow";
 const lineStyle = "border-[0.001em] border-gray-400";
 const h3Style = "p-[0.5em] text-gray-500";
 
-const top = "30px";
-const left = "24px";
-const position = "absolute";
-
 const AccountOptions = () => {
   return (
     <div className="mt-1 flex w-[100vw] flex-col p-[1.5em] text-white">

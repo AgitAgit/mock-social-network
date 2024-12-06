@@ -44,8 +44,9 @@ const SignIn = () => {
       password: formValues.password,
     };
 
-    console.log(userInfo);
-    dispatch(setUser(userInfo.username));
+    const setUserNameRedux = dispatch(setUser(userInfo.username));
+    console.log(setUserNameRedux);
+
     loginUser(userInfo);
   };
 

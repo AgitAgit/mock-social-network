@@ -28,7 +28,6 @@ const iconConfiguration = {
 
 const FooterMenu = ({ pageValue }) => {
   const username = useSelector((state) => state.user.name);
-  console.log(username);
 
   const navigate = useNavigate();
   const [value, setValue] = useState(pageValue);
@@ -37,7 +36,7 @@ const FooterMenu = ({ pageValue }) => {
   const handleChange = (e, newValue) => {
     setValue(newValue);
     if (newValue === "Profile") {
-      navigate(`/profile/${username}`);
+      navigate(`/profile/${username || "User"}`);
     }
     if (newValue === "Search") {
       navigate("/search");
