@@ -55,7 +55,7 @@ const PostsFeed = () => {
         {postsData.map(
           (post) => (
             console.log(post),
-            (<Post key={post.id} className={post._id} post={post} />)
+            (<Post key={post._id} className={post._id} post={post} />)
           ),
         )}
       </InfiniteScroll>

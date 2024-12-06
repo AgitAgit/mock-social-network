@@ -5,7 +5,7 @@ const ProfileImageDisplay = ({ profileImgUrl }) => {
     <div>
       <img
         // src={FakeProfileImage}
-        src={profileImgUrl}
+        src={profileImgUrl ? profileImgUrl : FakeProfileImage}
         alt="Profile image"
         className="w-[25vw] rounded-full border-none p-[0.3em]"
       />
