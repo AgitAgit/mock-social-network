@@ -31,7 +31,7 @@ const ViewPost = () => {
   }, [postId]);
 
   return (
-    <div className="text-white">
+    <div className="mt-[2.5em] text-white">
       <BackPageArrow />
       <Post post={post} />
     </div>
