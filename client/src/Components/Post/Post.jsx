@@ -31,7 +31,7 @@ const Post = ({ post }) => {
           postUploadTime={postUploadTime}
         />
         <PostImage postImage={postImage} />
-        <PostActions />
+        <PostActions postId={postId} />
         {likeCounts > 1 ? <PostEngagements likeCounts={likeCounts} /> : ""}
         <UserPostContent
           postContent={postContent}

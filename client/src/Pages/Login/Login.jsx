@@ -5,13 +5,14 @@ import { FaFacebook } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
 import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
 import { useDispatch } from "react-redux";
+import { GiFlipFlops } from "react-icons/gi";
 import { setUser } from "../../store/slices/userSlice.js";
 
 const divIconStyle =
-  "rounded-[100em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
+  "rounded-[0.5em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
 
 const divInputStyle =
-  "rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
+  "rounded-[0.5em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -51,11 +52,11 @@ const SignIn = () => {
   };
 
   return (
-    <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] bg-profileSectionTheme p-[2em]">
+    <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] p-[2em] text-white">
       <div>
-        <div className="my-10 flex w-full flex-col items-center text-center">
-          <h1 className="text-2xl">Hello Again!</h1>
-          <h3 className="w-1/2">Welcome back you've been missed!</h3>
+        <div className="my-10 flex w-full flex-row items-center justify-center gap-[1em] text-center">
+          <GiFlipFlops />
+          <h1 className="text-2xl">Babagram</h1>
         </div>
         <div>
           <form

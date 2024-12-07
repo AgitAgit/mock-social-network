@@ -1,8 +1,8 @@
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import UserCommentProfileImg from "./UserCommentProfileImg/UserCommentProfileImg";
 import UsernameOfComment from "./UsernameOfComment/UsernameOfComment";
 import UsernameCommentContent from "./UsernameCommentContent/UsernameCommentContent";
 import CommentInput from "./CommentInput/CommentInput";
+import { FaHeart } from "react-icons/fa6";
 
 const hoverColorIcon = {
   width: "5vw",
@@ -28,7 +28,7 @@ const Comment = ({ comment }) => {
         <UsernameOfComment commentUsername={commentUsername} />
         <UsernameCommentContent userContent={userContent} />
         <div className="cursor-pointer">
-          <FavoriteBorderIcon sx={hoverColorIcon} />
+          <FaHeart sx={hoverColorIcon} />
         </div>
       </div>
       <CommentInput commentUsername={commentUsername} />

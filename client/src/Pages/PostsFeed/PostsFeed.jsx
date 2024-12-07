@@ -47,13 +47,13 @@ const PostsFeed = () => {
         hasMore={hasMore}
         loader={<Loader />}
         endMessage={
-          <p style={{ textAlign: "center" }}>
+          <h1 style={{ textAlign: "center" }}>
             <b>No more posts to view at this moment.</b>
-          </p>
+          </h1>
         }
       >
         {postsData.map((post) => (
-          <Post key={post._id} className={post._id} post={post} />
+          <Post key={post.id} className={post.id} post={post} />
         ))}
       </InfiniteScroll>
       <FooterMenu pageValue={"Home"} />
