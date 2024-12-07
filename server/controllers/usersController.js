@@ -15,10 +15,10 @@ async function getAllUsers(req, res, next) {
   }
 }
 
-async function getUserByUsername(req, res, next){
+async function getUserByUsername(req, res, next) {
   try {
     const { username } = req.params;
-    const user = await User.findOne({ username: username});
+    const user = await User.findOne({ username: username });
     res.json({ message: { foundUser: user } });
   } catch (error) {
     next(error);
@@ -49,8 +49,8 @@ async function getUserData(req, res, next) {
 
 async function addUser(req, res, next) {
   try {
-    const { displayName, username, password, email, role, profilePic } =
-      req.body;
+    const { displayName, username, password, email, role } = req.body;
+    const profilePic = req.file ? req.file.path : null;
     const hashedPass = await bcrypt.hash(password, 10);
     const user = new User({
       displayName,
@@ -147,7 +147,8 @@ async function followUser(req, res, next) {
 async function updateUserData(req, res, next) {
   try {
     const { userId } = req.user;
-    const { displayName, profilePic } = req.body;
+    const { displayName } = req.body;
+    const profilePic = req.file ? req.file.path : null;
     const existingUser = await User.findById(userId);
     if (!existingUser) {
       return res.status(404).json({ message: "User not found" });

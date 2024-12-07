@@ -1,4 +1,5 @@
 const express = require("express");
+const createUploadMiddleware = require("../middleware/uploadMiddleware.js");
 const {
   getAllUsers,
   getUserByUsername,
@@ -14,26 +15,23 @@ const {
 
 const { authUser } = require("../middleware/authUser.js");
 
+const uploadProfilePicture = createUploadMiddleware(
+  "profile-pics",
+  "profileImage"
+);
+
 const router = express.Router();
 
 router.get("/", getAllUsers);
-
-router.get("/data", authUser, getUserData);
-
-router.get("/data/:id", authUser, getUserData);
-
-router.get("/:username", authUser, getUserByUsername);
-
-router.post("/signup", addUser);
-
+router.post("/signup", uploadProfilePicture, addUser);
 router.post("/login", login);
-
 router.post("/logout", logout);
 
+router.get("/data", authUser, getUserData);
+router.get("/data/:id", authUser, getUserData);
+router.get("/:username", authUser, getUserByUsername);
 router.post("/follow/:id", authUser, followUser);
-
-router.put("/edit-profile", authUser, updateUserData);
-
+router.put("/edit-profile", authUser, uploadProfilePicture, updateUserData);
 router.delete("/:id", authUser, deleteUser);
 
 router.use(catchAll);
