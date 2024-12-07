@@ -34,8 +34,8 @@ const Comment = ({ comment }) => {
         <div className="flex w-full flex-col items-center justify-center">
           <UsernameCommentContent userContent={userContent} />
         </div>
-        <div className="cursor-pointer">
-          <FaHeart sx={hoverColorIcon} />
+        <div className="group cursor-pointer" data-value="Like Comment">
+          <FaHeart className="text-gray-500 hover:text-white" />
         </div>
       </div>
       <div className="none mt-[0.5em] flex w-full flex-col">

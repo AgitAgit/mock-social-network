@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import likeUnlikePost from "../../Api/likeUnlikePost.js";
 import copyToClipboard from "../../utils/copyToClipboard.js";
 import memoryLikesFn from "../../utils/memoryLikesFn.js";
+import savePost from "../../Api/savePost.js";
 
 const Post = ({ post }) => {
   if (!post) {
@@ -61,6 +62,10 @@ const Post = ({ post }) => {
     if (iconClicked === "Share") {
       const currentUrl = `http://localhost:5173/view-post/${postId}`;
       copyToClipboard(currentUrl);
+    }
+
+    if (iconClicked === "Save Post") {
+      savePost(postId);
     }
   };
 
