@@ -2,8 +2,7 @@ import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
 import { FaHeart } from "react-icons/fa6";
 import { useState } from "react";
 import { FaRegComment } from "react-icons/fa";
-import { IoShareOutline } from "react-icons/io5";
-import { FiShare } from "react-icons/fi";
+import { RiShareBoxLine } from "react-icons/ri";
 
 const PostActions = () => {
   const [clicked, setClicked] = useState(false);
@@ -22,7 +21,7 @@ const PostActions = () => {
         <FaRegComment />
       </div>
       <div className="cursor-pointer">
-        <IoShareOutline />
+        <RiShareBoxLine />
       </div>
       <div className="w-full text-end">
         <TurnedInNotIcon className="cursor-pointer" />
