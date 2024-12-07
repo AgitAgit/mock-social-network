@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Post from "../Post";
-import BackPageArrow from "../../BackPageArrow/BackPageArrow";
-import Loader from "../../Loader/Loader";
+import Post from "../../Components/Post/Post";
+import BackPageArrow from "../../Components/BackPageArrow/BackPageArrow";
+import Loader from "../../Components/Loader/Loader";
 
 const ViewPost = () => {
   const [post, setPost] = useState();
