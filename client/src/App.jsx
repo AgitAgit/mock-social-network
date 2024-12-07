@@ -11,11 +11,11 @@ import Homepage from "./Pages/Homepage/Homepage.jsx";
 import Search from "./Pages/Search/Search.jsx";
 import NewPost from "./Pages/NewPost/NewPost.jsx";
 import Profile from "./Components/Profile/Profile.jsx";
-import ReelsSection from "./Components/ReelsSection/ReelsSection.jsx";
 import ViewPost from "./Components/Post/ViewPost/ViewPost.jsx";
 import EditProfile from "./Components/EditProfile/EditProfile.jsx";
 import ComingSoonPage from "./Components/ComingSoonPage/ComingSoonPage.jsx";
 import TermsOfService from "./Pages/TermsOfService/TermsOfService.jsx";
+import Reels from "./Pages/Reels/Reels.jsx";
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
           <Route path="/posts-feed" element={<PostsFeed />} />
           <Route path="/account-options" element={<AccountOptions />} />
           <Route path="/account-center" element={<AccountCenter />} />
-          <Route path="/reels" element={<ReelsSection />} />
+          <Route path="/reels" element={<Reels />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="*" element={<ComingSoonPage />} />
         </Routes>
