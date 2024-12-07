@@ -3,6 +3,7 @@ import UsernameOfComment from "./UsernameOfComment/UsernameOfComment";
 import UsernameCommentContent from "./UsernameCommentContent/UsernameCommentContent";
 import CommentInput from "./CommentInput/CommentInput";
 import { FaHeart } from "react-icons/fa6";
+import timeSince from "../../utils/timeSince";
 
 const hoverColorIcon = {
   width: "5vw",
@@ -17,21 +18,30 @@ const hoverColorIcon = {
 };
 
 const Comment = ({ comment }) => {
+  console.log(comment);
+  const commentReplyAt = timeSince(comment.createdAt);
   const userCommentProfileImg = comment.authorId?.profilePic || "fill-image";
   const commentUsername = comment.authorId?.username || "anonymous";
   const userContent = comment.commentContent;
 
   return (
     <div className="flex w-full flex-col">
-      <div className="flex flex-row justify-start gap-[0.5em] text-[0.8em]">
+      <div className="flex flex-row items-center justify-start gap-[0.5em] text-[0.8em]">
         <UserCommentProfileImg userCommentProfileImg={userCommentProfileImg} />
         <UsernameOfComment commentUsername={commentUsername} />
-        <UsernameCommentContent userContent={userContent} />
+        <div className="flex justify-center">
+          <p className="text-gray-500">{commentReplyAt}</p>
+        </div>
+        <div className="flex w-full flex-col items-center justify-center">
+          <UsernameCommentContent userContent={userContent} />
+        </div>
         <div className="cursor-pointer">
           <FaHeart sx={hoverColorIcon} />
         </div>
       </div>
-      <CommentInput commentUsername={commentUsername} />
+      <div className="mt-[0.5em] flex w-full flex-col">
+        <CommentInput commentUsername={commentUsername} />
+      </div>
     </div>
   );
 };
