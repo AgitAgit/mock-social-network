@@ -14,14 +14,12 @@ const NewPostHeader = () => {
 
   return (
     <div
-      className="flex w-full flex-row items-center justify-between"
+      className="flex w-full flex-row items-center justify-start"
       onClick={handleClick}
     >
       <button className="previous">
         <FaXmark />
       </button>
-      <h1 className="text-center">New post</h1>
-      <button className="text-blue-600">Next</button>
     </div>
   );
 };

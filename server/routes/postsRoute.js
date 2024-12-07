@@ -1,14 +1,16 @@
 const express = require("express");
-
+const createUploadMiddleware = require("../middleware/uploadMiddleware.js");
 const {
   addPost,
   getAllPosts,
   getPostById,
-  likePost: toggleLikePost,
+  toggleLikePost,
   savePost,
-  deletePost
+  deletePost,
 } = require("../controllers/postsController.js");
 const { authUser } = require("../middleware/authUser.js");
+
+const uploadPostImage = createUploadMiddleware("posts", "postImage");
 
 const router = express.Router();
 
@@ -18,7 +20,7 @@ router.get("/", getAllPosts);
 
 router.get("/:postId", getPostById);
 
-router.post("/", addPost);
+router.post("/", uploadPostImage, addPost);
 
 router.post("/:postId/like", toggleLikePost);
 

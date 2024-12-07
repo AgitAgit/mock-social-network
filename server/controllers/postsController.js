@@ -7,6 +7,7 @@ const User = require("../models/userModel.js");
 //example response: { message:<the new document generated>}
 async function addPost(req, res, next) {
   try {
+    console.log(req);
     const { title, content, postImageUrl } = req.body;
 
     const post = new Post({
@@ -17,7 +18,7 @@ async function addPost(req, res, next) {
     });
 
     const response = await post.save();
-    res.json({ message: response });
+    res.json({ postId: response.id });
   } catch (error) {
     next(error);
   }
@@ -139,7 +140,7 @@ module.exports = {
   addPost,
   getAllPosts,
   getPostById,
-  likePost: toggleLikePost,
+  toggleLikePost,
   savePost,
   deletePost,
 };
