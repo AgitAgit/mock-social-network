@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import FakeProfileImage from "/images/static-profile-image.svg";
-import BackPageArrow from "../BackPageArrow/BackPageArrow";
+import BackPageArrow from "../../Components/BackPageArrow/BackPageArrow";
 
 const inputStyle = "ml-[0.5em] bg-transparent placeholder:text-gray-400";
 
@@ -68,7 +68,7 @@ const EditProfile = () => {
           </div>
 
           <div>
-            <label htmlFor="Bio">Links</label>
+            <label htmlFor="Bio">Bio</label>
             <input type="text" placeholder={bio} className={inputStyle} />
           </div>
 

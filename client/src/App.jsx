@@ -12,10 +12,10 @@ import Search from "./Pages/Search/Search.jsx";
 import NewPost from "./Pages/NewPost/NewPost.jsx";
 import Profile from "./Components/Profile/Profile.jsx";
 import ViewPost from "./Components/Post/ViewPost/ViewPost.jsx";
-import EditProfile from "./Components/EditProfile/EditProfile.jsx";
 import ComingSoonPage from "./Components/ComingSoonPage/ComingSoonPage.jsx";
 import TermsOfService from "./Pages/TermsOfService/TermsOfService.jsx";
 import Reels from "./Pages/Reels/Reels.jsx";
+import EditProfile from "./Pages/EditProfile/EditProfile.jsx";
 
 function App() {
   return (

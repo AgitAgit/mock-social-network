@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
+import { GiFlipFlops } from "react-icons/gi";
 
 const inputStyle =
   "rounded-[0.5em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
@@ -42,8 +43,10 @@ const Register = () => {
   return (
     <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] p-[2em] text-white">
       <div className="text-center">
-        <div>
-          <h1 className="text-2xl">Register Babagram</h1>
+        <div className="flex w-full flex-row items-center justify-center gap-[0.5em] text-[1.3em]">
+          <h1>Register</h1>
+          <GiFlipFlops />
+          <h1>Babagram</h1>
         </div>
         <div>
           <form
