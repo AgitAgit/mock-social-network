@@ -54,7 +54,7 @@ const SignIn = () => {
   return (
     <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] p-[2em] text-white">
       <div>
-        <div className="my-10 flex w-full flex-row items-center justify-center gap-[1em] text-center">
+        <div className="mb-[0.5em] flex w-full flex-row items-center justify-center gap-[1em] text-center">
           <GiFlipFlops />
           <h1 className="text-2xl">Babagram</h1>
         </div>

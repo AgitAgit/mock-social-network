@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import HomeImage from "/public/images/background-image.svg";
 
+const divIconStyle =
+  "rounded-[0.5em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
+
 const Homepage = () => {
   return (
     <div className="z-1 mt-[1em] max-w-sm rounded-[2.2em] p-[0.1em] text-white">
@@ -19,14 +22,10 @@ const Homepage = () => {
       </div>
       <div className="mb-[2em] flex w-full items-center justify-center gap-2">
         <Link to="/register">
-          <button className="cursor-pointer rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-[#eb903b]">
-            Register
-          </button>
+          <button className={divIconStyle}>Register</button>
         </Link>
         <Link to="/login">
-          <button className="cursor-pointer rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-[#eb903b]">
-            Sign in
-          </button>
+          <button className={divIconStyle}>Sign in</button>
         </Link>
       </div>
     </div>

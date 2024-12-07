@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
 
 const inputStyle =
-  "rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
+  "rounded-[0.5em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
+
+const divIconStyle =
+  "rounded-[0.5em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme w-full";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -37,11 +40,10 @@ const Register = () => {
   };
 
   return (
-    <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] bg-profileSectionTheme p-[2em]">
+    <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] p-[2em] text-white">
       <div className="text-center">
         <div>
-          <h1 className="text-2xl">Welcome to Babagram!</h1>
-          <h3>Few more step and your in</h3>
+          <h1 className="text-2xl">Register Babagram</h1>
         </div>
         <div>
           <form
@@ -54,6 +56,7 @@ const Register = () => {
               id="fname"
               name="fname"
               className={inputStyle}
+              required
             />
             <input
               type="text"
@@ -61,6 +64,7 @@ const Register = () => {
               id="username"
               name="username"
               className={inputStyle}
+              required
             />
             <input
               type="email"
@@ -68,6 +72,7 @@ const Register = () => {
               id="email"
               name="email"
               className={inputStyle}
+              required
             />
             <input
               type="password"
@@ -75,6 +80,7 @@ const Register = () => {
               id="password"
               name="password"
               className={inputStyle}
+              required
             />
             <input
               type="password"
@@ -82,12 +88,22 @@ const Register = () => {
               id="confirm-password"
               name="confirm-password"
               className={inputStyle}
+              required
             />
+            <div>
+              <input type="checkbox" required />
+              <label htmlFor="checkbox">
+                <Link
+                  to="/terms-of-service"
+                  className="text-gray-400 hover:text-white"
+                >
+                  Agree to terms of service
+                </Link>
+              </label>
+            </div>
             <SubmitBtn btnPlaceholder="Register" />
             <Link to="/">
-              <button className="w-full cursor-pointer rounded-[100em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-[#eb903b]">
-                Back
-              </button>
+              <button className={divIconStyle}>Back</button>
             </Link>
           </form>
         </div>

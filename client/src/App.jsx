@@ -15,6 +15,7 @@ import ReelsSection from "./Components/ReelsSection/ReelsSection.jsx";
 import ViewPost from "./Components/Post/ViewPost/ViewPost.jsx";
 import EditProfile from "./Components/EditProfile/EditProfile.jsx";
 import ComingSoonPage from "./Components/ComingSoonPage/ComingSoonPage.jsx";
+import TermsOfService from "./Pages/TermsOfService/TermsOfService.jsx";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/account-options" element={<AccountOptions />} />
           <Route path="/account-center" element={<AccountCenter />} />
           <Route path="/reels" element={<ReelsSection />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="*" element={<ComingSoonPage />} />
         </Routes>
       </BrowserRouter>
