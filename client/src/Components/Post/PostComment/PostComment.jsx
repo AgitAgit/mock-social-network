@@ -1,9 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const PostComment = ({ postUsername, postId }) => {
   if (!postUsername) {
     return;
+  }
+
+  const userProfileImg = useSelector((state) => state.user.profileImg);
+
+  if (!userProfileImg) {
+    return <div>No profile image available</div>;
   }
 
   const handleSubmit = (e) => {
@@ -35,10 +41,17 @@ const PostComment = ({ postUsername, postId }) => {
 
   return (
     <div className="mt-[-0.6em] flex w-full items-start">
+      <div>
+        <img
+          src={userProfileImg}
+          alt=""
+          className="w-[1.8em] rounded-[100em]"
+        />
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           name="comment"
-          className="mb-[1em] ml-[3.4em] bg-transparent text-[0.8em] text-gray-700 focus:text-white focus:outline-none"
+          className="ml-[1em] bg-transparent text-[0.8em] text-gray-700 focus:text-white focus:outline-none"
           placeholder={`Add comment for ${postUsername || ""}`}
         />
       </form>

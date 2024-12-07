@@ -9,10 +9,15 @@ import ProfileUserDetails from "./ProfileUserDetails/ProfileUserDetails";
 import axios from "axios";
 import FooterMenu from "../FooterMenu/FooterMenu";
 import Loader from "../Loader/Loader";
+import { useDispatch } from "react-redux";
+import { setProfilePicUser } from "../../store/slices/userSlice";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+  dispatch(setProfilePicUser(userData?.user?.profilePic));
 
   const fetchUserData = async () => {
     setLoading(true);
