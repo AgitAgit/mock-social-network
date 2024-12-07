@@ -2,14 +2,10 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const PostComment = ({ postUsername, postId }) => {
-  if (!postUsername) {
-    return;
-  }
-
   const userProfileImg = useSelector((state) => state.user.profileImg);
 
-  if (!userProfileImg) {
-    return <div>No profile image available</div>;
+  if (!postUsername) {
+    return;
   }
 
   const handleSubmit = (e) => {
