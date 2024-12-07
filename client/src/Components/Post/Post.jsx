@@ -6,12 +6,14 @@ import PostActions from "./PostActions/PostActions.jsx";
 import PostEngagements from "./PostEngagements/PostEngagements.jsx";
 import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 import Loader from "../Loader/Loader.jsx";
+import PostComment from "./PostComment/PostComment.jsx";
 
 const Post = ({ post }) => {
   if (!post) {
     return <Loader />;
   }
 
+  const postId = post._id;
   const postUsername = post?.authorId?.username || "Unknown User";
   const userProfileImg = post?.authorId?.profilePic || "";
   const postUploadTime = timeSince(post?.createdAt) || "Just now";
@@ -46,6 +48,7 @@ const Post = ({ post }) => {
             </div>
           )}
         </div>
+        <PostComment postUsername={postUsername} postId={postId} />
       </div>
     </div>
   );

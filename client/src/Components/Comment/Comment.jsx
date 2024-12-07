@@ -2,6 +2,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import UserCommentProfileImg from "./UserCommentProfileImg/UserCommentProfileImg";
 import UsernameOfComment from "./UsernameOfComment/UsernameOfComment";
 import UsernameCommentContent from "./UsernameCommentContent/UsernameCommentContent";
+import CommentInput from "./CommentInput/CommentInput";
 
 const hoverColorIcon = {
   width: "5vw",
@@ -30,11 +31,7 @@ const Comment = ({ comment }) => {
           <FavoriteBorderIcon sx={hoverColorIcon} />
         </div>
       </div>
-      <div className="mt-[-0.6em] flex items-start">
-        <button className="mb-[1em] ml-[3.4em] text-[0.8em] text-gray-700 hover:text-white">
-          Reply to {commentUsername}...
-        </button>
-      </div>
+      <CommentInput commentUsername={commentUsername} />
     </div>
   );
 };
