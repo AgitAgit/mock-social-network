@@ -6,7 +6,7 @@ const UserCommentProfileImg = ({ userCommentProfileImg }) => {
       <img
         src={userCommentProfileImg}
         alt=""
-        className="w-[10vw] rounded-[100em]"
+        className="w-[4em] rounded-[100em]"
       />
     </div>
   );
