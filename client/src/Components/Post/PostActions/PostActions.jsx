@@ -1,32 +1,31 @@
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import ShareIcon from "@mui/icons-material/Share";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import TurnedInNotIcon from "@mui/icons-material/TurnedInNot";
-
-const hoverColorIcon = {
-  "&:hover": {
-    color: "var(--bgTheme)",
-    background: "white",
-  },
-  padding: "0.05em",
-  borderRadius: "0.1em",
-  color: "white",
-};
+import { FaHeart } from "react-icons/fa6";
+import { useState } from "react";
+import { FaRegComment } from "react-icons/fa";
+import { IoShareOutline } from "react-icons/io5";
+import { FiShare } from "react-icons/fi";
 
 const PostActions = () => {
+  const [clicked, setClicked] = useState(false);
+
   return (
     <div className="IconsContainer flex w-full flex-row items-center justify-start gap-[1em]">
       <div className="cursor-pointer">
-        <FavoriteBorderIcon sx={hoverColorIcon} />
+        <FaHeart
+          onClick={() => setClicked(!clicked)}
+          style={{
+            color: clicked ? "red" : "white",
+          }}
+        />
       </div>
       <div className="cursor-pointer">
-        <ChatBubbleOutlineIcon sx={hoverColorIcon} />
+        <FaRegComment />
       </div>
       <div className="cursor-pointer">
-        <ShareIcon sx={hoverColorIcon} />
+        <IoShareOutline />
       </div>
       <div className="w-full text-end">
-        <TurnedInNotIcon className="cursor-pointer" sx={hoverColorIcon} />
+        <TurnedInNotIcon className="cursor-pointer" />
       </div>
     </div>
   );
