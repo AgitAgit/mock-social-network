@@ -1,5 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import FakeProfileImage from "/images/static-profile-image.svg";
+import BackPageArrow from "../BackPageArrow/BackPageArrow";
 
 const inputStyle = "ml-[0.5em] bg-transparent placeholder:text-gray-400";
 
@@ -27,6 +28,7 @@ const EditProfile = () => {
 
   return (
     <div className="flex w-full flex-col p-[2em] text-white">
+      <BackPageArrow />
       <h2 className="text-center">EditProfile</h2>
       <div className="mb-[1em] mt-[0.5em] flex w-full flex-row items-center justify-center gap-[1em]">
         <img src={userProfileImg} alt="" className="w-[20vw] rounded-[100em]" />
@@ -37,7 +39,7 @@ const EditProfile = () => {
         />
       </div>
       <button>
-        <b className="text-blue-600">Edit picture or avatar</b>
+        <b className="text-blue-600 hover:text-white">Edit picture or avatar</b>
       </button>
 
       <form className="mt-[0.5em] flex flex-col" onSubmit={handleSubmit}>
