@@ -3,16 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    displayName: "haviv ya habal hod",
-    name: "haviv ya habal hod",
-    bio: "haviv ya habal hod",
+    displayName: "חביב יא אהבל חוד",
+    name: "חביב יא אהבל חוד",
+    bio: "חביב יא אהבל חוד",
     profileImg: "../../../public/images/profile-image-holder.svg",
-    pronouns: "haviv ya habal hod",
-    links: "haviv ya habal hod",
-    banners: "haviv ya habal hod",
-    music: "haviv ya habal hod",
+    pronouns: "חביב יא אהבל חוד",
+    links: "חביב יא אהבל חוד",
+    banners: "חביב יא אהבל חוד",
+    music: "חביב יא אהבל חוד",
     showThreadsBadge: false,
-    gender: "haviv ya habal hod",
+    gender: "חביב יא אהבל חוד",
   },
   reducers: {
     setUser: (state, action) => {

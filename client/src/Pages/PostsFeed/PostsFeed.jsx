@@ -52,9 +52,12 @@ const PostsFeed = () => {
           </h1>
         }
       >
-        {postsData.map((post) => (
-          <Post key={post.id} className={post.id} post={post} />
-        ))}
+        {postsData.map(
+          (post, index) => (
+            console.log(post),
+            (<Post key={index} className={post._id} post={post} />)
+          ),
+        )}
       </InfiniteScroll>
       <FooterMenu pageValue={"Home"} />
     </div>

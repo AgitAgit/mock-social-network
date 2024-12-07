@@ -7,10 +7,10 @@ import PostEngagements from "./PostEngagements/PostEngagements.jsx";
 import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 import Loader from "../Loader/Loader.jsx";
 import PostComment from "./PostComment/PostComment.jsx";
-import { useState } from "react";
 import likeUnlikePost from "../../Api/likeUnlikePost.js";
 import copyToClipboard from "../../utils/copyToClipboard.js";
-import { useEffect } from "react";
+import memoryLikesFn from "../../utils/memoryLikesFn.js";
+import { useState, useEffect } from "react";
 
 const Post = ({ post }) => {
   if (!post) {
@@ -73,27 +73,6 @@ const Post = ({ post }) => {
     }
   }, [postId]);
 
-  const memoryLikesFn = (postId) => {
-    if (!localStorage.getItem("postLikesByIds")) {
-      localStorage.setItem("postLikesByIds", JSON.stringify([]));
-    }
-
-    const savedLikes = new Set(
-      JSON.parse(localStorage.getItem("postLikesByIds")),
-    );
-
-    if (savedLikes.has(postId)) {
-      // Remove the like
-      savedLikes.delete(postId);
-    } else {
-      // Add the like
-      savedLikes.add(postId);
-    }
-
-    // Update localStorage
-    localStorage.setItem("postLikesByIds", JSON.stringify([...savedLikes]));
-  };
-
   return (
     <div onClick={handleClick}>
       <div className="mb-[2em] flex flex-col items-center gap-[0.5em] rounded-[1em] p-[1.5em]">
@@ -103,7 +82,7 @@ const Post = ({ post }) => {
           postUploadTime={postUploadTime}
         />
         <PostImage postImage={postImage} />
-        <PostActions postId={postId} clicked={clicked} />
+        <PostActions clicked={clicked} />
         {likeCounts > 1 ? <PostEngagements likeCounts={likeCounts} /> : ""}
         <UserPostContent
           postContent={postContent}

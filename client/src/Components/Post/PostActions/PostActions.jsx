@@ -3,11 +3,11 @@ import { FaHeart } from "react-icons/fa6";
 import { FaRegComment } from "react-icons/fa";
 import { RiShareBoxLine } from "react-icons/ri";
 
-const PostActions = ({ postId, clicked }) => {
+const PostActions = ({ clicked }) => {
   return (
     <div className="IconsContainer flex w-full flex-row items-center justify-start gap-[1em]">
       <div
-        className={`${postId} cursor-pointer text-gray-500 hover:text-white`}
+        className="cursor-pointer text-gray-500 hover:text-white"
         data-value="Like"
       >
         <FaHeart style={{ color: clicked ? "red" : "white" }} />
