@@ -10,7 +10,7 @@ import Loader from "../../Components/Loader/Loader.jsx";
 const Search = () => {
   const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(18);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const navigate = useNavigate();
 
