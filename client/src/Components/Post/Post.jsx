@@ -7,8 +7,12 @@ import PostEngagements from "./PostEngagements/PostEngagements.jsx";
 import UserPostContent from "./UserPostContent/UserPostContent.jsx";
 import Loader from "../Loader/Loader.jsx";
 import PostComment from "./PostComment/PostComment.jsx";
+import { useState, useEffect } from "react";
+import likeUnlikePost from "../../Api/likeUnlikePost.js";
+import copyToClipboard from "../../utils/copyToClipboard.js";
+import memoryLikesFn from "../../utils/memoryLikesFn.js";
 
-const Post = ({ post, clicked, isComments, commentDisplay }) => {
+const Post = ({ post }) => {
   if (!post) {
     return <Loader />;
   }
@@ -21,6 +25,52 @@ const Post = ({ post, clicked, isComments, commentDisplay }) => {
   const postContent = post?.content || "";
   const commentsArr = post?.commentIds || [];
   const likeCounts = post.likesCount;
+
+  const [isComments, setIsComments] = useState(false);
+  const [commentDisplay, setCommentDisplay] = useState(true);
+  const [commentTxtBtn, setCommentTxtBtn] = useState("View all comments");
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = (e) => {
+    const iconElement = e.target.closest("[data-value]");
+    const iconClicked = iconElement
+      ? iconElement.getAttribute("data-value")
+      : null;
+    const button = e.target.closest("button")?.innerText;
+
+    if (iconClicked === "Comment") {
+      setCommentDisplay((prev) => !prev);
+    }
+
+    if (iconClicked === "Like") {
+      setClicked(!clicked); // Update state
+      memoryLikesFn(postId); // Persist to localStorage
+      likeUnlikePost(postId); // API call if needed
+    }
+
+    if (button === "View all comments") {
+      setCommentTxtBtn("Hide all comments");
+      setIsComments((prev) => !prev);
+    }
+
+    if (button === "Hide all comments") {
+      setCommentTxtBtn("View all comments");
+      setIsComments((prev) => !prev);
+    }
+
+    if (iconClicked === "Share") {
+      const currentUrl = `http://localhost:5173/view-post/${postId}`;
+      copyToClipboard(currentUrl);
+    }
+  };
+
+  // Load initial liked state from localStorage
+  useEffect(() => {
+    const savedLikes = JSON.parse(localStorage.getItem("postLikesByIds")) || [];
+    if (savedLikes.includes(postId)) {
+      setClicked(true);
+    }
+  }, [postId]);
 
   return (
     <div onClick={handleClick}>

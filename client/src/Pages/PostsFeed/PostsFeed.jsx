@@ -13,10 +13,6 @@ const PostsFeed = () => {
   const [limit, setLimit] = useState(3);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
-  const [clicked, setClicked] = useState(false);
-  const [isComments, setIsComments] = useState(false);
-  const [commentDisplay, setCommentDisplay] = useState(true);
-  const [commentTxtBtn, setCommentTxtBtn] = useState("View all comments");
 
   const fetchPosts = async () => {
     setLoading(true);
@@ -40,56 +36,12 @@ const PostsFeed = () => {
     fetchPosts();
   }, [limit]);
 
-  // Load initial liked state from localStorage
-  useEffect(() => {
-    const savedLikes = JSON.parse(localStorage.getItem("postLikesByIds")) || [];
-    if (savedLikes.includes(postId)) {
-      setClicked(true);
-    }
-  }, [postId]);
-
   const fetchMoreData = () => {
     setLimit((prevLimit) => prevLimit + 3);
   };
 
-  const handleClick = (e) => {
-    const iconElement = e.target.closest("[data-value]");
-    const iconClicked = iconElement
-      ? iconElement.getAttribute("data-value")
-      : null;
-    const button = e.target.closest("button")?.innerText;
-
-    if (iconClicked === "Comment") {
-      setCommentDisplay((prev) => !prev);
-    }
-
-    if (iconClicked === "Like") {
-      setClicked(!clicked); // Update state
-      memoryLikesFn(postId); // Persist to localStorage
-      likeUnlikePost(postId); // API call if needed
-    }
-
-    if (button === "View all comments") {
-      setCommentTxtBtn("Hide all comments");
-      setIsComments((prev) => !prev);
-    }
-
-    if (button === "Hide all comments") {
-      setCommentTxtBtn("View all comments");
-      setIsComments((prev) => !prev);
-    }
-
-    if (iconClicked === "Share") {
-      const currentUrl = `http://localhost:5173/view-post/${postId}`;
-      copyToClipboard(currentUrl);
-    }
-  };
-
   return (
-    <div
-      className="m-8 mt-[4em] flex flex-col items-center justify-center text-white"
-      onClick={handleClick}
-    >
+    <div className="m-8 mt-[4em] flex flex-col items-center justify-center text-white">
       <MenuContainer />
       <InfiniteScroll
         dataLength={postsData.length}
@@ -103,12 +55,7 @@ const PostsFeed = () => {
         }
       >
         {postsData.map((post, index) => (
-          <Post
-            key={index}
-            className={post._id}
-            post={post}
-            clicked={clicked}
-          />
+          <Post key={index} className={post._id} post={post} />
         ))}
       </InfiniteScroll>
       <FooterMenu pageValue={"Home"} />
