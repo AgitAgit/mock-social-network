@@ -18,7 +18,6 @@ const hoverColorIcon = {
 };
 
 const Comment = ({ comment }) => {
-  console.log(comment);
   const commentReplyAt = timeSince(comment.createdAt);
   const userCommentProfileImg = comment.authorId?.profilePic || "fill-image";
   const commentUsername = comment.authorId?.username || "anonymous";
@@ -39,7 +38,7 @@ const Comment = ({ comment }) => {
           <FaHeart sx={hoverColorIcon} />
         </div>
       </div>
-      <div className="mt-[0.5em] flex w-full flex-col">
+      <div className="none mt-[0.5em] flex w-full flex-col">
         <CommentInput commentUsername={commentUsername} />
       </div>
     </div>

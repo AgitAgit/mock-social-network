@@ -44,42 +44,38 @@ const Search = () => {
 
   return (
     <div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="p-[0.2em] pt-[0em]">
-          <div>
-            <div className="pl-[0.5em] pr-[0.5em]">
-              <SearchBarInput />
-            </div>
-
-            <div
-              onClick={handleClick}
-              className="mt-2 flex w-full flex-row flex-wrap justify-center"
-            >
-              <InfiniteScroll
-                dataLength={posts.length}
-                next={fetchMoreData}
-                hasMore={hasMore}
-                loader={<Loader />}
-                endMessage={
-                  <h1 style={{ textAlign: "center" }}>
-                    <b>No more posts to view at this moment.</b>
-                  </h1>
-                }
-              >
-                {posts &&
-                  posts.map((post) => (
-                    <button key={post._id} className={post._id}>
-                      <ImageBlockDisplay post={post} />
-                    </button>
-                  ))}
-              </InfiniteScroll>
-            </div>
-            <FooterMenu pageValue={"Search"} />
+      <div className="p-[0.2em] pt-[0em]">
+        <div>
+          <div className="pl-[0.5em] pr-[0.5em]">
+            <SearchBarInput />
           </div>
+
+          <div
+            onClick={handleClick}
+            className="mt-2 flex w-full flex-row flex-wrap justify-center"
+          >
+            <InfiniteScroll
+              dataLength={posts.length}
+              next={fetchMoreData}
+              hasMore={hasMore}
+              loader={<Loader />}
+              endMessage={
+                <h1 style={{ textAlign: "center" }}>
+                  <b>No more posts to view at this moment.</b>
+                </h1>
+              }
+            >
+              {posts &&
+                posts.map((post) => (
+                  <button key={post._id} className={post._id}>
+                    <ImageBlockDisplay post={post} />
+                  </button>
+                ))}
+            </InfiniteScroll>
+          </div>
+          <FooterMenu pageValue={"Search"} />
         </div>
-      )}
+      </div>
     </div>
   );
 };
