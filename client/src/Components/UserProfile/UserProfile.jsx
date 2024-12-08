@@ -1,36 +1,39 @@
 import { useEffect, useState } from "react";
-import ProfileEditBtns from "./ProfileEditBtns/ProfileEditBtns";
-import ProfileActionsBtns from "./ProfileActionsBtns/ProfileActionsBtns";
-import ProfileGallerySection from "./ProfileGallerySection/ProfileGallerySection";
-import ProfileHeaderNavigation from "./ProfileHeaderNavigation/ProfileHeaderNavigation";
-import ProfileImageDisplay from "./ProfileImageDisplay/ProfileImageDisplay";
-import ProfileStatsSection from "./ProfileStatsSection/ProfileStatsSection";
-import ProfileUserDetails from "./ProfileUserDetails/ProfileUserDetails";
+
+// import UserProfileEditBtns from "./ProfileEditBtns/ProfileEditBtns";
+// import UserProfileActionsBtns from "./ProfileActionsBtns/ProfileActionsBtns";
+// import UserProfileGallerySection from "./ProfileGallerySection/ProfileGallerySection";
+// import UserProfileHeaderNavigation from "./ProfileHeaderNavigation/ProfileHeaderNavigation";
+// import UserProfileImageDisplay from "./ProfileImageDisplay/ProfileImageDisplay";
+// import UserProfileStatsSection from "./ProfileStatsSection/ProfileStatsSection";
+// import UserProfileUserDetails from "./ProfileUserDetails/ProfileUserDetails";
 import axios from "axios";
 import FooterMenu from "../FooterMenu/FooterMenu";
 import Loader from "../Loader/Loader";
+import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setProfilePicUser } from "../../store/slices/userSlice";
+import UserProfileHeaderNavigation from "./UserProfileHeaderNavigation/UserProfileHeaderNavigation";
 
-const Profile = () => {
+const UserProfile = () => {
+  const { username } = useParams();
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  const dispatch = useDispatch();
-  dispatch(setProfilePicUser(userData?.user?.profilePic));
 
   const fetchUserData = async () => {
-    setLoading(true);
+    // setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:3000/api/users/data", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        `http://localhost:3000/api/users/${username}`,
+        {
+          withCredentials: true,
+        },
+      );
 
       setUserData(data);
     } catch (error) {
       console.error(`Error has occurred durning fetching API: `, error);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -40,13 +43,20 @@ const Profile = () => {
 
   return (
     <div>
-      {loading ? (
+      <div>
+        <h2>Now showing post {username}</h2>
+      </div>
+      {/* {loading ? (
         <Loader />
       ) : (
         <div>
-          <div className="p-[0.5em] text-white">
+           <div className="p-[0.5em] text-white">
             <div className="rounded-[1em] bg-profileSectionTheme font-CaustenFont">
-              <ProfileHeaderNavigation />
+              <Link to="/search">
+                <button>
+                  <BackPageArrow top={35} left={25} />
+                </button>
+              </Link>{" "}
               <div className="flex w-full flex-row items-center justify-center">
                 <div className="flex w-full flex-col items-center">
                   <div>
@@ -80,9 +90,9 @@ const Profile = () => {
             <FooterMenu pageValue={"Profile"} />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
 
-export default Profile;
+export default UserProfile;

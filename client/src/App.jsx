@@ -17,6 +17,7 @@ import EditProfile from "./Pages/EditProfile/EditProfile.jsx";
 import ViewPost from "./Pages/ViewPost/ViewPost.jsx";
 import Page404 from "./Pages/Page404/Page404.jsx";
 import ComingSoonPage from "./Components/ComingSoonPage/ComingSoonPage.jsx";
+import UserProfile from "./Components/UserProfile/UserProfile.jsx";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/view-post/:postId" element={<ViewPost />} />
           <Route path="/search" element={<Search />} />
           <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/user-profile/:username" element={<UserProfile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/posts-feed" element={<PostsFeed />} />
           <Route path="/account-options" element={<AccountOptions />} />

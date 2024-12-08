@@ -53,7 +53,10 @@ const Search = () => {
 
   const handleClickUserProfile = (e) => {
     const username = e.target.closest("button").innerText;
+    console.log(username);
+
     // implement the route here
+    navigate(`/user-profile/${username || "User"}`);
   };
 
   useEffect(() => {
