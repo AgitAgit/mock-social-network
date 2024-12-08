@@ -47,7 +47,7 @@ app.use("/api/comments", commentsRouter);
 
 app.get("/api/status", (req, res) => {
   res.send({
-    message: "Server is UP",
+    message: "Server is UP from stable-server",
   });
 });
 
