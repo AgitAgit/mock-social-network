@@ -42,9 +42,12 @@ const Search = () => {
 
   const handleChangeInput = (e) => {
     const searchUser = e.target.value;
+    setSearchUserInput(searchUser);
+
     if (searchUser.length > 1) {
-      setSearchUserInput(searchUser);
       searchForUserFn();
+    } else {
+      setUsersResults([]);
     }
   };
 
