@@ -34,7 +34,7 @@ mongoose
 
 app.use(
   cors({
-    origin: "https://mock-social-network-client.vercel.app",
+    origin: "https://mock-social-network-client-o2ni3f2tg-agitagits-projects.vercel.app",
     credentials: true,
   })
 );
