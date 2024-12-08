@@ -23,5 +23,5 @@ from the requirements page:
 
 
 
--make all routes require authentication except for the signup/login?
--add special response for when the token expires
+-make all routes require authentication except for the signup/login? -DONE
+-add special response for when the token expires -DONE

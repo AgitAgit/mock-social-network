@@ -6,6 +6,11 @@ import SearchBarInput from "../../Components/SearchBarInput/SearchBarInput.jsx";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from "../../Components/Loader/Loader.jsx";
+import fetchPostsSearchPage from "../../Api/fetchPostsSearchPage.js";
+import PostHeader from "../../Components/Post/PostHeader/PostHeader.jsx";
+
+const styleFilterSearch =
+  "z-10 flex flex-col flex-wrap items-start overflow-auto rounded-[0.5em] bg-transept p-[1em] text-white";
 
 const Search = () => {
   const [posts, setPosts] = useState([]);
@@ -13,25 +18,47 @@ const Search = () => {
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
   const navigate = useNavigate();
+  const [searchUserInput, setSearchUserInput] = useState("");
+  const [usersResults, setUsersResults] = useState([]);
 
-  async function fetchData() {
-    try {
-      const response = await axios.get(
-        `http://localhost:3000/api/posts?limit=${limit}`,
-        { withCredentials: true },
-      );
-      if (response.data.length === 0) {
-        setHasMore(false);
+  const searchForUserFn = async () => {
+    if (searchUserInput) {
+      try {
+        const { data } = await axios.get(`http://localhost:3000/api/users`, {
+          withCredentials: true,
+        });
+
+        if (data.users) {
+          const filteredUsers = data.users.filter((user) =>
+            user.username.toLowerCase().includes(searchUserInput.toLowerCase()),
+          );
+          setUsersResults(filteredUsers);
+        }
+      } catch (error) {
+        console.error("Error fetching users:", error);
       }
-      setPosts((prevPosts) => [...prevPosts, ...response.data]);
-    } catch (error) {
-      console.error(`Error during fetching API:`, error);
     }
-  }
+  };
+
+  const handleChangeInput = (e) => {
+    const searchUser = e.target.value;
+    setSearchUserInput(searchUser);
+
+    if (searchUser.length > 1) {
+      searchForUserFn();
+    } else {
+      setUsersResults([]);
+    }
+  };
+
+  const handleClickUserProfile = (e) => {
+    const username = e.target.closest("button").innerText;
+    // implement the route here
+  };
 
   useEffect(() => {
-    fetchData();
-  }, [limit]);
+    fetchPostsSearchPage(setHasMore, setPosts, limit);
+  }, [limit, searchUserInput]);
 
   const handleClick = (e) => {
     const postId = e.target.closest("button").className;
@@ -46,10 +73,34 @@ const Search = () => {
     <div>
       <div className="p-[0.2em] pt-[0em]">
         <div>
-          <div className="pl-[0.5em] pr-[0.5em]">
-            <SearchBarInput />
-          </div>
+          <form className="pl-[0.5em] pr-[0.5em]">
+            <SearchBarInput onChange={handleChangeInput} />
+          </form>
 
+          <div
+            onClick={handleClickUserProfile}
+            className={
+              searchUserInput
+                ? `${styleFilterSearch} h-[775px]`
+                : `${styleFilterSearch} h-[0px]`
+            }
+          >
+            {usersResults.map((user) => (
+              <div>
+                <button
+                  key={user.username}
+                  id={user.username}
+                  className={`mb-[0.2em] w-[100%] opacity-[0.7] hover:bg-gray-800 hover:opacity-[1]`}
+                >
+                  <PostHeader
+                    userProfileImg={user.profilePic}
+                    postUsername={user.username}
+                    withoutIcon={true}
+                  />
+                </button>
+              </div>
+            ))}
+          </div>
           <div
             onClick={handleClick}
             className="mt-2 flex w-full flex-row flex-wrap justify-center"
@@ -66,8 +117,8 @@ const Search = () => {
               }
             >
               {posts &&
-                posts.map((post) => (
-                  <button key={post._id} className={post._id}>
+                posts.map((post, index) => (
+                  <button key={index} className={post._id}>
                     <ImageBlockDisplay post={post} />
                   </button>
                 ))}
