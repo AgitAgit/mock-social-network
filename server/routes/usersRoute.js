@@ -23,10 +23,10 @@ const uploadProfilePicture = createUploadMiddleware(
 
 const router = express.Router();
 
-router.get("/", getAllUsers);
-router.post("/signup", uploadProfilePicture, addUser);
+router.get("/", authUser, getAllUsers);
+router.post("/signup", authUser, uploadProfilePicture, addUser);
 router.post("/login", login);
-router.post("/logout", logout);
+router.post("/logout", authUser, logout);
 
 router.get("/data", authUser, getUserData);
 router.get("/data/:id", authUser, getUserData);
