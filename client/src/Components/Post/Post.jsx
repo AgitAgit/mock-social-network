@@ -106,11 +106,17 @@ const Post = ({ post }) => {
             {commentTxtBtn}
           </button>
         </div>
-        <div className={isComments ? `w-full` : "hidden"}>
+        {/* <div className={isComments ? `w-full` : "hidden"}> */}
+        <div className="w-full">
           {commentsArr &&
-            commentsArr.map((comment) => (
-              <Comment key={comment._id} comment={comment} />
-            ))}
+            commentsArr
+              .slice(
+                !isComments ? Math.max(commentsArr.length - 3, 0) : 0, // אינדקס התחלה
+                commentsArr.length, // אינדקס סיום (תמיד סוף המערך)
+              )
+              .map((comment) => (
+                <Comment key={comment._id} comment={comment} />
+              ))}
           <div className={commentDisplay ? "w-full" : "hidden"}>
             <PostComment postUsername={postUsername} postId={postId} />
           </div>
