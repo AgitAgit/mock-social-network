@@ -11,7 +11,7 @@ const OptionTab = ({ icon, title, arrowIcon, navigateRoute }) => {
       <Link to={navigateRoute}>
         <div className="flex w-full flex-row items-center gap-[0.5em]">
           <div className="flex flex-row items-center gap-[0.5em]">
-            <div>{icon || " "}</div>
+            <div>{icon || ""}</div>
             <h3 className={title === "Log out" ? "text-red-600" : "text-white"}>
               {title}
             </h3>
