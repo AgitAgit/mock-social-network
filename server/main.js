@@ -34,7 +34,8 @@ mongoose
 
 app.use(
   cors({
-    credentials: true
+    origin: "https://mock-social-network-client.vercel.app",
+    credentials: true,
   })
 );
 
@@ -46,7 +47,7 @@ app.use("/api/comments", commentsRouter);
 
 app.get("/api/status", (req, res) => {
   res.send({
-    message: "Server is UP from stable-server"
+    message: "Server is UP",
   });
 });
 
