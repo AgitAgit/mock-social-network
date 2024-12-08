@@ -75,7 +75,7 @@ const SignIn = () => {
               name="password"
               className={divInputStyle}
             />
-            <Link to="/">
+            <Link to="Coming-soon">
               <p className="cursor-pointer text-start text-xs text-blue-500 hover:text-white">
                 Recovery Password
               </p>

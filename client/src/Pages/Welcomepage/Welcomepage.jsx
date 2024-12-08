@@ -4,7 +4,7 @@ import HomeImage from "/public/images/background-image.svg";
 const divIconStyle =
   "rounded-[0.5em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
 
-const Homepage = () => {
+const WelcomePage = () => {
   return (
     <div className="z-1 mt-[1em] max-w-sm rounded-[2.2em] p-[0.1em] text-white">
       <img
@@ -32,4 +32,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default WelcomePage;
