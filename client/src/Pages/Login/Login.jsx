@@ -23,7 +23,7 @@ const SignIn = () => {
   const loginUser = async (userInfo) => {
     try {
       const resLoginData = await axios.post(
-        `http://localhost:3000/api/users/login`,
+        `https://mock-social-network.vercel.app/api/users/login`,
         userInfo,
         { withCredentials: true },
       );

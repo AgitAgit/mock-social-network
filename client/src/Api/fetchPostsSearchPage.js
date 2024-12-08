@@ -3,7 +3,7 @@ import axios from "axios";
 async function fetchPostsSearchPage(setHasMore, setPosts, limit) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/posts?limit=${limit}`,
+      `https://mock-social-network.vercel.app/api/posts?limit=${limit}`,
       { withCredentials: true },
     );
     if (response) {

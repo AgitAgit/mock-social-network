@@ -24,9 +24,12 @@ const Search = () => {
   const searchForUserFn = async () => {
     if (searchUserInput) {
       try {
-        const { data } = await axios.get(`http://localhost:3000/api/users`, {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          `https://mock-social-network.vercel.app/api/users`,
+          {
+            withCredentials: true,
+          },
+        );
 
         if (data.users) {
           const filteredUsers = data.users.filter((user) =>
