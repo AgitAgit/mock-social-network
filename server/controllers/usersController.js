@@ -47,6 +47,30 @@ async function getUserData(req, res, next) {
   }
 }
 
+async function getUserSavedPosts(req, res, next) {
+  try {
+    const userId = req.params.id ? req.params.id : req.user.userId;
+
+    const user = await User.findById(userId);
+    console.log("aaaa");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const savedPosts = await Promise.all(
+      user.savedPosts.map(async (post) => {
+        console.log(post);
+        return await Post.findById(post);
+      })
+    );
+
+    return res.json({ savedPosts });
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+}
+
 async function addUser(req, res, next) {
   try {
     const { displayName, username, password, email, role } = req.body;
@@ -207,6 +231,7 @@ module.exports = {
   login,
   logout,
   followUser,
+  getUserSavedPosts,
   updateUserData,
   deleteUser,
   catchAll,
