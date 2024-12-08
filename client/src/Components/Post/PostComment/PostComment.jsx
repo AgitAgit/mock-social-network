@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { LuSend } from "react-icons/lu";
 
 const PostComment = ({ postUsername, postId, setIsUpdated }) => {
   const userProfileImg = useSelector((state) => state.user?.profileImg);
@@ -14,7 +15,7 @@ const PostComment = ({ postUsername, postId, setIsUpdated }) => {
     const inputComment = e.target.elements.comment.value;
     if (inputComment.length > 1) {
       postComment(inputComment);
-      setIsUpdated(true);
+      inputComment === " ";
     }
   };
 
@@ -51,6 +52,9 @@ const PostComment = ({ postUsername, postId, setIsUpdated }) => {
           className="ml-[1em] bg-transparent text-[0.8em] text-gray-700 focus:text-white focus:outline-none"
           placeholder={`Add comment for ${postUsername || ""}`}
         />
+        <button type="submit" className="ml-2">
+          <LuSend />
+        </button>
       </form>
     </div>
   );
