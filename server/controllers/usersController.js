@@ -24,17 +24,31 @@ async function getUserByUsername(req, res, next) {
     next(error);
   }
 }
+const mongoose = require("mongoose");
 
 async function getUserData(req, res, next) {
   try {
-    const userId = req.params.id ? req.params.id : req.user.userId;
+    const { id, username } = req.params;
+    const userIdOrName = id || username || req.user.userId;
 
-    const user = await User.findById(userId);
+    let user;
+    if (mongoose.Types.ObjectId.isValid(userIdOrName)) {
+      user = await User.findById(userIdOrName);
+    } else {
+      user = await User.findOne({ username: userIdOrName });
+    }
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const userId = user._id;
 
     const userPosts = await Post.find({ authorId: userId });
     const followers = await Follower.countDocuments({ userId });
     const following = await Follower.countDocuments({ followerId: userId });
 
+    // Format post data
     const userPostData = userPosts.map((post) => ({
       _id: post._id,
       postImageUrl: post.postImageUrl,
@@ -42,7 +56,7 @@ async function getUserData(req, res, next) {
 
     res.json({ user, Posts: userPostData, followers, following });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     next(error);
   }
 }

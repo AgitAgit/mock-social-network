@@ -30,9 +30,9 @@ router.post("/logout", authUser, logout);
 
 router.get("/data", authUser, getUserData);
 router.get("/data/:id", authUser, getUserData);
+router.get("/data/:username", authUser, getUserData);
 router.get("/saved-posts", authUser, getUserSavedPosts);
 router.get("/saved-posts/:id", authUser, getUserSavedPosts);
-router.get("/:username", authUser, getUserByUsername);
 router.post("/follow/:id", authUser, followUser);
 router.put("/edit-profile", authUser, uploadProfilePicture, updateUserData);
 router.delete("/:id", authUser, deleteUser);
