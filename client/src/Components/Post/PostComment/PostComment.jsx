@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { LuSend } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
 
-const PostComment = ({ postUsername, postId, setIsUpdated }) => {
+const PostComment = ({ postUsername, postId }) => {
+  const navigate = useNavigate();
   const userProfileImg = useSelector((state) => state.user?.profileImg);
 
   if (!postUsername) {
@@ -12,11 +14,10 @@ const PostComment = ({ postUsername, postId, setIsUpdated }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const inputComment = e.target.elements.comment.value;
+    let inputComment = e.target.elements.comment.value;
     if (inputComment.length > 1) {
       postComment(inputComment);
-
-      inputComment === " ";
+      inputComment = "";
     }
   };
 
@@ -41,15 +42,17 @@ const PostComment = ({ postUsername, postId, setIsUpdated }) => {
   return (
     <div className="mt-[-0.6em] flex w-full items-start">
       <div className="flex w-full flex-row items-center justify-start">
-        <img
-          src={userProfileImg}
-          alt=""
-          className="w-[1.8em] rounded-[100em]"
-        />
+        <button onClick={() => navigate(`/profile/${postUsername}`)}>
+          <img
+            src={userProfileImg}
+            alt=""
+            className="w-[1.8em] rounded-[100em]"
+          />
+        </button>
         <form onSubmit={handleSubmit}>
           <input
             name="comment"
-            className="ml-[1em] bg-transparent text-[0.8em] text-gray-700 focus:text-white focus:outline-none"
+            className="ml-[0.3em] bg-transparent text-[0.8em] text-gray-700 focus:text-white focus:outline-none"
             placeholder={`Add comment for ${postUsername || ""}`}
           />
         </form>

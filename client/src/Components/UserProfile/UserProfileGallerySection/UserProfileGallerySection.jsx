@@ -23,7 +23,7 @@ const UserProfileGallerySection = ({ posts }) => {
       >
         {posts &&
           posts.map((post) => (
-            <button key={post.postImageUrl} className={post._id}>
+            <button key={post._id} className={post._id}>
               <ImageBlockDisplay post={post} />
             </button>
           ))}

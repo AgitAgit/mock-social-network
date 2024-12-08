@@ -1,10 +1,17 @@
 const UserProfileUserDetails = ({ userName, displayName }) => {
+  const handleClick = (e) => {
+    const btnText = e.target.closest("button").value;
+    if (btnText) {
+      console.log(btnText);
+    }
+  };
+
   return (
-    <div className="UsernameNTagContainer flex flex-col">
+    <div className="UsernameNTagContainer flex flex-col" onClick={handleClick}>
       <h2 className="text-[1.5em]">{userName || "User"}</h2>
-      <h4 className="mb-[0.5em] cursor-pointer text-[0.8em] text-gray-500 hover:text-white">
+      <button className="mb-[0.5em] cursor-pointer text-[0.8em] text-gray-500 hover:text-white">
         @{userName || "User"}
-      </h4>
+      </button>
     </div>
   );
 };

@@ -17,8 +17,8 @@ const ProfileGallerySection = ({ posts }) => {
         className="mb-12 mt-2 flex w-full flex-row flex-wrap justify-center"
       >
         {posts &&
-          posts.map((post) => (
-            <button key={post.postImageUrl} className={post.postImageUrl}>
+          posts.map((post, index) => (
+            <button key={post._id} className={post._id}>
               <ImageBlockDisplay post={post} />
             </button>
           ))}

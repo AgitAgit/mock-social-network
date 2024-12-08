@@ -57,12 +57,12 @@ const Post = ({ post }) => {
       savePost(postId);
     }
 
-    if (button === "View all comments") {
+    if (button === "View all comments" && commentsArr.length > 1) {
       setCommentTxtBtn("Hide all comments");
       setIsComments((prev) => !prev);
     }
 
-    if (button === "Hide all comments") {
+    if (button === "Hide all comments" && commentsArr.length > 1) {
       setCommentTxtBtn("View all comments");
       setIsComments((prev) => !prev);
     }
@@ -106,13 +106,12 @@ const Post = ({ post }) => {
             {commentTxtBtn}
           </button>
         </div>
-        {/* <div className={isComments ? `w-full` : "hidden"}> */}
         <div className="w-full">
           {commentsArr &&
             commentsArr
               .slice(
-                !isComments ? Math.max(commentsArr.length - 3, 0) : 0, // אינדקס התחלה
-                commentsArr.length, // אינדקס סיום (תמיד סוף המערך)
+                !isComments ? Math.max(commentsArr.length - 3, 0) : 0,
+                commentsArr.length,
               )
               .map((comment) => (
                 <Comment key={comment._id} comment={comment} />

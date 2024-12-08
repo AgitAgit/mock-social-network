@@ -7,6 +7,7 @@ import SubmitBtn from "../../Components/SubmitBtn/SubmitBtn.jsx";
 import { useDispatch } from "react-redux";
 import { GiFlipFlops } from "react-icons/gi";
 import { setUser } from "../../store/slices/userSlice.js";
+import { useState } from "react";
 
 const divIconStyle =
   "rounded-[0.5em] cursor-pointer border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
@@ -17,6 +18,7 @@ const divInputStyle =
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isWrong, setIsWrong] = useState(false);
 
   const loginUser = async (userInfo) => {
     try {
@@ -31,6 +33,7 @@ const SignIn = () => {
       }
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
+      setIsWrong(true);
     }
   };
 
@@ -52,7 +55,7 @@ const SignIn = () => {
   return (
     <div className="mt-[0.5em] flex flex-col items-center justify-center rounded-[1em] p-[2em] text-white">
       <div>
-        <div className="mb-[0.5em] flex w-full flex-row items-center justify-center gap-[1em] text-center">
+        <div className="mb-[1em] flex w-full flex-row items-center justify-center gap-[1em] text-center">
           <GiFlipFlops />
           <h1 className="text-2xl">Babagram</h1>
         </div>
@@ -75,6 +78,10 @@ const SignIn = () => {
               name="password"
               className={divInputStyle}
             />
+            <p className={isWrong ? "text-red-500" : "hidden"}>
+              Invalid username or password
+            </p>
+
             <Link to="Coming-soon">
               <p className="cursor-pointer text-start text-xs text-blue-500 hover:text-white">
                 Recovery Password

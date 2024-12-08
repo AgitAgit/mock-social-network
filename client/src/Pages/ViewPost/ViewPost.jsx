@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Post from "../../Components/Post/Post";
 import BackPageArrow from "../../Components/BackPageArrow/BackPageArrow";
 import Loader from "../../Components/Loader/Loader";
+import FooterMenu from "../../Components/FooterMenu/FooterMenu";
+import MenuContainer from "../../Components/Menubar/Menubar";
 
 const ViewPost = () => {
   const [post, setPost] = useState();
@@ -37,6 +39,7 @@ const ViewPost = () => {
 
   return (
     <div className="mt-[2.5em] text-white">
+      <MenuContainer />
       {loading ? (
         <Loader />
       ) : (
@@ -45,6 +48,7 @@ const ViewPost = () => {
           <Post post={post} />
         </div>
       )}
+      <FooterMenu />
     </div>
   );
 };

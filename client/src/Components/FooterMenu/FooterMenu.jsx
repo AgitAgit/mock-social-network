@@ -62,13 +62,11 @@ const FooterMenu = ({ pageValue }) => {
         bottom: "0",
         padding: "0.3em",
       }}
-      showLabel={true}
       value={value}
       onChange={handleChange}
     >
       <BottomNavigationAction
         value="Home"
-        showLabel={true}
         sx={iconConfiguration}
         icon={<IoHomeOutline />}
       />

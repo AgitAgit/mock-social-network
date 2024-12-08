@@ -44,7 +44,6 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div></div>
       {loading ? (
         <Loader />
       ) : (
@@ -83,7 +82,6 @@ const UserProfile = () => {
                   />
                 </div>
               </div>
-              {/* <UserProfileEditBtns /> */}
             </div>
             <UserProfileGallerySection posts={userData?.Posts} />
             <FooterMenu pageValue={"Profile"} />

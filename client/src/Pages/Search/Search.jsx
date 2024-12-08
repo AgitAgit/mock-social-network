@@ -10,7 +10,7 @@ import fetchPostsSearchPage from "../../Api/fetchPostsSearchPage.js";
 import PostHeader from "../../Components/Post/PostHeader/PostHeader.jsx";
 
 const styleFilterSearch =
-  "z-10 flex flex-col flex-wrap items-start overflow-auto rounded-[0.5em] bg-transept p-[1em] text-white";
+  "z-50 flex flex-col flex-wrap items-start overflow-auto rounded-[0.5em] bg-transept p-[1em] text-white";
 
 const Search = () => {
   const [posts, setPosts] = useState([]);
@@ -84,7 +84,7 @@ const Search = () => {
             onClick={handleClickUserProfile}
             className={
               searchUserInput
-                ? `${styleFilterSearch} h-[775px]`
+                ? `${styleFilterSearch} h-[100%]`
                 : `${styleFilterSearch} h-[0px]`
             }
           >
