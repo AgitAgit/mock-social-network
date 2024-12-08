@@ -20,3 +20,8 @@ from the requirements page:
 - Add middleware for centralized error handling. DONE.
 
 - change follower and following to count instead of array in users -DONE
+
+
+
+-make all routes require authentication except for the signup/login?
+-add special response for when the token expires
