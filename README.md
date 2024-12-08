@@ -680,9 +680,11 @@ Authorization: Bearer <token>
       "_id": "674466c3ab88a86725c6c0a8",
       "parentPostId": "674444e4810707ebc8505bb2",
       "commentContent": "This is a comment",
+      "likedBy": ["67432e35d9cabb6b21047e40"],
       "authorId": "67432e35d9cabb6b21047e40",
       "createdAt": "2024-12-03T11:17:05.921Z",
-      "updatedAt": "2024-12-03T11:17:05.921Z"
+      "updatedAt": "2024-12-03T11:17:05.921Z",
+      "likesCount": 1
     }
   ]
 }
@@ -836,6 +838,72 @@ Authorization: Bearer <token>
         "_id": "67507cbc5e3a3b992571fc57",
         ...other comment variables
     }
+}
+```
+
+### **PUT /api/comments/:commentId**
+
+- **Description**:Updates a single comment.
+
+- **Route**: `/api/comments/:commentId`
+
+- **Method**: `PUT`
+
+- **Authentication**: Requires authentication (user must be logged in).
+  Comment must belong to the user trying to update it.
+
+- **Path Parameters**:
+
+  - `commentId` (string, required): MongoDB Object ID of the comment.
+
+- **Request Body**:
+
+  - `content` (string, required): The content of the comment.
+
+- **Response**:
+
+  - **201 OK**: The updated comment.
+  - **404 ERROR**:The user doesn't exist.
+  - **404 ERROR**:The commnet doesn't belong to the user.
+  - **500 Internal Server Error**: If an error occurs during the process.
+
+- **Example Request**:
+
+```
+ PUT /api/comments/67515d2a15c61d3f9a201368
+  Authorization: Bearer <token>
+  Content-Type: application/json
+  Body:{
+    "content":"this is the updated comment"
+  }
+```
+
+- **Example Response**:
+
+##### If the comment exists:
+
+```json
+{
+  "message": "Comment updated successfully!",
+  "updatedComment": {
+      "_id": "6755bcb58a5b3b5ad9a458e0",
+      "parentPostId": "6755bc8d8a5b3b5ad9a458dd",
+      "commentContent": "baba tantum baiulus quack",
+      "likedBy": [],
+      "authorId": "6751b07209bc1e487947ac2c",
+      "createdAt": "2024-12-08T15:35:17.428Z",
+      "updatedAt": "2024-12-08T15:35:57.472Z",
+      "likesCount": 0,
+      "id": "6755bcb58a5b3b5ad9a458e0"
+  }
+}
+```
+
+##### If the comment doesn't exist:
+
+```json
+{
+  "message": "Comment doesn't exist"
 }
 ```
 

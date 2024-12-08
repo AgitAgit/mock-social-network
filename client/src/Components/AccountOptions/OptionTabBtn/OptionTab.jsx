@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-const OptionTab = ({ icon, title, arrowIcon, navigateRoute }) => {
+const OptionTab = ({ icon, title, navigateRoute }) => {
   if (navigateRoute === "/login") {
     Cookies.remove("jwt");
   }
@@ -17,7 +18,9 @@ const OptionTab = ({ icon, title, arrowIcon, navigateRoute }) => {
             </h3>
           </div>
           <div className="ml-auto">
-            <button>{arrowIcon}</button>
+            <button>
+              <ArrowForwardIcon />
+            </button>
           </div>
         </div>
       </Link>

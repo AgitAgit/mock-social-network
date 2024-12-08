@@ -7,22 +7,23 @@ import AccountCenter from "./Components/AccountOptions/AccountCenter/AccountCent
 import Login from "./Pages/Login/Login.jsx";
 import Register from "./Pages/Register/Register.jsx";
 import PostsFeed from "./Pages/PostsFeed/PostsFeed.jsx";
-import Homepage from "./Pages/Homepage/Homepage.jsx";
+import WelcomePage from "./Pages/Welcomepage/Welcomepage.jsx";
 import Search from "./Pages/Search/Search.jsx";
 import NewPost from "./Pages/NewPost/NewPost.jsx";
 import Profile from "./Components/Profile/Profile.jsx";
-import ComingSoonPage from "./Components/ComingSoonPage/ComingSoonPage.jsx";
 import TermsOfService from "./Pages/TermsOfService/TermsOfService.jsx";
 import Reels from "./Pages/Reels/Reels.jsx";
 import EditProfile from "./Pages/EditProfile/EditProfile.jsx";
 import ViewPost from "./Pages/ViewPost/ViewPost.jsx";
+import Page404 from "./Pages/Page404/Page404.jsx";
+import ComingSoonPage from "./Components/ComingSoonPage/ComingSoonPage.jsx";
 
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<WelcomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/new-post" element={<NewPost />} />
           <Route path="/edit-profile" element={<EditProfile />} />
@@ -35,7 +36,8 @@ function App() {
           <Route path="/account-center" element={<AccountCenter />} />
           <Route path="/reels" element={<Reels />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="*" element={<ComingSoonPage />} />
+          <Route path="*" element={<Page404 />} />
+          <Route path="Coming-soon" element={<ComingSoonPage />} />
         </Routes>
       </BrowserRouter>
     </Provider>
