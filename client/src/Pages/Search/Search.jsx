@@ -51,6 +51,11 @@ const Search = () => {
     }
   };
 
+  const handleClickUserProfile = (e) => {
+    const username = e.target.closest("button").innerText;
+    // implement the route here
+  };
+
   useEffect(() => {
     fetchPostsSearchPage(setHasMore, setPosts, limit);
   }, [limit, searchUserInput]);
@@ -73,6 +78,7 @@ const Search = () => {
           </form>
 
           <div
+            onClick={handleClickUserProfile}
             className={
               searchUserInput
                 ? `${styleFilterSearch} h-[775px]`
