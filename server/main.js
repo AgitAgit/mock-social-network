@@ -20,15 +20,16 @@ const PORT = 3000;
 
 mongoose
   .connect(uri)
-  .then(() => {
-    console.log("Connected to database.Checking documents...");
-    return checkCollectionEmpty(); // Wait for checkCollectionEmpty to finish
+  .then(async () => {
+    console.log("Connected to database. Checking documents...");
+    await checkCollectionEmpty();
   })
   .catch((error) => {
     console.error(
       "Error connecting to the database or running operations:",
       error
     );
+    process.exit(1); // Exit the app on database connection failure
   });
 
 app.use(

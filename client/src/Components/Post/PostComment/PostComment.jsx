@@ -15,7 +15,9 @@ const PostComment = ({ postUsername, postId, setIsUpdated }) => {
     const inputComment = e.target.elements.comment.value;
     if (inputComment.length > 1) {
       postComment(inputComment);
+
       inputComment === " ";
+
     }
   };
 
