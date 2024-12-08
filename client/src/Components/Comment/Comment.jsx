@@ -5,18 +5,6 @@ import CommentInput from "./CommentInput/CommentInput";
 import { FaHeart } from "react-icons/fa6";
 import timeSince from "../../utils/timeSince";
 
-const hoverColorIcon = {
-  width: "5vw",
-  padding: "0.05em",
-  borderRadius: "0.1em",
-  color: "white",
-
-  "&:hover": {
-    color: "var(--bgTheme)",
-    background: "white",
-  },
-};
-
 const Comment = ({ comment }) => {
   const commentReplyAt = timeSince(comment.createdAt);
   const userCommentProfileImg = comment.authorId?.profilePic || "fill-image";

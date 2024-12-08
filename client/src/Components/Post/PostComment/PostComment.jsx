@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
 
-const PostComment = ({ postUsername, postId }) => {
-  const userProfileImg = useSelector((state) => state.user.profileImg);
+const PostComment = ({ postUsername, postId, setIsUpdated }) => {
+  const userProfileImg = useSelector((state) => state.user?.profileImg);
 
   if (!postUsername) {
     return;
@@ -14,6 +14,7 @@ const PostComment = ({ postUsername, postId }) => {
     const inputComment = e.target.elements.comment.value;
     if (inputComment.length > 1) {
       postComment(inputComment);
+      setIsUpdated(true);
     }
   };
 
