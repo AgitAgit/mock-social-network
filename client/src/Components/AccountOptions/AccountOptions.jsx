@@ -111,230 +111,230 @@ const AccountOptions = () => {
       <h2 className={h3Style}>How you use babagram</h2>
       <OptionTab
         icon={<MdOutlineBookmarkBorder />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Saved"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdOutlineArchive />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Archive"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<LuActivitySquare />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Your Activity"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<BiBell />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Notifications"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<IoTimeOutline />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Time Management"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>Who can see your content</h2>
       <OptionTab
         icon={<IoLockClosedOutline />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Account Privacy"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdPeopleAlt />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Close Friends"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdCompareArrows />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Crossposting"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdBlock />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Blocked"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdOutlineVisibilityOff />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Hide Story and Live"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>How others can interact with you</h2>
       <OptionTab
         icon={<BiSolidMessageRoundedDots />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Message and story replies"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<CiAt />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Tags and Mentions"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<FaRegComment />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Comments"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<TiArrowSync />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Sharing"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdOutlineLock />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Restricted"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdOutlineAccessTime />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Limit Interactions"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<AiOutlineFontSize />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Hidden Words"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdPersonAdd />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Follow and Invite Friends"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>What you see</h2>
       <OptionTab
         icon={<FaRegStar />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Favorites"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<BsBellSlash />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Muted Accounts"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<TbPhotoVideo />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Suggested Content"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<IoHeartDislikeOutline />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Like and Share Counts"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>Your app and media</h2>
       <OptionTab
         icon={<CiMobile3 />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Device permissions"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<HiDownload />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Archiving and downloading"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<LiaUniversalAccessSolid />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Accessibility and translations"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<LiaLanguageSolid />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Language"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<BsFillFileEarmarkBarGraphFill />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Media quality"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdOutlineDevices />}
-        arrowIcon={<ArrowForwardIcon />}
         title="App website permissions"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>For families</h2>
       <OptionTab
         icon={<TbHomeShield />}
-        arrowIcon={<ArrowForwardIcon />}
         title="App website permissions"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>For professionals</h2>
       <OptionTab
         icon={<VscGraph />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Account type and tools"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdOutlineVerified />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Babagram Verified"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>Your orders and fundraisers</h2>
       <OptionTab
         icon={<TbHomeShield />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Fundraisers"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<AiOutlineInbox />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Orders and payments"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>More info and support</h2>
       <OptionTab
         icon={<MdSupport />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Help"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdOutlinePrivacyTip />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Privacy Center"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<IoPersonOutline />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Account Status"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<MdInfoOutline />}
-        arrowIcon={<ArrowForwardIcon />}
         title="About"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>Also from Babagram</h2>
       <OptionTab
         icon={<FaWhatsapp />}
-        arrowIcon={<ArrowForwardIcon />}
         title="WhatsApp"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<FaThreads />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Threads"
+        navigateRoute={"/Coming-soon"}
       />
       <OptionTab
         icon={<RiFacebookCircleLine />}
-        arrowIcon={<ArrowForwardIcon />}
         title="Facebook"
+        navigateRoute={"/Coming-soon"}
       />
       <hr className={lineStyle} />
       <h2 className={h3Style}>Login</h2>
-      <OptionTab arrowIcon={<ArrowForwardIcon />} title="Add account" />
       <OptionTab
         arrowIcon={<ArrowForwardIcon />}
-        title="Log out"
-        navigateRoute={"/login"}
+        title="Add account"
+        navigateRoute={"/Coming-soon"}
       />
+      <OptionTab title="Log out" navigateRoute={"/login"} />
     </div>
   );
 };
