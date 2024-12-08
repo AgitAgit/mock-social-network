@@ -17,7 +17,6 @@ const PostComment = ({ postUsername, postId, setIsUpdated }) => {
       postComment(inputComment);
 
       inputComment === " ";
-
     }
   };
 
@@ -41,23 +40,23 @@ const PostComment = ({ postUsername, postId, setIsUpdated }) => {
 
   return (
     <div className="mt-[-0.6em] flex w-full items-start">
-      <div>
+      <div className="flex w-full flex-row items-center justify-start">
         <img
           src={userProfileImg}
           alt=""
           className="w-[1.8em] rounded-[100em]"
         />
+        <form onSubmit={handleSubmit}>
+          <input
+            name="comment"
+            className="ml-[1em] bg-transparent text-[0.8em] text-gray-700 focus:text-white focus:outline-none"
+            placeholder={`Add comment for ${postUsername || ""}`}
+          />
+        </form>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="comment"
-          className="ml-[1em] bg-transparent text-[0.8em] text-gray-700 focus:text-white focus:outline-none"
-          placeholder={`Add comment for ${postUsername || ""}`}
-        />
-        <button type="submit" className="ml-2">
-          <LuSend />
-        </button>
-      </form>
+      <button type="submit" className="ml-2">
+        <LuSend />
+      </button>
     </div>
   );
 };

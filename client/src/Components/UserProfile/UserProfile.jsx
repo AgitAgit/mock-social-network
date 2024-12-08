@@ -31,7 +31,6 @@ const UserProfile = () => {
       );
 
       setUserData(data);
-      console.log(username);
     } catch (error) {
       console.error(`Error has occurred durning fetching API: `, error);
     } finally {
@@ -45,15 +44,13 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div>
-        <h2>Now showing post {username}</h2>
-      </div>
+      <div></div>
       {loading ? (
         <Loader />
       ) : (
         <div>
           <div className="p-[0.5em] text-white">
-            <div className="rounded-[1em] bg-profileSectionTheme font-CaustenFont">
+            <div className="rounded-[1em] bg-profileSectionTheme">
               <Link to="/search">
                 <button>
                   <BackPageArrow top={35} left={25} />

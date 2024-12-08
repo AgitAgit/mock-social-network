@@ -1,4 +1,5 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Link, useNavigate } from "react-router-dom";
 
 const styleIcon = {
   transform: "rotate(90deg)",
@@ -21,11 +22,25 @@ const PostHeader = ({
     postUploadTime = "";
   }
 
+  const navigate = useNavigate();
+
   return (
     <div className="flex w-full flex-row items-center justify-between">
       <div className="creatorContainer flex w-full flex-row items-center justify-start gap-[0.5em]">
-        <img src={userProfileImg} alt="" className="w-[5vw] rounded-[100em]" />
-        <p>{postUsername}</p>
+        <button
+          onClick={() => navigate(`/user-profile/${postUsername || "User"}`)}
+        >
+          <img
+            src={userProfileImg}
+            alt=""
+            className="w-[5vw] rounded-[100em]"
+          />
+        </button>
+        <button
+          onClick={() => navigate(`/user-profile/${postUsername || "User"}`)}
+        >
+          <p>{postUsername}</p>
+        </button>
         <p className="text-[0.75em] text-gray-500">{`${postUploadTime}`}</p>
       </div>
       <div className={withoutIcon ? "hidden" : "block"}>
