@@ -76,6 +76,9 @@ const NewPost = () => {
     }
   };
 
+  const inputStyle =
+    "rounded-[0.5em] border border-gray-700 bg-[#2c3448] mb-2 p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme";
+
   return (
     <div
       className="flex w-[100vw] flex-col justify-center p-[0.5em] text-white"
@@ -84,7 +87,9 @@ const NewPost = () => {
       <NewPostHeader />
       <form onSubmit={handleSubmit}>
         <div className="flex items-end justify-end">
-          <button className="text-blue-600">Create Post</button>
+          <button className="hover:txt-black mt-[0.8em] rounded-[0.5em] border border-gray-700 bg-[#2c3448] p-[0.6em] pl-[1em] pr-[1em] text-white hover:bg-profileSectionTheme">
+            Create Post
+          </button>
         </div>
         <div className="mt-[0.5em] flex flex-col items-center">
           <input
@@ -92,13 +97,13 @@ const NewPost = () => {
             placeholder="Enter post title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="mb-4 p-2 text-black"
+            className={inputStyle}
           />
           <textarea
             placeholder="Enter post content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="mb-4 p-2 text-black"
+            className={inputStyle}
           />
           {/* Display uploaded image or placeholder */}
           <input
