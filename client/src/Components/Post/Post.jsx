@@ -12,6 +12,7 @@ import likeUnlikePost from "../../Api/likeUnlikePost.js";
 import copyToClipboard from "../../utils/copyToClipboard.js";
 import memoryLikesFn from "../../utils/memoryLikesFn.js";
 import savePost from "../../Api/savePost.js";
+import memorySavePostsFn from "../../utils/memorySavePosts.js";
 
 const Post = ({ post }) => {
   if (!post) {
@@ -30,7 +31,8 @@ const Post = ({ post }) => {
   const [isComments, setIsComments] = useState(false);
   const [commentDisplay, setCommentDisplay] = useState(true);
   const [commentTxtBtn, setCommentTxtBtn] = useState("View all comments");
-  const [clicked, setClicked] = useState(false);
+  const [likedPost, setLikedPost] = useState(false);
+  const [savedPost, setSavedPost] = useState(false);
 
   const handleClick = (e) => {
     const iconElement = e.target.closest("[data-value]");
@@ -44,9 +46,15 @@ const Post = ({ post }) => {
     }
 
     if (iconClicked === "Like") {
-      setClicked(!clicked); // Update state
+      setLikedPost(!likedPost); // Update state
       memoryLikesFn(postId); // Persist to localStorage
       likeUnlikePost(postId); // API call if needed
+    }
+
+    if (iconClicked === "Save Post") {
+      setSavedPost(!savedPost);
+      memorySavePostsFn(postId);
+      savePost(postId);
     }
 
     if (button === "View all comments") {
@@ -63,17 +71,18 @@ const Post = ({ post }) => {
       const currentUrl = `http://localhost:5173/view-post/${postId}`;
       copyToClipboard(currentUrl);
     }
-
-    if (iconClicked === "Save Post") {
-      savePost(postId);
-    }
   };
 
-  // Load initial liked state from localStorage
+  // Load initial liked and saved posts state from localStorage
   useEffect(() => {
     const savedLikes = JSON.parse(localStorage.getItem("postLikesByIds")) || [];
     if (savedLikes.includes(postId)) {
-      setClicked(true);
+      setLikedPost(true);
+    }
+
+    const savedPosts = JSON.parse(localStorage.getItem("savePostsByIds")) || [];
+    if (savedPosts.includes(postId)) {
+      setSavedPost(true);
     }
   }, [postId]);
 
@@ -86,7 +95,7 @@ const Post = ({ post }) => {
           postUploadTime={postUploadTime}
         />
         <PostImage postImage={postImage} />
-        <PostActions clicked={clicked} />
+        <PostActions likedPost={likedPost} savedPost={savedPost} />
         {likeCounts > 1 ? <PostEngagements likeCounts={likeCounts} /> : ""}
         <UserPostContent
           postContent={postContent}
