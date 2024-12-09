@@ -40,7 +40,7 @@ const PostComment = ({ postUsername, postId }) => {
   };
 
   return (
-    <div className="mt-[-0.6em] flex w-full items-start">
+    <div className="mt-[-0.6em] flex w-full items-start items-center">
       <div className="flex w-full flex-row items-center justify-start">
         <button onClick={() => navigate(`/profile/${postUsername}`)}>
           <img
