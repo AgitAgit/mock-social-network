@@ -22,9 +22,12 @@ const Profile = () => {
   const fetchUserData = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:3000/api/users/data", {
-        withCredentials: true,
-      });
+      const { data } = await axios.get(
+        "http://localhost:3000/api/api/users/data",
+        {
+          withCredentials: true,
+        },
+      );
 
       setUserData(data);
     } catch (error) {

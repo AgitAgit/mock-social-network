@@ -24,7 +24,7 @@ const UserProfile = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://mock-social-network.vercel.app/api/users/data/${username}`,
+        `http://localhost:3000/api/users/data/${username}`,
         {
           withCredentials: true,
         },

@@ -3,7 +3,7 @@ import axios from "axios";
 const savePost = async (postId) => {
   try {
     const res = await axios.post(
-      `https://mock-social-network.vercel.app/api/posts/${postId}/save`,
+      `http://localhost:3000/api/posts/${postId}/save`,
       {},
       {
         withCredentials: true,

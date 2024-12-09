@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ImageBlockDisplay from "../../Components/ImageBlockDisplay/ImageBlockDisplay.jsx";
 import FooterMenu from "../../Components/FooterMenu/FooterMenu.jsx";
 import SearchBarInput from "../../Components/SearchBarInput/SearchBarInput.jsx";
@@ -10,9 +10,10 @@ import fetchPostsSearchPage from "../../Api/fetchPostsSearchPage.js";
 import PostHeader from "../../Components/Post/PostHeader/PostHeader.jsx";
 
 const styleFilterSearch =
-  "z-50 flex flex-col flex-wrap items-start overflow-auto rounded-[0.5em] bg-transept p-[1em] text-white";
+  "z-50 flex flex-col flex-wrap items-start overflow-auto rounded-[0.5em] bg-transept p-[1em] text-white ";
 
 const Search = () => {
+  const debounceTimeout = useRef(null);
   const [posts, setPosts] = useState([]);
   const [limit, setLimit] = useState(18);
   const [loading, setLoading] = useState(true);
@@ -24,16 +25,13 @@ const Search = () => {
   const searchForUserFn = async () => {
     if (searchUserInput) {
       try {
-        const { data } = await axios.get(
-          `https://mock-social-network.vercel.app/api/users`,
-          {
-            withCredentials: true,
-          },
-        );
+        const { data } = await axios.get(`http://localhost:3000/api/users`, {
+          withCredentials: true,
+        });
 
         if (data.users) {
           const filteredUsers = data.users.filter((user) =>
-            user.username.toLowerCase().includes(searchUserInput.toLowerCase()),
+            user.username.toLowerCase().includes(searchUserInput),
           );
           setUsersResults(filteredUsers);
         }
@@ -44,14 +42,22 @@ const Search = () => {
   };
 
   const handleChangeInput = (e) => {
-    const searchUser = e.target.value;
+    const searchUser = e.target.value.toLowerCase();
     setSearchUserInput(searchUser);
 
-    if (searchUser.length > 1) {
-      searchForUserFn();
-    } else {
-      setUsersResults([]);
+    // Clear the previous debounce timeout
+    if (debounceTimeout.current) {
+      clearTimeout(debounceTimeout.current);
     }
+
+    // Set a new debounce timeout
+    debounceTimeout.current = setTimeout(() => {
+      if (searchUser.length > 1) {
+        searchForUserFn();
+      } else {
+        setUsersResults([]);
+      }
+    }, 300); // Adjust the delay (in milliseconds) as needed
   };
 
   const handleClickUserProfile = (e) => {
@@ -77,7 +83,7 @@ const Search = () => {
 
   return (
     <div>
-      <div className="p-[0.2em] pt-[0em]">
+      <div className="w-[100vw] p-[0.2em] pt-[0em]">
         <div>
           <form className="pl-[0.5em] pr-[0.5em]">
             <SearchBarInput onChange={handleChangeInput} />
@@ -87,14 +93,13 @@ const Search = () => {
             onClick={handleClickUserProfile}
             className={
               searchUserInput
-                ? `${styleFilterSearch} h-[100%]`
+                ? `${styleFilterSearch} mb-[3em]`
                 : `${styleFilterSearch} h-[0px]`
             }
           >
             {usersResults.map((user) => (
-              <div>
+              <div className="w-full" key={user.username}>
                 <button
-                  key={user.username}
                   id={user.username}
                   className={`mb-[0.2em] w-[100%] opacity-[0.7] hover:bg-gray-800 hover:opacity-[1]`}
                 >
@@ -112,6 +117,7 @@ const Search = () => {
             className="mt-2 flex w-full flex-row flex-wrap justify-center"
           >
             <InfiniteScroll
+              className={searchUserInput ? "hidden" : "block"}
               dataLength={posts.length}
               next={fetchMoreData}
               hasMore={hasMore}

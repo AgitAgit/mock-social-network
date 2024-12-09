@@ -18,7 +18,7 @@ const PostsFeed = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://mock-social-network.vercel.app/api/posts?limit=${limit}`,
+        `http://localhost:3000/api/posts?limit=${limit}`,
         { withCredentials: true },
       );
       if (response.data.length === 0) {

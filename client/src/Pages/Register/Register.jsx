@@ -15,7 +15,7 @@ const Register = () => {
 
   const registerUser = async (userInfo) => {
     const resRegisterUser = await axios.post(
-      `https://mock-social-network.vercel.app/api/users/signup`,
+      `http://localhost:3000/api/users/signup`,
       userInfo,
     );
 

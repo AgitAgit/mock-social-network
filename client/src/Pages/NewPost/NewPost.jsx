@@ -61,7 +61,7 @@ const NewPost = () => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/posts",
+        "http://localhost:3000/api/api/posts",
         postData,
         {
           headers: {

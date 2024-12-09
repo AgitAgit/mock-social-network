@@ -17,7 +17,7 @@ const ViewPost = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        `https://mock-social-network.vercel.app/api/posts/${postId}`,
+        `http://localhost:3000/api/posts/${postId}`,
         {
           withCredentials: true,
         },

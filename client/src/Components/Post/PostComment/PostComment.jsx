@@ -24,7 +24,7 @@ const PostComment = ({ postUsername, postId }) => {
   const postComment = async (inputComment) => {
     try {
       const res = await axios.post(
-        `https://mock-social-network.vercel.app/api/comments/${postId}`,
+        `http://localhost:3000/api/comments/${postId}`,
         {
           content: inputComment,
         },
