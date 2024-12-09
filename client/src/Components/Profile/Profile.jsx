@@ -23,7 +23,7 @@ const Profile = () => {
     setLoading(true);
     try {
       const { data } = await axios.get(
-        "http://localhost:3000/api/api/users/data",
+        "http://localhost:3000/api/users/data",
         {
           withCredentials: true,
         },

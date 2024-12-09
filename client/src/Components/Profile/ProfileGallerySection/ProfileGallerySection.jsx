@@ -1,23 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import ImageBlockDisplay from "../../ImageBlockDisplay/ImageBlockDisplay";
 
-const dammyPosts = [
-  { postImageUrl: "../../../public/images/static-profile-image-one.svg" },
-  { postImageUrl: "../../../public/images/static-profile-image-two.svg" },
-  { postImageUrl: "../../../public/images/static-profile-image-three.svg" },
-  { postImageUrl: "../../../public/images/static-profile-image-four.svg" },
-  { postImageUrl: "../../../public/images/static-profile-image-five.svg" },
-  { postImageUrl: "../../../public/images/static-profile-image-six.svg" },
-];
-
 const ProfileGallerySection = ({ posts }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (e) => {
+    const btnPostId = e.target.closest("button").className;
+    if (btnPostId) {
+      navigate(`/view-post/${btnPostId}`);
+    }
+  };
+
   return (
     <div>
       <div
-        // onClick={handleClick}
+        onClick={handleClick}
         className="mb-12 mt-2 flex w-full flex-row flex-wrap justify-center"
       >
         {posts &&
-          posts.map((post, index) => (
+          posts.map((post) => (
             <button key={post._id} className={post._id}>
               <ImageBlockDisplay post={post} />
             </button>
