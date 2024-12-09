@@ -11,7 +11,6 @@ import {
   MdOutlineVisibilityOff,
   MdPersonAdd,
 } from "react-icons/md";
-import { LuActivitySquare } from "react-icons/lu";
 import { IoTimeOutline } from "react-icons/io5";
 import { BiBell } from "react-icons/bi";
 import { IoLockClosedOutline } from "react-icons/io5";
@@ -120,7 +119,7 @@ const AccountOptions = () => {
         navigateRoute={"/Coming-soon"}
       />
       <OptionTab
-        icon={<LuActivitySquare />}
+        icon={<MdOutlineArchive />}
         title="Your Activity"
         navigateRoute={"/Coming-soon"}
       />
