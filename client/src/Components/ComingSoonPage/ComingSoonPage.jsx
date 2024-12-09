@@ -2,7 +2,7 @@ import BackPageArrow from "../BackPageArrow/BackPageArrow";
 
 const ComingSoonPage = () => {
   return (
-    <div>
+    <div className="mt-[1em]">
       <div>
         <BackPageArrow />
       </div>
