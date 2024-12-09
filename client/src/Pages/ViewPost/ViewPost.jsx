@@ -38,7 +38,7 @@ const ViewPost = () => {
   }, [postId]);
 
   return (
-    <div className="mt-[2.5em] text-white">
+    <div className="mt-[3.5em] text-white">
       <MenuContainer />
       {loading ? (
         <Loader />

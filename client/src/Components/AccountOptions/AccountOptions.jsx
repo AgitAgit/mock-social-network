@@ -55,7 +55,7 @@ const AccountOptions = () => {
     <div className="mt-1 flex w-[100vw] flex-col p-[1.5em] text-white">
       <div className="ml-[1em] flex flex-col items-start justify-start">
         <div className="flex w-full flex-row items-center justify-between">
-          <BackPageArrow top={0} left={25} />
+          <BackPageArrow marginLeft={"-1"} />
           <h1 className="mb-[0.5em] w-full text-center text-white">
             Setting and activity
           </h1>

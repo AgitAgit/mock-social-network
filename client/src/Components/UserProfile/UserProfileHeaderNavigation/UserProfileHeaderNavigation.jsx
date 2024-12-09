@@ -20,7 +20,7 @@ const UserProfileHeaderNavigation = () => {
     <div className="ProfileNavigation flex flex-row justify-between p-[1em]">
       <Link to="/posts-feed">
         <button>
-          <BackPageArrow top={35} left={25} />
+          <BackPageArrow />
         </button>
       </Link>
       <Link to="/account-options">

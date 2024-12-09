@@ -8,12 +8,14 @@ const BackPageArrow = () => {
   };
 
   return (
-    <button
-      className={`absolute left-[25px] top-[35px] text-white`}
-      onClick={handleBackClick}
-    >
-      <FaArrowLeft size={"20px"} />
-    </button>
+    <div>
+      <button
+        onClick={handleBackClick}
+        className={`ml-[0.5em] pl-[0.5em] text-white`}
+      >
+        <FaArrowLeft size={"20px"} />
+      </button>
+    </div>
   );
 };
 

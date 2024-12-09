@@ -52,7 +52,7 @@ const UserProfile = () => {
             <div className="rounded-[1em] bg-profileSectionTheme">
               <Link to="/search">
                 <button>
-                  <BackPageArrow top={35} left={25} />
+                  <BackPageArrow />
                 </button>
               </Link>
               <div className="flex w-full flex-row items-center justify-center">
